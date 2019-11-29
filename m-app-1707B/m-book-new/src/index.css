@@ -1,0 +1,3 @@
+.m-nav-item{margin: 0 5px;cursor: pointer;}
+.m-nav-item.router-link-active{color: red;}
+.m-nav-item.active{color: red;}
