@@ -4,7 +4,9 @@ import Login from '../views/Login'
 import Index from '../views/Index'
 import Home from '../views/Home'
 import MyBook from '../views/MyBook'
+import Detail from '../views/Detail'
 import News from '../views/News'
+import Task from '../views/Task'
 
 Vue.use(VueRouter)
 
@@ -30,8 +32,14 @@ const routes = [
         needLogin: true
       }
     }, {
+      path: '/index/detail/:id',
+      component: Detail
+    }, {
       path: '/index/news',
       component: News
+    }, {
+      path: '/index/task',
+      component: Task
     }]
   }
 ]

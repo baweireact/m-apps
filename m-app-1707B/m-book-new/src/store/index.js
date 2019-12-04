@@ -8,7 +8,28 @@ export default new Vuex.Store({
   state: {
     navList: [],
     currentId: 0,
-    currentList: []
+    currentList: [],
+    taskList: [],
+    myBook: []
+  },
+  getters: {
+    getTaskList(state) {
+      return (type, search) => {
+        return state.taskList.filter(item => {
+          if (type) {
+            return item.type === type
+          } else {
+            return true
+          }
+        }).filter(item => {
+          if (search) {
+            return item.name.includes(search)
+          } else {
+            return true
+          }
+        })
+      }
+    }
   },
   mutations: {
     setState(state, payload) {
@@ -30,6 +51,26 @@ export default new Vuex.Store({
           commit({ type: 'setState', key: 'currentList', value: res.data })
         }
       })
+    },
+    getTaskList({ commit }, payload) {
+      Api.getTaskList().then(res => {
+        if (res.code === 200) {
+          commit({ type: 'setState', key: 'taskList', value: res.data })
+          payload.callback()
+        }
+      })
+    },
+    getMyBook({ commit }) {
+      Api.getMyBook().then(res => {
+        if (res.code === 200) {
+          commit({ type: 'setState', key: 'myBook', value: res.data })
+        }
+      })
+    },
+    update({state}) {
+      Api.update({
+        myBookNew: state.myBook
+      }).then(res => {})
     }
   },
   modules: {

@@ -1,0 +1,23 @@
+{
+  "id": "1542411",
+  "name": "1707B",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "731317",
+      "name": "不显示密码",
+      "font_class": "guanbi",
+      "unicode": "e616",
+      "unicode_decimal": 58902
+    },
+    {
+      "icon_id": "8655885",
+      "name": "显示密码",
+      "font_class": "xianshimima",
+      "unicode": "e653",
+      "unicode_decimal": 58963
+    }
+  ]
+}

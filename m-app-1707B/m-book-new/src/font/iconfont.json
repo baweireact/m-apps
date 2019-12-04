@@ -1,0 +1,37 @@
+{
+  "id": "1542584",
+  "name": "1707B_NEW",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2127894",
+      "name": "五角星填充",
+      "font_class": "star",
+      "unicode": "e81b",
+      "unicode_decimal": 59419
+    },
+    {
+      "icon_id": "4297477",
+      "name": "已完成",
+      "font_class": "done",
+      "unicode": "e669",
+      "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "9647224",
+      "name": "禁止",
+      "font_class": "reject",
+      "unicode": "e654",
+      "unicode_decimal": 58964
+    },
+    {
+      "icon_id": "10030442",
+      "name": "ic_进行中",
+      "font_class": "doing",
+      "unicode": "e68f",
+      "unicode_decimal": 59023
+    }
+  ]
+}
