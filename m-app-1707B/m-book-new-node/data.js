@@ -740,7 +740,7 @@ const bookMallDetailData = [
 // 	}]
 // }).list
 
-const mockDataList = Mock.mock({
+const news = Mock.mock({
 	'list|500': [{
 		'id|+1': 1,
 		'name': '@cname',
@@ -802,6 +802,6 @@ module.exports = {
 	bookNavData,
 	bookMallData,
 	bookMallDetailData,
-	mockDataList,
+	news,
 	taskList,
 }

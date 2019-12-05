@@ -20,7 +20,15 @@
       <button @click="handleShowDialog">删除</button>
     </div>
     <div>总价：￥{{total.totalPrice}}，总数：{{total.totalCount}}</div>
-    <Dialog :visible="visible"></Dialog>
+    <Dialog :visible="visible" title="删除">
+      <div>
+        你确定要删除选中的图书吗？
+      </div>
+      <template v-slot:footer>
+        <button @click="handleHideDialog">取消</button>
+        <button @click="handleDeleteSelected">确定</button>
+      </template>
+    </Dialog>
   </div>
 </template>
 
@@ -35,6 +43,7 @@ export default {
   },
   computed: {
     myBook() {
+      console.log('更新')
       return this.$store.state.myBook;
     },
     total() {
@@ -66,7 +75,7 @@ export default {
       this.$store.commit({
         type: "setState",
         key: "myBook",
-        value: this.myBook
+        value: [...this.myBook]
       });
     },
     //加
@@ -75,7 +84,7 @@ export default {
       this.$store.commit({
         type: "setState",
         key: "myBook",
-        value: this.myBook
+        value: [...this.myBook]
       });
     },
     //减
@@ -85,17 +94,18 @@ export default {
         this.$store.commit({
           type: "setState",
           key: "myBook",
-          value: this.myBook
+          value: [...this.myBook]
         });
       }
     },
     //复选框
     handleChecked(index, e) {
-      this.myBook[index].checked = e.target.checked;
+      let myBook = this.myBook
+      myBook[index].checked = e.target.checked;
       this.$store.commit({
         type: "setState",
         key: "myBook",
-        value: this.myBook
+        value: [...myBook]
       });
     },
     //联动，全选控制上面的每一项
@@ -107,7 +117,7 @@ export default {
       this.$store.commit({
         type: "setState",
         key: "myBook",
-        value: this.myBook
+        value: [...this.myBook]
       });
     },
     //删除选中的
@@ -117,11 +127,15 @@ export default {
       this.$store.commit({
         type: "setState",
         key: "myBook",
-        value: myBook
+        value: [...myBook]
       });
+      this.handleHideDialog()
     },
     handleShowDialog() {
       this.visible = true
+    },
+    handleHideDialog() {
+      this.visible = false
     }
   },
   updated() {

@@ -1,12 +1,28 @@
 <template>
   <div>
-    新闻
+    <div v-for="item in list" :key="item.id">
+      {{item.name}}
+    </div>
   </div>
 </template>
 
 <script>
-export default {
+import Api from '../api'
 
+export default {
+  data() {
+    return {
+      list: [],
+      page: 1
+    }
+  },
+  mounted() {
+    Api.news('?page=1&size=10').then(res => {
+      if (res.code === 200) {
+        this.list = res.data
+      }
+    })
+  }
 }
 </script>
 

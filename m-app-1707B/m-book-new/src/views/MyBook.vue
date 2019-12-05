@@ -117,7 +117,21 @@ export default {
     },
     handleShowDialog() {
       if (this.myBook.filter(item => item.checked).length === 0) {
-        alert('请选择要删除的图书~')
+        //alert('请选择要删除的图书~')
+        //this.$alert('请选择要删除的图书~')
+        // this.$confirm('请选择要删除的图书~', '删除', {
+        //   confirmButtonText: 'OK',
+        //   cancelButtonText: 'cancel',
+        //   type: 'warning',
+        //   callback: (action) => {
+        //     if (action === 'confirm') {
+        //       console.log(2)
+        //     } else if (action === 'cancel') {
+        //       console.log(3)
+        //     }
+        //   }
+        // })
+        this.$MyAlert({title: '标题', message: '请选择要删除的图书~'})
         return;
       } 
       this.visible = true;

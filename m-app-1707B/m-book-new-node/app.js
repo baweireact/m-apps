@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const { bookNavData, bookMallData, bookMallDetailData, taskList } = require('./data')
+const { bookNavData, bookMallData, bookMallDetailData, taskList, news } = require('./data')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 
@@ -138,6 +138,19 @@ app.get('/api/task', (req, res) => {
     code: 200,
     data: taskList,
     message: '任务'
+  })
+})
+
+app.get('/api/news', (req, res) => {
+  let { page, size } = req.query
+  let start = (page - 1) * size
+  let end = start + size * 1
+  console.log(start, end)
+  
+  res.send({
+    code: 200,
+    data: news.slice(start, end),
+    message: '新闻'
   })
 })
 

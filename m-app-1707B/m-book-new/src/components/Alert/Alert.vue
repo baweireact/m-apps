@@ -3,10 +3,10 @@
     <div class="m-dialog">
       <div class="m-dialog-title">{{title}}</div>
       <div class="m-dialog-content">
-        <slot></slot>
+        {{message}}
       </div>
       <div class="m-dialog-footer">
-        <slot name="footer"></slot>
+        <button @click="handleHideDialog">确定</button>
       </div>
     </div>
   </div>
@@ -14,10 +14,21 @@
 
 <script>
 export default {
-  props: ['visible', 'title']
+  data() {
+    return {
+      title: '',
+      message: '',
+      visible: true
+    }
+  },
+  methods: {
+    handleHideDialog() {
+      this.visible = false
+    }
+  }
 }
 </script>
 
 <style>
-
+  
 </style>
