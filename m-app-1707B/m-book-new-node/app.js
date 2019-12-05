@@ -20,6 +20,12 @@ let myBook = []
 app.use(cors())
 app.use(bodyParser.json())
 
+app.use((req, res, next) => {
+  setTimeout(() => {
+    next()
+  }, 1000)
+})
+
 //登录，多用户，验证用户是否存在，和密码错误
 app.post('/api/login', (req, res) => {
   let { username, password } = req.body

@@ -25,10 +25,16 @@ const routes = [
       component: Home
     }, {
       path: '/index/my_book',
-      component: MyBook
+      component: MyBook,
+      meta: {
+        needLogin: true
+      }
     }, {
       path: '/index/detail/:id',
-      component: Detail
+      component: Detail,
+      meta: {
+        needLogin: true
+      }
     }]
   }
 ]
@@ -37,6 +43,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.needLogin) {
+    if(localStorage.getItem('username')) {
+      next()
+    } else {
+      next({ path: '/login'})
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

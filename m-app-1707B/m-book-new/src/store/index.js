@@ -10,7 +10,8 @@ export default new Vuex.Store({
     currentId: 0,
     currentList: [],
     taskList: [],
-    myBook: []
+    myBook: [],
+    loading: false
   },
   getters: {
     getTaskList(state) {
@@ -46,9 +47,11 @@ export default new Vuex.Store({
     },
     getList({ commit, state }) {
       let { currentId } = state
+      commit({ type: 'setState', key: 'loading', value: true })
       Api.getList(`?id=${currentId}`).then(res => {
         if (res.code === 200) {
           commit({ type: 'setState', key: 'currentList', value: res.data })
+          commit({ type: 'setState', key: 'loading', value: false })
         }
       })
     },
@@ -61,9 +64,11 @@ export default new Vuex.Store({
       })
     },
     getMyBook({ commit }) {
+      commit({ type: 'setState', key: 'loading', value: true })
       Api.getMyBook().then(res => {
         if (res.code === 200) {
           commit({ type: 'setState', key: 'myBook', value: res.data })
+          commit({ type: 'setState', key: 'loading', value: false })
         }
       })
     },

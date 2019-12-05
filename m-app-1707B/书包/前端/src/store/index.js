@@ -10,7 +10,8 @@ export default new Vuex.Store({
     navList: [],  //导航
     currentId: 0,  //高亮
     currentList: [],  //列表
-    myBook: []  //书包
+    myBook: [],  //书包
+    loading: false
   },
   mutations: {
     //动态的key，动态的value
@@ -29,16 +30,21 @@ export default new Vuex.Store({
     },
     getList({ commit, state }) {
       let { currentId } = state
+      commit({ type: 'setState', key: 'loading', value: true })
       Api.getList(`?id=${currentId}`).then(res => {
         if (res.code === 200) {
           commit({ type: 'setState', key: 'currentList', value: res.data })
+          commit({ type: 'setState', key: 'loading', value: false })
         }
       })
     },
+    //获取书包数据
     getMyBook({ commit }) {
+      commit({ type: 'setState', key: 'loading', value: true })
       Api.getMyBook().then(res => {
         if (res.code === 200) {
           commit({ type: 'setState', key: 'myBook', value: res.data })
+          commit({ type: 'setState', key: 'loading', value: false })
         }
       })
     },

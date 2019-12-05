@@ -23,6 +23,7 @@ export default {
   methods: {
     handleAdd(detail) {
       detail.count = 1
+      item.checked = true
       Api.add({
         book: detail
       }).then(res => {

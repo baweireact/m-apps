@@ -10,6 +10,13 @@ app.use(cors())
 //解析post请求
 app.use(bodyParser.json())
 
+//延迟函数
+app.use((req, res, next) => {
+  setTimeout(() => {
+    next()
+  }, 1000)
+})
+
 //用户列表 作业：注册 修改密码
 let userList = [{
   id: 0,

@@ -27,8 +27,10 @@ export default {
     handleAdd(item) {
       let myBook = this.$store.state.myBook;
       item.count = 1
+      item.checked = true
       myBook.push(item);
       this.$store.commit({ type: "setState", key: "myBook", value: myBook });
+      this.$store.commit({ type: "setState", key: "loading", value: true });
       Api.add({
         book: item
       }).then(res => {
