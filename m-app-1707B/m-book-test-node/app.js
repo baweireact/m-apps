@@ -1,7 +1,7 @@
 const express = require('express')
 const cors = require('cors')
 const bodyParser = require('body-parser')
-const { bookNavData, bookMallData, bookMallDetailData } = require('./data')
+const { bookNavData, bookMallData, bookMallDetailData, news } = require('./data')
 const app = express()
 
 //跨域  https://www.npmjs.com/package/cors
@@ -16,7 +16,7 @@ app.use(express.static('public'))
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 0)
+  }, 1000)
 })
 
 //用户列表 作业：注册 修改密码
@@ -137,6 +137,23 @@ app.post('/api/update', (req, res) => {
     code: 200,
     data: myBook,
     message: '更新成功'
+  })
+})
+
+//新闻
+app.get('/api/news', (req, res) => {
+  let { page, size, search = '' } = req.query
+  let searchResult = news.filter(item => {
+    return item.name.includes(search)
+  })
+  console.log(search)
+  let start = (page - 1) * size
+  let end = start + size * 1
+
+  res.send({
+    code: 200,
+    data: searchResult.slice(start, end),
+    message: '新闻'
   })
 })
 

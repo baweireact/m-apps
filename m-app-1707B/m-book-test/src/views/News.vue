@@ -1,18 +1,19 @@
 <template>
-  <div class="m-news-wrap">
-    <div class="m-news-serarch">
+  <div class="m-news">
+    <div class="m-news-search">
       <input type="text" placeholder="请输入关键词" v-model="search" @keyup.enter="handleSearch" />
     </div>
-    <div class="m-news js-news" @scroll="handleScroll">
+    <div class="m-news-content" @scroll="handleScroll">
       <div id="top"></div>
-      <div v-for="item in list" :key="item.id" class="m-news-item">
+      
+      <div v-for="item in newsList" :key="item.id" class="m-news-item">
         <img :src="item.image" />
         <div class="m-news-info">{{item.name}}</div>
       </div>
       <div class="m-end">{{end}}</div>
+      <!-- <button @click="handleTop" class="m-top">↑</button> -->
+      <a href="#top" class="m-top">顶部</a>
     </div>
-    <button @click="handleTop" class="m-top">↑</button>
-    <el-backtop target=".js-news"></el-backtop>
   </div>
 </template>
 
@@ -23,49 +24,42 @@ let isUpdated = true;
 export default {
   data() {
     return {
-      list: [],
+      newsList: [],
       page: 1,
-      search: "",
-      end: ""
+      end: "",
+      search: ''
     };
   },
   methods: {
     handleScroll(e) {
-      console.log(
-        e.target.clientHeight,
-        e.target.scrollTop,
-        e.target.scrollHeight
-      );
       let { scrollTop, clientHeight, scrollHeight } = e.target;
       if (
         scrollTop + clientHeight + 200 > scrollHeight &&
         isUpdated &&
         this.end === ""
       ) {
+        console.log("快到底了");
         this.page++;
         isUpdated = false;
         Api.news(`?page=${this.page}&size=10&search=${this.search}`).then(res => {
-          if (res.code === 200) {
-            this.list = [...this.list, ...res.data];
-            if (res.data.length < 10) {
-              this.end = "我是有底线的~";
-            }
+          if (res.data.length < 10) {
+            this.end = "我是有底线的~";
           }
+          this.newsList = [...this.newsList, ...res.data];
         });
       }
     },
     handleSearch() {
-      document.getElementById('top').scrollIntoView(true)
       Api.news(`?page=1&size=10&search=${this.search}`).then(res => {
         if (res.code === 200) {
-          this.list = res.data;
-          this.page = 1
+          this.newsList = res.data;
           this.end = ''
+          this.page = 1
         }
       });
     },
     handleTop() {
-      document.getElementById('top').scrollIntoView(true)
+      window.document.getElementById('top').scrollIntoView(true)
     }
   },
   updated() {
@@ -74,7 +68,7 @@ export default {
   mounted() {
     Api.news("?page=1&size=10").then(res => {
       if (res.code === 200) {
-        this.list = res.data;
+        this.newsList = res.data;
       }
     });
   }

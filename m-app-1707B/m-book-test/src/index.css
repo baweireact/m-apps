@@ -21,6 +21,13 @@
 .m-star{color: #dddddd;}
 .m-star.active{color: #f66f0c;}
 
+.m-news{display: flex;flex-direction: column; position: absolute;top: 30px;left: 0;right: 0;bottom: 0;}
+.m-news-content{flex:1;overflow-y: auto;}
+.m-news-item{display: flex;margin: 5px;}
+.m-news-info{flex:1;margin: 0 0 0 10px;border-bottom: 1px solid #dddddd;}
+.m-end{text-align: center;color: #dddddd;line-height: 50px;}
+.m-top{position: fixed;bottom: 20px;right: 20px;}
+
 @keyframes loading {
   0% { transform: rotate(0deg);}
   100% { transform: rotate(360deg);}

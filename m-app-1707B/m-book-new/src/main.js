@@ -4,6 +4,7 @@ import router from './router'
 import store from './store'
 import lazyload from 'vue-lazyload'
 import ElementUI from 'element-ui'
+import Scroller from 'vue-scroller'
 import Alert from './components/Alert/index.js'
 import 'element-ui/lib/theme-chalk/index.css'
 import './font/iconfont.css'
@@ -11,6 +12,8 @@ import './index.css'
 import loading from './images/loading.gif'
 
 Vue.use(ElementUI)
+
+Vue.use(Scroller)
 
 Vue.use(lazyload, {
   // loading: loading

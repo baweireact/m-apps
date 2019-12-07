@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 1000)
+  }, 200)
 })
 
 //登录，多用户，验证用户是否存在，和密码错误
@@ -133,7 +133,7 @@ app.post('/api/update', (req, res) => {
   })
 })
 
-app.get('/api/task', (req, res) => {
+app.get('/api/task_list', (req, res) => {
   res.send({
     code: 200,
     data: taskList,
@@ -142,14 +142,13 @@ app.get('/api/task', (req, res) => {
 })
 
 app.get('/api/news', (req, res) => {
-  let { page, size } = req.query
+  let { page, size, search = '' } = req.query
+  let newsSearchResult = news.filter(item => item.name.includes(search))
   let start = (page - 1) * size
   let end = start + size * 1
-  console.log(start, end)
-  
   res.send({
     code: 200,
-    data: news.slice(start, end),
+    data: newsSearchResult.slice(start, end),
     message: '新闻'
   })
 })

@@ -3,7 +3,10 @@ import urls from './urls'
 import { Alert, Message, MessageBox } from 'element-ui';
 import MyAlert from '../components/Alert'  //js文件里无法使用挂载到vue全局的函数，只能手动引进来
 
-axios.defaults.baseURL = 'http://localhost:85'
+//开发环境
+if (process.env.NODE_ENV === 'development') {
+  axios.defaults.baseURL = 'http://localhost:85'
+}
 
 axios.interceptors.response.use((res) => {
   // MessageBox({
@@ -38,7 +41,8 @@ const Api = {
   add: (data) => common({ url: urls.add, data, method: 'post' }),
   getDetail: (url) => common({ url: urls.getDetail + url }),
   update: (data) => common({ url: urls.update, data, method: 'post' }),
-  news: (url) => common({ url: urls.news + url })
+  news: (url) => common({ url: urls.news + url }),
+  getTaskList: () => common({ url: urls.getTaskList })
 }
 
 export default Api

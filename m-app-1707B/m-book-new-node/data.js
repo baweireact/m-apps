@@ -741,7 +741,7 @@ const bookMallDetailData = [
 // }).list
 
 const news = Mock.mock({
-	'list|500': [{
+	'list|32': [{
 		'id|+1': 1,
 		'name': '@cname',
 		//'image': Mock.Random.image(null, '#ff0000', '#ffff00', 'hello'),

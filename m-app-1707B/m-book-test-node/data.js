@@ -1,3 +1,5 @@
+let Mock = require('mockjs')
+
 //导航
 const bookNavData = [
 	{
@@ -724,9 +726,18 @@ const bookMallDetailData = [
 	}
 ]
 
+let news = Mock.mock({
+	'list|320': [{
+		'id|+1': 1,
+		'name': '@cname',
+		'image': '@image(122x150)'
+	}]
+}).list
+
 
 module.exports = {
 	bookNavData,
 	bookMallData,
-	bookMallDetailData
+	bookMallDetailData,
+	news
 }

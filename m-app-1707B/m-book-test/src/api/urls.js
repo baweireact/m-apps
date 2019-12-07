@@ -6,6 +6,7 @@ const urls = {
   add: '/api/add',   //添加
   getDetail: '/api/detail',   //详情
   update: '/api/update', //更新
+  news: '/api/news'  //新闻， 分页，搜索
 }
 
 export default urls

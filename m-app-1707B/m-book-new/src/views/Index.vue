@@ -4,6 +4,9 @@
       <router-link to="/index/home" class="m-nav-item">首页</router-link>
       <router-link to="/index/my_book" class="m-nav-item">书包</router-link>
       <router-link to="/index/news" class="m-nav-item">新闻</router-link>
+      <router-link to="/index/news_plus" class="m-nav-item">新闻+</router-link>
+      <router-link to="/index/news_max" class="m-nav-item">新闻max</router-link>
+      <router-link to="/index/waterfall" class="m-nav-item">瀑布流</router-link>
       <router-link to="/index/task" class="m-nav-item">任务</router-link>
     </div>
     <transition name="m-slide">

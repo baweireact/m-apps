@@ -5,6 +5,7 @@ import Index from '../views/Index'
 import Home from '../views/Home'
 import MyBook from '../views/MyBook'
 import Detail from '../views/Detail'
+import News from '../views/News'
 
 Vue.use(VueRouter)
 
@@ -35,6 +36,9 @@ const routes = [
       meta: {
         needLogin: true
       }
+    }, {
+      path: '/index/news',
+      component: News
     }]
   }
 ]

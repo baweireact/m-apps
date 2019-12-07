@@ -6,6 +6,9 @@ import Home from '../views/Home'
 import MyBook from '../views/MyBook'
 import Detail from '../views/Detail'
 import News from '../views/News'
+import NewsPlus from '../views/NewsPlus'
+import NewsMax from '../views/NewsMax'
+import Waterfall from '../views/Waterfall'
 import Task from '../views/Task'
 
 Vue.use(VueRouter)
@@ -37,6 +40,16 @@ const routes = [
     }, {
       path: '/index/news',
       component: News
+    }, {
+      path: '/index/news_plus',
+      component: NewsPlus
+    }, {
+      path: '/index/news_max',
+      component: NewsMax
+    }, {
+      path: '/index/waterfall',
+      component: Waterfall
+
     }, {
       path: '/index/task',
       component: Task
