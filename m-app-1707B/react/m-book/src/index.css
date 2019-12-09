@@ -1,13 +1,25 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
+.m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;}
+.m-wrap{display: flex;flex-direction: column;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.m-header{line-height: 50px;background: red;color: #ffffff;text-align: center;}
+.m-main{flex:1;overflow-y: auto;}
+.m-footer{display: flex; height: 50px;text-align: center;border-top:1px solid #dddddd;}
+.m-nav-item{flex:1; margin: 0 5px;cursor: pointer;text-decoration: none;color: #333333;}
+.m-nav-item.active{color: red;}
+.m-nav-icon{display: inline-block;margin: 5px 0; font-size: 20px;}
+.m-nav-text{font-size: 12px;}
+.m-home{display: flex;height: 100%;}
+.m-sidebar{width: 120px;border-right: 1px solid #dddddd;}
+.m-sidebar-item{display: block;text-align: center;line-height: 40px;cursor: pointer;border-bottom: 1px solid #dddddd;text-decoration:none}
+.m-sidebar-item.active{background:#aaaaaa;color: #333333;}
+.m-list{flex:1;overflow-y: auto;}
+.m-category{background: #dddddd;position: sticky;top: 0;}
+.m-list-item{display: flex;margin: 0 0 5px 0;}
+.m-img{width: 122px;height: 150px;}
+.m-info{flex: 1;margin: 0 0 0 10px;border-bottom: 1px solid #dddddd;}
+
+
