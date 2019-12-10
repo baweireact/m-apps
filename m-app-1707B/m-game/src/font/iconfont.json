@@ -1,0 +1,23 @@
+{
+  "id": "1552983",
+  "name": "game",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "845837",
+      "name": "单选",
+      "font_class": "danxuan",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
+      "icon_id": "7408068",
+      "name": "单选",
+      "font_class": "selected",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import actionCreator from '../store/actionCreator'
 
 class Sidebar extends Component {
   handleNav(id) {
-    this.props.onSetState('currentId', id)
+    this.props.onSetState(['currentId'], id)
   }
   componentDidMount() {
     this.props.onDispatch(actionCreator.getListAll())
@@ -30,6 +30,7 @@ class Sidebar extends Component {
 
 
 const mapStateToProps = (state) => {
+  state = state.toJS()
   return {
     listAll: state.listAll,
     currentId: state.currentId

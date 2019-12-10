@@ -21,5 +21,16 @@ body {
 .m-list-item{display: flex;margin: 0 0 5px 0;}
 .m-img{width: 122px;height: 150px;}
 .m-info{flex: 1;margin: 0 0 0 10px;border-bottom: 1px solid #dddddd;}
+.m-star{color: #dddddd;}
+.m-star.active{color: #f66f0c;}
+
+.m-dialog-wrap{display: none;position: fixed;top: 0;left: 0;right: 0;bottom: 0;background:rgba(0, 0, 0, 0.2)}
+.m-dialog-wrap.active{display: flex;}
+.m-dialog{display: flex;flex-direction: column; margin: auto;padding: 5px; min-width: 300px;min-height: 200px;background: #ffffff;border-radius: 5px;}
+.m-dialog-title{line-height: 30px;font-weight: bold;}
+.m-dialog-content{flex: 1;}
+.m-dialog-footer{height: 50px;text-align: right;}
+.m-add-content{text-align: center;line-height: 100px;}
+.m-add-count{width: 50px;text-align: center;}
 
 

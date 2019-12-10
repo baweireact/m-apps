@@ -90,6 +90,14 @@ app.get('/api/list', (req, res) => {
   })
 })
 
+app.get('/api/list_all', (req, res) => {
+  res.send({
+    code: 200,
+    data: bookMallData,
+    message: '列表全部数据'
+  })
+})
+
 //详情，自动添加一个字段叫is_in_my_book true:已收藏  false:未收藏
 app.get('/api/detail', (req, res) => {
   let { id } = req.query

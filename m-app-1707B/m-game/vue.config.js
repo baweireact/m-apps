@@ -3,7 +3,6 @@ let questionList = [
   {
     id: 0,
     question: '你会选择如何度过一个有趣的周末？',
-    yourAnswer: '',
     answerList: [{
       id: 0,
       text: '写代码',
@@ -21,7 +20,6 @@ let questionList = [
   {
     id: 1,
     question: '你爱吃什么？',
-    yourAnswer: '',
     answerList: [{
       id: 0,
       text: '火锅',
