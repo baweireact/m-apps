@@ -4,7 +4,8 @@ import actionCreator from '../store/actionCreator'
 
 class Sidebar extends Component {
   handleNav(id) {
-    this.props.onSetState(['currentId'], id)
+    //this.props.onSetState(['currentId'], id)
+    document.getElementById(id).scrollIntoView({block: 'start', behavior: 'smooth'})
   }
   componentDidMount() {
     this.props.onDispatch(actionCreator.getListAll())
@@ -14,7 +15,7 @@ class Sidebar extends Component {
     let listAllDom = listAll.map(item => (
       <a 
         key={item.id} 
-        href={'#' + item.id}
+        // href={'#' + item.id}
         onClick={this.handleNav.bind(this, item.id)}
         className={"m-sidebar-item " + (currentId === item.id ? 'active' : '')}>
         {item.title}

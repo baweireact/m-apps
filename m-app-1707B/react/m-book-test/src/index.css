@@ -23,7 +23,8 @@ code {
 .m-nav-text{font-size: 12px;}
 .m-home{display: flex;height: 100%;}
 .m-sidebar{width: 120px;border-right: 1px solid #dddddd;}
-
+.m-sidebar-item{line-height: 40px; text-align: center;border-bottom: 1px solid #dddddd;cursor: pointer;}
+.m-sidebar-item.active{background: #aaaaaa;}
 
 
 

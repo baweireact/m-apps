@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Stars from './Stars'
 import Dialog from './Dialog'
 import Api from '../api'
@@ -60,7 +61,7 @@ class List extends Component {
   }
   handleCount(e) {
     let { item } = this.state
-    item.count = e.target.value * 1
+    item.count = e.target.value.replace(/[^0-9]/g, '') * 1 
     this.setState({
       item
     })
@@ -73,6 +74,9 @@ class List extends Component {
         break
       }
     }
+  }
+  handleDetail(id) {
+    this.props.history.push('/detail/' + id)
   }
   componentDidUpdate() {
     let categoryList = document.getElementsByClassName('js-category')
@@ -93,6 +97,7 @@ class List extends Component {
                 {item.title}
                 <Stars count={item.stars}></Stars>
                 <button onClick={this.handleShowDialog.bind(this, item)}>添加</button>
+                <button onClick={this.handleDetail.bind(this, item.id)}>详情</button>
               </div>
             </div>
           ))
@@ -108,9 +113,9 @@ class List extends Component {
           onCancel={this.handleHideDialog.bind(this)}
           onOk={this.handleAddToMyBook.bind(this)}>
           <div className="m-add-content">
-            <button onClick={this.handleSub.bind(this)}>-</button>
+            <button onClick={this.handleSub.bind(this)} className="m-dialog-btn">-</button>
             <input placeholder="请输入" value={item.count} className="m-add-count" onChange={this.handleCount.bind(this)} type="text"></input>
-            <button onClick={this.handleAdd.bind(this)}>+</button>
+            <button onClick={this.handleAdd.bind(this)} className="m-dialog-btn">+</button>
           </div>
         </Dialog>
       </div>
@@ -140,4 +145,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(List))

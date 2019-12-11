@@ -1,6 +1,8 @@
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
+//import thunk from 'redux-thunk'
 import { fromJS } from 'immutable'
 
+//把普通js对象转换为immutable对象
 const defaultState = fromJS({
   listAll: [],
   currentId: 0,
@@ -16,6 +18,18 @@ const reducer = (state = defaultState, action) => {
   }
 }
 
-const store = createStore(reducer)
+const thunk = ({ dispatch, getState }) => (next) => (action) => {
+  if (typeof action === 'function') {
+    return action(dispatch, getState);
+  }
+
+  return next(action);
+};
+
+const store = createStore(reducer, applyMiddleware(thunk))
+
+store.subscribe(() => {
+  console.log(store.getState().toJS())
+})
 
 export default store

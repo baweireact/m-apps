@@ -3,7 +3,7 @@ body {
 }
 
 
-.m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;}
+.m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;cursor: pointer;}
 .m-wrap{display: flex;flex-direction: column;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
 .m-header{line-height: 50px;background: red;color: #ffffff;text-align: center;}
 .m-main{flex:1;overflow-y: auto;}
@@ -14,8 +14,8 @@ body {
 .m-nav-text{font-size: 12px;}
 .m-home{display: flex;height: 100%;}
 .m-sidebar{width: 120px;border-right: 1px solid #dddddd;}
-.m-sidebar-item{display: block;text-align: center;line-height: 40px;cursor: pointer;border-bottom: 1px solid #dddddd;text-decoration:none}
-.m-sidebar-item.active{background:#aaaaaa;color: #333333;}
+.m-sidebar-item{display: block;text-align: center;line-height: 40px;color: #333333; cursor: pointer;border-bottom: 1px solid #dddddd;text-decoration:none}
+.m-sidebar-item.active{background:#aaaaaa;color: #000000;font-weight: bold;}
 .m-list{flex:1;overflow-y: auto;}
 .m-category{background: #dddddd;position: sticky;top: 0;}
 .m-list-item{display: flex;margin: 0 0 5px 0;}
@@ -30,6 +30,7 @@ body {
 .m-dialog-title{line-height: 30px;font-weight: bold;}
 .m-dialog-content{flex: 1;}
 .m-dialog-footer{height: 50px;text-align: right;}
+.m-dialog-btn{margin: 0 5px;}
 .m-add-content{text-align: center;line-height: 100px;}
 .m-add-count{width: 50px;text-align: center;}
 

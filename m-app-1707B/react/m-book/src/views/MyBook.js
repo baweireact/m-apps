@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 class MyBook extends Component {
+  handleCheck() {
+    
+  }
   render() {
     let { myBook } = this.props
     let myBookDom = myBook.map((item, index) => (
