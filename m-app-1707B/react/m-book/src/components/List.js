@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Stars from './Stars'
 import Dialog from './Dialog'
-import Api from '../api'
+import actionCreator from '../store/actionCreator'
 
 let categoryOffsetTopArr = []
 class List extends Component {
@@ -39,9 +39,7 @@ class List extends Component {
     }
     this.props.onSetState(['myBook'], myBook)
     this.handleHideDialog()
-    Api.update({ myBookNew: myBook }).then(res => {
-
-    })
+    this.props.onDispatch(actionCreator.updateMyBook(myBook))
   }
   handleAdd() {
     let { item } = this.state

@@ -4,7 +4,8 @@ import actionCreator from '../store/actionCreator'
 
 class Sidebar extends Component {
   handleNav(id) {
-    this.props.onSetState(['currentId'], id)
+    //this.props.onSetState(['currentId'], id)
+    document.getElementById(id).scrollIntoView({block: 'start', behavior: 'smooth'})
   }
   componentDidMount() {
     this.props.onDispatch(actionCreator.getListAll())
@@ -13,12 +14,13 @@ class Sidebar extends Component {
     let { listAll, currentId } = this.props
     //作业，用for循环做一下
     let listAllDom = listAll.map(item => (
-      <div 
+      <div
         key={item.id} 
         className={"m-sidebar-item " + (currentId === item.id ? "active" : '')}
         onClick={this.handleNav.bind(this, item.id)}>
         {item.title}
       </div>
+
     ))
     return (
       <div className="m-sidebar">
@@ -30,10 +32,10 @@ class Sidebar extends Component {
 
 //相当于vuex里的computed计算属性
 const mapStateToProps = (state) => {
-  state = state.toJS()  //把immutable对象转换为js对象
+  //state = state.toJS()  //把immutable对象转换为js对象
   return {
-    listAll: state.listAll,
-    currentId: state.currentId
+    listAll: state.getIn(['listAll']).toJS(),
+    currentId: state.getIn(['currentId'])
   }
 }
 

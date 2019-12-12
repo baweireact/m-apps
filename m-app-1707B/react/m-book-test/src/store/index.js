@@ -12,7 +12,7 @@ const defaultState = fromJS({
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
     case 'SET_STATE':
-      return state.setIn(action.key, action.value)
+      return state.setIn(action.key, fromJS(action.value))
     default:
       return state
   }

@@ -1,9 +1,43 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import actionCreator from '../store/actionCreator'
+import { fromJS, is } from 'immutable'
 
+let myBookHistory = []
 class MyBook extends Component {
   handleCheck() {
-    
+
+  }
+  handleSub(index) {
+    let { myBook } = this.props
+    if (myBook[index].count > 1) {
+      myBook[index].count--
+      this.props.onSetState(['myBook'], myBook)
+    }
+  }
+  handleAdd(index) {
+    let { myBook } = this.props
+    myBook[index].count++
+    this.props.onSetState(['myBook'], myBook)
+  }
+  handleCount(index, e) {
+    let { myBook } = this.props
+    myBook[index].count = e.target.value.replace(/[^0-9]/g, '')
+    this.props.onSetState(['myBook'], myBook)
+  }
+  componentDidUpdate() {
+    let { myBook } = this.props
+    if (is(fromJS(myBookHistory), fromJS(myBook))) {
+
+      console.log(2)
+    } else {
+      console.log(1)
+      this.props.onDispatch(actionCreator.updateMyBook(myBook))
+      myBookHistory = MyBook
+    }
+  }
+  componentDidMount() {
+    this.props.onDispatch(actionCreator.getMyBook())
   }
   render() {
     let { myBook } = this.props
@@ -11,6 +45,9 @@ class MyBook extends Component {
       <div key={item.id}>
         <input type="checkbox" checked={item.checked} id={item.id} onChange={this.handleCheck.bind(this, index)}></input>
         <label htmlFor={item.id}>{item.title}</label>
+        <button onClick={this.handleSub.bind(this, index)} className="m-dialog-btn">-</button>
+        <input placeholder="请输入" value={item.count} className="m-add-count" onChange={this.handleCount.bind(this, index)} type="text"></input>
+        <button onClick={this.handleAdd.bind(this, index)} className="m-dialog-btn">+</button>
       </div>
     ))
     return (
