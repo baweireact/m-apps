@@ -8,6 +8,15 @@ const getListAll = (payload) => (dispatch) => {
   })
 }
 
+const getMyBook = () => (dispatch) => {
+  Api.getMyBook().then(res => {
+    if (res.code === 200) {
+      dispatch({ type: 'SET_STATE', key: ['myBook'], value: res.data })
+    }
+  })
+}
+
 export default {
-  getListAll
+  getListAll,
+  getMyBook
 }

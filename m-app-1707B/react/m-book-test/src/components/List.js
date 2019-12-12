@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import Dialog from '../components/Dialog'
+import Api from '../api'
 
 let topArr = []
 class List extends Component {
@@ -49,6 +51,7 @@ class List extends Component {
     
     this.props.onSetState(['myBook'], myBook)
     this.handleHideDialog()
+    Api.update({ myBookNew: myBook }).then()
   }
   //添加的商品数量可以通过input框输入
   handleCount(e) {
@@ -76,6 +79,9 @@ class List extends Component {
       })
     }
   }
+  handleDetail(id) {
+    this.props.history.push('/detail/' + id)
+  }
   //每次渲染完成后会把右侧的大分类的dom距离顶部的高度保存到数组里
   componentDidUpdate() {
     topArr = Array.from(document.getElementsByClassName('js-list-item')).map(item => item.offsetTop)
@@ -95,6 +101,7 @@ class List extends Component {
                 {book.title}
                 <div>
                   <button onClick={this.handleShowDialog.bind(this, book)}>添加</button>
+                  <button onClick={this.handleDetail.bind(this, book.id)}>详情</button>
                 </div>
               </div>
             </div>
@@ -144,4 +151,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(List))

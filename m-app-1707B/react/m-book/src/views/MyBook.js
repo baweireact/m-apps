@@ -5,8 +5,13 @@ import { fromJS, is } from 'immutable'
 
 let myBookHistory = []
 class MyBook extends Component {
-  handleCheck() {
-
+  handleCheck(index, e) {
+    let { myBook } = this.props
+    myBook[index].checked = e.target.checked
+    this.props.onSetState(['myBook'], myBook)
+  }
+  handleSelectAll(e) {
+    
   }
   handleSub(index) {
     let { myBook } = this.props
@@ -28,7 +33,6 @@ class MyBook extends Component {
   componentDidUpdate() {
     let { myBook } = this.props
     if (is(fromJS(myBookHistory), fromJS(myBook))) {
-
       console.log(2)
     } else {
       console.log(1)
@@ -41,18 +45,31 @@ class MyBook extends Component {
   }
   render() {
     let { myBook } = this.props
+    let totalPrice = 0, totalCount = 0
+    myBook.filter(item => item.checked).forEach(item => {
+      totalPrice += item.count * item.price
+      totalCount += item.count
+    })
+    let count = myBook.filter(item => item.checked).length
+    let selectedAll = count == myBook.length && count > 0
     let myBookDom = myBook.map((item, index) => (
       <div key={item.id}>
         <input type="checkbox" checked={item.checked} id={item.id} onChange={this.handleCheck.bind(this, index)}></input>
         <label htmlFor={item.id}>{item.title}</label>
-        <button onClick={this.handleSub.bind(this, index)} className="m-dialog-btn">-</button>
+        <button onClick={this.handleSub.bind(this, index)} className="m-btn">-</button>
         <input placeholder="请输入" value={item.count} className="m-add-count" onChange={this.handleCount.bind(this, index)} type="text"></input>
-        <button onClick={this.handleAdd.bind(this, index)} className="m-dialog-btn">+</button>
+        <button onClick={this.handleAdd.bind(this, index)} className="m-btn">+</button>
       </div>
     ))
     return (
       <div className="m-main">
         {myBookDom}
+        <div>
+          <input type="checkbox" checked={ selectedAll } onChange={this.handleSelectAll.bind(this)}></input> 全选
+        </div>
+        <div>
+          总价：{totalPrice}，总数：{totalCount}
+        </div>
       </div>
     )
   }

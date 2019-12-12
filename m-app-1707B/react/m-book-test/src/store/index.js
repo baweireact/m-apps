@@ -4,6 +4,7 @@ import { fromJS } from 'immutable'
 
 //把普通js对象转换为immutable对象
 const defaultState = fromJS({
+  title: '小米书城',
   listAll: [],
   currentId: 0,
   myBook: []
