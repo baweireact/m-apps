@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  line-height: unset;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -11,6 +12,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+button, input{line-height: 1;}
 
 .m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;}
 .m-wrap{display: flex;flex-direction: column; position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
@@ -26,10 +29,12 @@ code {
 .m-sidebar-item{line-height: 40px; text-align: center;border-bottom: 1px solid #dddddd;cursor: pointer;}
 .m-sidebar-item.active{background: #aaaaaa;}
 .m-list{flex:1; overflow-y: auto;}
-.m-list-item{display: flex; margin: 0 0 5px 0;}
-.m-img{width: 122px;height: 150px;}
+.m-list-item{display: flex; padding: 0 0 5px 0;}
+.m-img-wrap{ display: flex;position: relative; width: 122px;height: 150px;background: #dddddd;}
+.m-img-wrap::before{margin: auto; content: '';display: inline-block;width: 38px;height: 38px;background-image: url(./images/loading.png);animation: loading 0.5s linear infinite;}
+.m-img{position: absolute; width: 122px;height: 150px;}
 .m-info{flex:1;margin: 0 0 0 5px;border-bottom: 1px solid #dddddd;}
-.m-list-title{position: sticky;top: 0;background: #dddddd;}
+.m-list-title{position: sticky;top: 0;background: #dddddd;line-height: 30px;z-index: 9;}
 .m-dialog-wrap{display: none; position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0, 0, 0, 0.2);}
 .m-dialog-wrap.active{display: flex;}
 .m-dialog{display: flex;flex-direction: column; margin: auto;padding: 5px; min-width: 300px;min-height: 200px;background: #ffffff;border-radius: 5px;}
@@ -39,7 +44,15 @@ code {
 .m-btn{margin: 0 5px;}
 .m-add-my-book{line-height: 100px;text-align: center;}
 .m-input{width: 50px;text-align: center;}
+.m-loading{display: none; position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0, 0, 0, 0.2);}
+.m-loading::before{margin: auto; content: '';display: inline-block;width: 38px;height: 38px;background-image: url(./images/loading.png);animation: loading 0.5s linear infinite;}
+.m-loading.active{display: flex;}
 
 .m-star{color: #dddddd;}
 .m-star.active{color: #f66f0c;}
+
+@keyframes loading {
+  0% {transform: rotate(0deg);}
+  100% { transform: rotate(360deg);}
+}
 

@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 200)
+  }, 0)
 })
 
 //登录，多用户，验证用户是否存在，和密码错误

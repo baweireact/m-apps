@@ -1,17 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import actionCreator from '../store/actionCreator'
 import { fromJS, is } from 'immutable'
+import { message } from 'antd'
+import actionCreator from '../store/actionCreator'
+import Dialog from '../components/Dialog'
+
 
 let myBookHistory = []
 class MyBook extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      visible: false
+    }
+  }
   handleCheck(index, e) {
     let { myBook } = this.props
     myBook[index].checked = e.target.checked
     this.props.onSetState(['myBook'], myBook)
   }
   handleSelectAll(e) {
-    
+    let { myBook } = this.props
+    myBook.forEach(item => {
+      item.checked = e.target.checked
+    })
+    this.props.onSetState(['myBook'], myBook)
   }
   handleSub(index) {
     let { myBook } = this.props
@@ -27,8 +40,33 @@ class MyBook extends Component {
   }
   handleCount(index, e) {
     let { myBook } = this.props
-    myBook[index].count = e.target.value.replace(/[^0-9]/g, '')
+    myBook[index].count = e.target.value.replace(/[^0-9]/g, '') * 1
     this.props.onSetState(['myBook'], myBook)
+  }
+  handleDelete(index) {
+    let { myBook } = this.props
+    myBook.splice(index, 1)
+    this.props.onSetState(['myBook'], myBook)
+  }
+  handleShowDialog() {
+    let { myBook } = this.props
+    if (myBook.filter(item => item.checked).length > 0) {
+      this.setState({
+        visible: true
+      })
+    } else {
+      message.info('请选择要删除的商品~')
+    }
+  }
+  handleHideDialog() {
+    this.setState({
+      visible: false
+    })
+  }
+  handleDeleteSelected() {
+    let { myBook } = this.props
+    this.props.onSetState(['myBook'], myBook.filter(item => !item.checked))
+    this.handleHideDialog()
   }
   componentDidUpdate() {
     let { myBook } = this.props
@@ -40,11 +78,9 @@ class MyBook extends Component {
       myBookHistory = MyBook
     }
   }
-  componentDidMount() {
-    this.props.onDispatch(actionCreator.getMyBook())
-  }
   render() {
     let { myBook } = this.props
+    let { visible } = this.state
     let totalPrice = 0, totalCount = 0
     myBook.filter(item => item.checked).forEach(item => {
       totalPrice += item.count * item.price
@@ -53,23 +89,48 @@ class MyBook extends Component {
     let count = myBook.filter(item => item.checked).length
     let selectedAll = count == myBook.length && count > 0
     let myBookDom = myBook.map((item, index) => (
-      <div key={item.id}>
-        <input type="checkbox" checked={item.checked} id={item.id} onChange={this.handleCheck.bind(this, index)}></input>
-        <label htmlFor={item.id}>{item.title}</label>
-        <button onClick={this.handleSub.bind(this, index)} className="m-btn">-</button>
-        <input placeholder="请输入" value={item.count} className="m-add-count" onChange={this.handleCount.bind(this, index)} type="text"></input>
-        <button onClick={this.handleAdd.bind(this, index)} className="m-btn">+</button>
+      <div key={item.id} className="m-my-book-item">
+        <div className="m-my-book-info">
+          <label>
+            <input type="checkbox" checked={item.checked} onChange={this.handleCheck.bind(this, index)}></input>
+            {item.title}
+          </label>
+          ￥{item.price}
+        </div>
+        <div className="m-my-book-action">
+          <button onClick={this.handleSub.bind(this, index)} className="m-btn">-</button>
+          <input placeholder="请输入" value={item.count} className="m-add-count" onChange={this.handleCount.bind(this, index)} type="text"></input>
+          <button onClick={this.handleAdd.bind(this, index)} className="m-btn">+</button>
+          <button onClick={this.handleDelete.bind(this, index)}>删除</button>
+        </div>
       </div>
     ))
     return (
-      <div className="m-main">
+      <div className="m-main m-my-book">
         {myBookDom}
-        <div>
-          <input type="checkbox" checked={ selectedAll } onChange={this.handleSelectAll.bind(this)}></input> 全选
-        </div>
-        <div>
-          总价：{totalPrice}，总数：{totalCount}
-        </div>
+        {
+          myBook.length > 0 &&
+          <div>
+            <div>
+              <label>
+                <input type="checkbox" checked={selectedAll} onChange={this.handleSelectAll.bind(this)}></input>
+                全选
+            </label>
+              <button onClick={this.handleShowDialog.bind(this)}>删除</button>
+            </div>
+            <div>
+              总价：￥{totalPrice}，总数：{totalCount}
+            </div>
+          </div>
+        }
+        <Dialog
+          title="删除"
+          visible={visible}
+          onCancel={this.handleHideDialog.bind(this)}
+          onOk={this.handleDeleteSelected.bind(this)}
+        >
+          <div className="m-delete-msg">你确定要删除选中的商品吗？</div>
+        </Dialog>
       </div>
     )
   }

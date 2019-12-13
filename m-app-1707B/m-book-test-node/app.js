@@ -16,7 +16,7 @@ app.use(express.static('public'))
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 1000)
+  }, 200)
 })
 
 //用户列表 作业：注册 修改密码

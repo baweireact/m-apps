@@ -7,7 +7,8 @@ const defaultState = fromJS({
   listAll: [],
   currentId: 0,
   isRealScroll: true,
-  myBook: []
+  myBook: [],
+  loading: false
 })
 
 const reducer = (state = defaultState, action) => {

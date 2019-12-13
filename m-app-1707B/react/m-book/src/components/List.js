@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import LazyLoad from 'react-lazy-load'
 import Stars from './Stars'
 import Dialog from './Dialog'
 import actionCreator from '../store/actionCreator'
@@ -91,7 +92,9 @@ class List extends Component {
         {
           category.list.map(item => (
             <div key={item.id} className="m-list-item">
-              <img src={item.avatar} className="m-img" alt={item.title}></img>
+              <LazyLoad className="m-img-wrap">
+                <img src={item.avatar} className="m-img" alt={item.title}></img>
+              </LazyLoad>
               <div className="m-info">
                 {item.title}
                 <Stars count={item.stars}></Stars>
