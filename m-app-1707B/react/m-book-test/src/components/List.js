@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import Dialog from '../components/Dialog'
+import Stars from './Stars'
 import Api from '../api'
 
 let topArr = []
@@ -16,9 +17,10 @@ class List extends Component {
   //右侧list滚动事件，会控制侧边栏的高亮
   handleScroll(e) {
     //onsole.log(e.target.scrollTop)
+    let { isRealScroll } = this.props
     let top = e.target.scrollTop + 50 + 2
     for (let i = 0; i < topArr.length; i++) {
-      if (topArr[i] < top && top < topArr[i + 1]) {
+      if (topArr[i] < top && top < topArr[i + 1] && isRealScroll) {
         this.props.onSetState(['currentId'], i)
       }
     }
@@ -99,6 +101,7 @@ class List extends Component {
               <img src={book.avatar} className="m-img"></img>
               <div className="m-info">
                 {book.title}
+                <Stars count={book.stars}></Stars>
                 <div>
                   <button onClick={this.handleShowDialog.bind(this, book)}>添加</button>
                   <button onClick={this.handleDetail.bind(this, book.id)}>详情</button>
@@ -134,7 +137,8 @@ const mapStateToProps = (state) => {
   return {
     listAll: state.getIn(['listAll']).toJS(),
     currentId: state.getIn(['currentId']),
-    myBook: state.getIn(['myBook']).toJS()
+    myBook: state.getIn(['myBook']).toJS(),
+    isRealScroll: state.getIn(['isRealScroll'])
   }
 }
 

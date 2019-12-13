@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import Router from './router/Router'
 import store from './store'
 import './font/iconfont.css'
+import 'antd/dist/antd.css'
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 

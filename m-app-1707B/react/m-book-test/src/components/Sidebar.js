@@ -2,9 +2,15 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import actionCreator from '../store/actionCreator'
 
+let timer
 class Sidebar extends Component {
   handleNav(id) {
-    //this.props.onSetState(['currentId'], id)
+    this.props.onSetState(['currentId'], id)
+    this.props.onSetState(['isRealScroll'], false)
+    clearTimeout(timer)
+    timer = setTimeout(() => {
+      this.props.onSetState(['isRealScroll'], true)
+    }, 1000)
     document.getElementById(id).scrollIntoView({block: 'start', behavior: 'smooth'})
   }
   componentDidMount() {
