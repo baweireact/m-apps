@@ -1,0 +1,4 @@
+<!--components/nav/nav.wxml-->
+<view>
+  <text wx:for="{{navList}}" wx:key="id">{{item.title}}</text>
+</view>

@@ -1,0 +1,5 @@
+<!--pages/test/test.wxml-->
+<text>{{count}}</text>
+<view>
+  <button size="mini" bind:tap="handleAdd" data-step="{{2}}" mark:step="{{3}}">加</button>
+</view>

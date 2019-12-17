@@ -23,7 +23,7 @@ app.use(bodyParser.json())
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 0)
+  }, 1000)
 })
 
 //登录，多用户，验证用户是否存在，和密码错误
@@ -113,7 +113,12 @@ app.get('/api/detail', (req, res) => {
 //添加
 app.post('/api/add', (req, res) => {
   let { book } = req.body
-  myBook.push(book)
+  let index = myBook.findIndex(item => item.id === book.id)
+  if (index >= 0) {
+    myBook[index].count += book.count
+  } else {
+    myBook.push(book)
+  }
   res.send({
     code: 200,
     data: myBook,

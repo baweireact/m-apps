@@ -1,0 +1,13 @@
+<!--pages/home/home.wxml-->
+<swiper 
+  style="height: {{swiperHeight}}px"
+  indicator-dots="{{true}}"
+  autoplay="{{true}}" 
+  duration="{{500}}" 
+  interval="{{2000}}" 
+  circular="{{true}}">
+  <swiper-item wx:for="{{bannerList}}" wx:key="id">
+    <image src="{{item.url}}" class="m-banner" mode="widthFix" bind:load="handleLoad"></image>
+  </swiper-item>
+</swiper>
+<nav navList="{{navList}}"></nav>

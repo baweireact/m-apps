@@ -1,0 +1,12 @@
+<swiper autoplay="{{true}}" duration="500" interval="3000" indicator-dots="{{true}}" circular="{{true}}" style="height: {{swiperHeight}}px">
+  <swiper-item wx:for="{{bannerList}}" wx:key="{{index}}">
+    <image src="{{item.imgUrl}}" mode="widthFix" class="m-img" bindload="handleLoad"></image>
+  </swiper-item>
+</swiper>
+<view>
+  <button size="mini" class="m-btn" bind:tap="handleSub">减</button>
+  <text class="m-count">{{count}}</text>
+  <button size="mini" class="m-btn" bind:tap="handleAdd">加</button>
+</view>
+<nav navList="{{navList}}" currentId="{{currentId}}" bind:onNav="handleNav"></nav>
+<list currentList="{{currentList}}"></list>

@@ -1,0 +1,10 @@
+/* components/dialog/dialog.wxss */
+.m-dialog-wrap{display: none; position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0, 0, 0, 0.5);z-index: 99;}
+.m-dialog-wrap.active{display: flex;}
+.m-dialog{display: flex;flex-direction: column; margin: auto;padding: 10rpx; min-width: 600rpx;min-height: 400rpx;background: #ffffff;border-radius: 10rpx;}
+.m-dialog-header{height: 80rpx;font-weight: bold;}
+.m-dialog-content{flex: 1;}
+.m-dialog-footer{height: 80rpx;text-align: right;}
+
+
+

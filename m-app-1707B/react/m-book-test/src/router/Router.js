@@ -5,6 +5,7 @@ import Index from '../views/Index'
 import Detail from '../views/Detail'
 import Test from '../views/Test'
 import Loading from '../components/Loading'
+import Exam from '../views/Exam'
 
 export default class Router extends Component {
   render() {
@@ -16,6 +17,7 @@ export default class Router extends Component {
           <Route path="/index" component={Index}></Route>
           <Route path="/detail/:id" component={Detail}></Route>
           <Route path="/test" component={Test}></Route>
+          <Route path="/exam" component={Exam}></Route>
         </Switch>
         <Loading></Loading>
       </>

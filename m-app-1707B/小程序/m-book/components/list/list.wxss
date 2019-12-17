@@ -1,0 +1,10 @@
+/* components/list/list.wxss */
+.m-list-item{display: flex;margin: 10rpx;}
+.m-list-img{width: 255rpx;}
+.m-list-info{flex: 1;margin: 0 0 0 10rpx;border-bottom: 4rpx solid #dddddd;}
+.m-count-wrap{display: flex; height: 200rpx;}
+.m-count{margin: auto;}
+.m-text-btn{display: inline-block;margin: 0 10rpx; width: 40rpx;height: 40rpx;line-height: 40rpx;border-radius: 20rpx;text-align: center;background:red;color: #ffffff;vertical-align: middle;}
+.m-input{display: inline-block;width: 150rpx;border: 1px solid #333333;vertical-align: middle;text-align: center;color: #333333;}
+
+

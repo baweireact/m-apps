@@ -1,0 +1,6 @@
+/* pages/home/home.wxss */
+/* .m-btn{margin: 5rpx 10rpx;background: green;vertical-align: top;} */
+.m-img{width: 100%;}
+.m-count{display: inline-block;color: red; margin: 5rpx 10rpx; line-height: 32px;}
+.m-list{min-height: 600px;}
+
