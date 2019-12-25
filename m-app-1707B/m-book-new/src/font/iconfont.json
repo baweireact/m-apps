@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "845837",
+      "name": "单选",
+      "font_class": "danxuan",
+      "unicode": "e671",
+      "unicode_decimal": 58993
+    },
+    {
       "icon_id": "2127894",
       "name": "五角星填充",
       "font_class": "star",
@@ -18,6 +25,13 @@
       "font_class": "done",
       "unicode": "e669",
       "unicode_decimal": 58985
+    },
+    {
+      "icon_id": "7408068",
+      "name": "单选",
+      "font_class": "selected",
+      "unicode": "e69d",
+      "unicode_decimal": 59037
     },
     {
       "icon_id": "9647224",

@@ -1,5 +1,8 @@
 // pages/home/home.js
+let common = require('../../utils/common.js')
+let { host } = getApp().globalData
 Component({
+  behaviors: [common],
   /**
    * 组件的属性列表
    */
@@ -22,7 +25,9 @@ Component({
       url: '/images/banner03.jpg'
     }],
     swiperHeight: 150,
-    navList: []
+    navList: [],
+    currentId: 0,
+    currentList: []
   },
 
   /**
@@ -37,6 +42,26 @@ Component({
       this.setData({
         swiperHeight
       })
+    },
+    handleNav(e) {
+      let { id } = e.detail
+      this.setData({
+        currentId: id
+      })
+      wx.showLoading({
+        title: '加载中...',
+      })
+      wx.request({
+        url: `${host}/api/list?id=${id}`,
+        success: res => {
+          if (res.data.code === 200) {
+            this.setData({
+              currentList: res.data.data
+            })
+          }
+          wx.hideLoading()
+        }
+      })
     }
   },
 
@@ -50,12 +75,35 @@ Component({
     show() {
       console.log('show')
       wx.request({
-        url: 'http://localhost:86/api/nav',
+        url: `${host}/api/nav`,
         success: res => {
           if (res.data.code === 200) {
             this.setData({
               navList: res.data.data
             })
+          }
+        }
+      })
+      wx.showLoading({
+        title: '加载中...',
+      })
+      wx.request({
+        url: `${host}/api/list?id=0`,
+        success: res => {
+          if (res.data.code === 200) {
+            this.setData({
+              currentList: res.data.data
+            })
+          }
+          wx.hideLoading()
+        }
+      })
+
+      wx.request({
+        url: `${host}/api/my_book`,
+        success: res => {
+          if (res.data.code === 200) {
+            this.handleSetTabbarBadge(res.data.data.length)
           }
         }
       })

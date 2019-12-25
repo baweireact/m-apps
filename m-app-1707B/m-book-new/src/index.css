@@ -9,7 +9,7 @@ body{margin: 0;padding: 0;overflow-x: hidden;}
 .m-img[lazy=loading]{margin: auto; width: 38px;height: 38px;}
 .m-info{flex:1}
 
-.m-icon{font-size: 50px;}
+.m-task-icon{font-size: 50px;}
 .m-task-header{position: relative;}
 .m-task-search{position: absolute;top: 0;right: 5px;}
 .m-task-list-item{display: flex;margin: 5px;}
@@ -45,6 +45,12 @@ body{margin: 0;padding: 0;overflow-x: hidden;}
 .m-waterfall-img{width: 100%; border-top-left-radius: 10px;border-top-right-radius: 10px;}
 .m-waterfall-info{margin: -4px 0 0;padding: 5px; height: 100px;background: #ffffff;border-bottom-right-radius: 10px;border-bottom-left-radius: 10px;}
 .m-waterfall-end{position: fixed;width: 100%;line-height: 50px; bottom: 0; text-align: center;color: #aaaaaa;}
+
+.m-address{text-decoration: underline;color: red;cursor: pointer;}
+.m-address-text{cursor: pointer;}
+.m-address-text:hover{color: #f66f0c;}
+.m-gender-btn{display: inline-block; margin: 5px 5px; width: 50px;line-height: 30px;border: 1px solid #dddddd;text-align: center;cursor: pointer;}
+.m-gender-btn.active{color: red;border-color: red;}
 
 @keyframes loading {
   0% {transform: rotate(0);}

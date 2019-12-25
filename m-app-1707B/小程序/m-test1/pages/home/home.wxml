@@ -10,4 +10,5 @@
     <image src="{{item.url}}" class="m-banner" mode="widthFix" bind:load="handleLoad"></image>
   </swiper-item>
 </swiper>
-<nav navList="{{navList}}"></nav>
+<nav navList="{{navList}}" currentId="{{currentId}}" bind:onNav="handleNav"></nav>
+<list currentList="{{currentList}}"></list>

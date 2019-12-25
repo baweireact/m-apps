@@ -1,19 +1,20 @@
 <!--components/list/list.wxml-->
 <view>
   <view wx:for="{{currentList}}" wx:key="id" class="m-list-item">
-    <image src="{{item.avatar}}" mode="widthFix" class="m-list-img"></image>
+    <image src="{{item.avatar}}" mode="widthFix" class="m-list-img" lazy-load="{{true}}"></image>
     <view class="m-list-info">
       {{item.title}}
       <view>
         <button size="mini" class="m-btn" bind:tap="handleShowDialog" mark:item="{{item}}">添加</button>
+        <button size="mini" class="m-btn" bind:tap="handleDetail" mark:id="{{item.id}}">详情</button>
       </view>
     </view>
   </view>
   <dialog visible="{{visible}}" title="添加">
     <view slot="content" class="m-count-wrap">
-      <view class="m-count">
+      <view class="m-action">
         <text class="m-text-btn" bind:tap="handleSub">-</text>
-        <input class="m-input" placeholder="请输入" value="{{item.count}}"></input>
+        <input class="m-input" placeholder="请输入" value="{{item.count}}" bind:input="handleInput" type="number"></input>
         <text class="m-text-btn" bind:tap="handleAdd">+</text>
       </view>
     </view>

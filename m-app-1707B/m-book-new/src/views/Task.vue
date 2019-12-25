@@ -8,7 +8,7 @@
       <input type="text" placeholder="请输入搜索内容" class="m-task-search" v-model="search" @keyup.enter="handleSearch">
     </div>
     <div v-for="item in taskList" :key="item.id" class="m-task-list-item">
-      <TaskIcon :type="item.type"></TaskIcon>
+      <Icon :type="item.type" classname="m-task-icon"></Icon>
       <div class="m-task-info">
         <div class="m-task-content">
           {{item.name}}
@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import TaskIcon from '../components/TaskIcon'
+import Icon from '../components/Icon'
 import Stars from '../components/Stars'
 import Work from '../components/Work'
 
@@ -34,7 +34,7 @@ export default {
     }
   },
   components: {
-    TaskIcon,
+    Icon,
     Stars,
     Work,
   },

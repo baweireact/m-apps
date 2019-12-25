@@ -3,6 +3,8 @@ const app = express()
 const { bookNavData, bookMallData, bookMallDetailData, taskList, news } = require('./data')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const fs = require('fs')
+const path = require('path')
 
 //用户列表
 let userList = [{
@@ -15,10 +17,14 @@ let userList = [{
   password: '123'
 }]
 
+let addressList = []
+
 let myBook = []
 
 app.use(cors())
 app.use(bodyParser.json())
+
+app.use(express.static('public'))
 
 app.use((req, res, next) => {
   setTimeout(() => {
@@ -163,6 +169,35 @@ app.get('/api/news', (req, res) => {
     code: 200,
     data: newsSearchResult.slice(start, end),
     message: '新闻'
+  })
+})
+
+app.get('/api/video', (req, res) => {
+  fs.readdir(path.join(__dirname, 'public/video'), (err, files) => {
+    let data = files.map(item => `/video/${item}`)
+    res.send({
+      code: 200,
+      data,
+      message: '视频列表'
+    })
+  })
+})
+
+app.get('/api/address_list', (req, res) => {
+  res.send({
+    code: 200,
+    data: addressList,
+    message: '地址列表'
+  })
+})
+
+app.post('/api/update_address_list', (req, res) => {
+  let { addressListNew } = req.body
+  addressList = addressListNew
+  res.send({
+    code: 200,
+    data: addressList,
+    message: '地址列表更新成功'
   })
 })
 

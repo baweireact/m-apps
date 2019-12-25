@@ -20,6 +20,7 @@
       <button @click="handleShowDialog">删除</button>
     </div>
     <div>总价：￥{{total.totalPrice}}，总数：{{total.totalCount}}</div>
+    <div>配送地址:<span @click="handleAddress" class="m-address">{{address}}</span></div>
     <Dialog :visible="visible" title="提示">
       <div>你确定要删除选中的图书吗？</div>
       <div>...</div>
@@ -62,6 +63,14 @@ export default {
         totalCount,
         selectedAll: count === myBook.length && myBook.length > 0
       };
+    },
+    address() {
+      let checkedAddress = this.$store.state.addressList.find(item => item.checked)
+      if (checkedAddress) {
+        return checkedAddress.name
+      } else {
+        return '请选择配送地址'
+      }
     }
   },
   components: {
@@ -138,6 +147,9 @@ export default {
     },
     handleHideDialog() {
       this.visible = false;
+    },
+    handleAddress() {
+      this.$router.push('/address_list')
     }
   },
   updated() {

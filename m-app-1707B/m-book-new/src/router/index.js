@@ -10,6 +10,8 @@ import NewsPlus from '../views/NewsPlus'
 import NewsMax from '../views/NewsMax'
 import Waterfall from '../views/Waterfall'
 import Task from '../views/Task'
+import AddressList from '../views/AddressList'
+import AddressUpdate from '../views/AddressUpdate'
 
 Vue.use(VueRouter)
 
@@ -21,6 +23,15 @@ const routes = [
   {
     path: '/login',
     component: Login
+  },
+  {
+    path: '/address_list',
+    component: AddressList
+  },
+  {
+    path: '/address_update/:item',
+    name: 'address_update',
+    component: AddressUpdate
   },
   {
     path: '/index',

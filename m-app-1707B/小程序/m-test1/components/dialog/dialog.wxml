@@ -1,0 +1,12 @@
+<!--components/dialog/dialog.wxml-->
+<view class="m-dialog-wrap {{visible ? 'active' : ''}}">
+  <view class="m-dialog">
+    <view class="m-title">{{title}}</view>
+    <view class="m-content">
+      <slot name="content"></slot>
+    </view>
+    <view class="m-footer">
+      <slot name="footer"></slot>
+    </view>
+  </view>
+</view>

@@ -1,1 +1,4 @@
 /* components/nav/nav.wxss */
+.m-nav{position: sticky;top: 0;background: #dddddd;line-height: 100rpx;z-index: 9;}
+.m-item{margin: 5rpx 10rpx;}
+.m-item.active{color: red;border-bottom: 8rpx solid red;}

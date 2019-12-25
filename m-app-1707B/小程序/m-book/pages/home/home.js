@@ -1,7 +1,9 @@
 // pages/home/home.js
+let common = require('../../utils/common.js')
 let { host } = getApp().globalData
 let isImageLoad = false
 Component({
+  behaviors: [common],
   /**
    * 组件的属性列表
    */
@@ -107,6 +109,9 @@ Component({
           }
         }
       })
+      wx.showLoading({
+        title: '加载中...',
+      })
       wx.request({
         url: `${host}/api/list?id=${currentId}`,
         success: res => {
@@ -114,8 +119,22 @@ Component({
             this.setData({
               currentList: res.data.data
             })
+            wx.hideLoading()
           }
         }
+      })
+
+      wx.request({
+        url: `${host}/api/my_book`,
+        success: res => {
+          if (res.data.code === 200) {
+            this.handleSetTabbarBadge(res.data.data.length)
+          }
+        }
+      })
+
+      wx.setNavigationBarTitle({
+        title: '小米书城',
       })
     }
   }

@@ -1,2 +1,31 @@
 <!--pages/my-book/my-book.wxml-->
-<text>pages/my-book/my-book.wxml</text>
+<view class="m-wrap">
+  <checkbox-group bind:change="handleCheckItem">
+    <view wx:for="{{myBook}}" wx:key="id" class="m-list-item">
+      <checkbox checked="{{item.checked}}" value="{{item.id}}">
+        <image src="{{item.avatar}}" mode="widthFix" class="m-img" lazy-load="{{true}}"></image>
+      </checkbox>
+      <view class="m-info">
+        <view>{{item.title}}</view>
+        <view class="m-action">
+          <text class="m-text-btn" bind:tap="handleSub" mark:index="{{index}}">-</text>
+          <input class="m-input" placeholder="请输入" value="{{item.count}}" type="number" bind:input="handleInput" data-index="{{index}}"></input>
+          <text class="m-text-btn" bind:tap="handleAdd" mark:index="{{index}}">+</text>
+          <button class="m-btn" size="mini" bind:tap="handleDelete" mark:index="{{index}}">删除</button>
+        </view>
+
+      </view>
+    </view>
+  </checkbox-group>
+  <view wx:if="{{myBook.length > 0}}">
+    <view class="m-check-all-wrap">
+      <checkbox-group bind:change="handleCheckAll" class="m-check-all">
+        <checkbox checked="{{checkAll}}">全选</checkbox>
+      </checkbox-group>
+      <button class="m-btn" size="mini" bind:tap="handleDeleteChecked">删除</button>
+    </view>
+    <view>
+      总价：￥{{totalPrice}},总数：{{totalCount}}
+    </view>
+  </view>
+</view>

@@ -1,0 +1,8 @@
+/* components/list/list.wxss */
+.m-list-item{display: flex;margin: 0 0 10rpx 10rpx;}
+.m-img{width: 225rpx;}
+.m-info{flex: 1;margin: 0 0 0 10rpx;border-bottom: 1rpx solid #dddddd;}
+.m-footer{padding: 5rpx 0 0 0; text-align: right;border-top: 1rpx solid #dddddd;}
+.m-content-wrap{height: 200rpx; display: flex}
+.m-content-inner{margin: auto;}
+

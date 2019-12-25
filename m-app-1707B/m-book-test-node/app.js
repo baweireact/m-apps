@@ -120,7 +120,13 @@ app.get('/api/detail', (req, res) => {
 //添加
 app.post('/api/add', (req, res) => {
   let { book } = req.body
-  myBook.push(book)
+  let index = myBook.findIndex(item => item.id === book.id)
+  if (index >= 0) {
+    myBook[index].count += book.count
+  } else {
+    myBook.push(book)
+  }
+  
   res.send({
     code: 200,
     data: myBook,

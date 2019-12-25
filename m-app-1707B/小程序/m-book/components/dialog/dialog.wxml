@@ -1,5 +1,5 @@
 <!--components/dialog/dialog.wxml-->
-<view class="m-dialog-wrap {{visible ? 'active' : ''}}">
+<view class="m-dialog-wrap {{visible ? 'active' : ''}}" catch:touchmove="handleMove">
   <view class="m-dialog">
     <view class="m-dialog-header">{{title}}</view>
     <view class="m-dialog-content">

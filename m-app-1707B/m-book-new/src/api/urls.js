@@ -7,7 +7,9 @@ const urls = {
   getDetail: '/api/detail',   //详情
   update: '/api/update', //更新
   news: '/api/news',
-  getTaskList: '/api/task_list'
+  getTaskList: '/api/task_list',
+  getAddressList: '/api/address_list',
+  updateAddressList: '/api/update_address_list'
 }
 
 export default urls

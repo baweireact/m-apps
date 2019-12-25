@@ -1,0 +1,8 @@
+/* pages/my-book/my-book.wxss */
+.m-wrap{margin: 0 10rpx;}
+.m-item{display: flex;margin: 0 0 10rpx 0;}
+.m-img{width: 112rpx;}
+.m-info{flex: 1;}
+
+
+

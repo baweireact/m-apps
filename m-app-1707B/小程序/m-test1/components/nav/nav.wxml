@@ -1,4 +1,9 @@
 <!--components/nav/nav.wxml-->
-<view>
-  <text wx:for="{{navList}}" wx:key="id">{{item.title}}</text>
+<view class="m-nav">
+  <text 
+    wx:for="{{navList}}" 
+    wx:key="id" 
+    bind:tap="handleNav"
+    mark:id="{{item.id}}"
+    class="m-item {{currentId === item.id ? 'active' : ''}}">{{item.title}}</text>
 </view>

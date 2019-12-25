@@ -1,1 +1,7 @@
 /* pages/my-book/my-book.wxss */
+.m-wrap{margin: 0 10rpx;}
+.m-list-item{display: flex;margin: 5rpx 0;}
+.m-img{width: 112rpx;}
+.m-info{flex: 1;margin: 0 0 0 10rpx;border-bottom: 1rpx solid #dddddd;}
+.m-check-all-wrap{display: flex;align-items: center;}
+.m-check-all{display: inline-block;}

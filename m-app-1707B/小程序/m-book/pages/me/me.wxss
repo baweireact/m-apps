@@ -1,0 +1,4 @@
+/* pages/me/me.wxss */
+.m-nav{white-space: nowrap;line-height: 70rpx;}
+.m-nav-item{display: inline-block;width: 20%; color: #333333;font-size: 52rpx;text-align: center;}
+.m-nav-item.active{color: red;border-bottom: 8rpx solid red;}

@@ -1,0 +1,3 @@
+/* pages/detail/detail.wxss */
+.m-img{width: 225rpx;height: 300rpx;background: #dddddd;}
+

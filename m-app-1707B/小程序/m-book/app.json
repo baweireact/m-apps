@@ -1,15 +1,16 @@
 {
   "pages": [
+    "pages/me/me",
+    "pages/find/find",
+    "pages/my-book/my-book",
     "pages/home/home",
     "pages/index/index",
-    "pages/logs/logs",
-    "pages/test/test",
-    "pages/my-book/my-book"
+    "pages/logs/logs"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
+    "navigationBarTitleText": "小米书城",
     "navigationBarTextStyle": "black"
   },
   "style": "v2",
@@ -29,6 +30,18 @@
         "text": "书包",
         "iconPath": "images/cart.png",
         "selectedIconPath": "images/cart-active.png"
+      },
+      {
+        "pagePath": "pages/find/find",
+        "text": "发现",
+        "iconPath": "images/find.png",
+        "selectedIconPath": "images/find-active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "我的",
+        "iconPath": "images/me.png",
+        "selectedIconPath": "images/me-active.png"
       }
     ]
   }

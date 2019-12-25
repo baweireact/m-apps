@@ -1,0 +1,12 @@
+<!--pages/me/me.wxml-->
+<scroll-view scroll-x scroll-into-view="{{'id_' + (currentId - 2) }}" scroll-with-animation>
+  <view class="m-nav">
+    <text 
+      wx:for="{{navList}}" 
+      wx:key="id" 
+      id="id_{{item.id}}"
+      bind:tap="handleNav"
+      mark:id="{{item.id}}"
+      class="m-nav-item {{currentId === item.id ? 'active' : ''}}">{{item.title}}</text>
+  </view>
+</scroll-view>

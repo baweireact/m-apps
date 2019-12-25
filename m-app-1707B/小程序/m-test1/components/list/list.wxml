@@ -1,0 +1,22 @@
+<!--components/list/list.wxml-->
+<view wx:for="{{currentList}}" wx:key="id" class="m-list-item">
+  <image src="{{item.avatar}}" mode="widthFix" class="m-img"></image>
+  <view class="m-info">
+    <view>{{item.title}}</view>
+    <button size="mini" class="m-btn" bind:tap="handleShowDialog" mark:item="{{item}}">添加</button>
+    <button size="mini" class="m-btn" bind:tap="handleDetail" mark:id="{{item.id}}">详情</button>
+  </view>
+</view>
+<dialog visible="{{visible}}" title="添加">
+  <view slot="content" class="m-content-wrap">
+    <view class="m-content-inner">
+      <text class="m-count-btn" bind:tap="handleSub">-</text>
+      <input placeholder="数量" class="m-input" value="{{item.count}}" bind:input="handleInput"></input>
+      <text class="m-count-btn" bind:tap="handleAdd">+</text>
+    </view>
+  </view>
+  <view slot="footer" class="m-footer">
+    <button size="mini" class="m-btn" bind:tap="handleHideDialog">取消</button>
+    <button size="mini" class="m-btn" bind:tap="handleAddToMyBook">确定</button>
+  </view>
+</dialog>

@@ -11,7 +11,8 @@ export default new Vuex.Store({
     currentList: [],
     taskList: [],
     myBook: [],
-    loading: false
+    loading: false,
+    addressList: []
   },
   getters: {
     getTaskList(state) {
@@ -76,6 +77,13 @@ export default new Vuex.Store({
       Api.update({
         myBookNew: state.myBook
       }).then(res => {})
+    },
+    getAddressList({ commit }) {
+      Api.getAddressList().then(res => {
+        if (res.code === 200) {
+          commit({ type: 'setState', key: 'addressList', value: res.data })
+        }
+      })
     }
   },
   modules: {

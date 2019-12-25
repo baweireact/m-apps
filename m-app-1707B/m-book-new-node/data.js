@@ -82,6 +82,18 @@ const bookMallData = [
 				"price": 6,
 				"stars": 2,
 				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/covers\/15354282543342.jpg?imageView2\/0\/w\/300\/q\/75"
+			}, {
+				"id": 4435,
+				"title": "我的高冷大小姐",
+				"price": 1,
+				"stars": 2,
+				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/novels\/15328815927976.jpg?imageView2\/0\/w\/300\/q\/75"
+			}, {
+				"id": 3042,
+				"title": "都市狂枭",
+				"price": 22,
+				"stars": 1,
+				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/covers\/153288924614921941.jpg?imageView2\/0\/w\/300\/q\/75"
 			}
 		]
 	},
@@ -144,18 +156,6 @@ const bookMallData = [
 				"price": 31,
 				"stars": 2,
 				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/covers\/153289117926083089.jpg?imageView2\/0\/w\/300\/q\/75"
-			}, {
-				"id": 4435,
-				"title": "我的高冷大小姐",
-				"price": 1,
-				"stars": 2,
-				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/novels\/15328815927976.jpg?imageView2\/0\/w\/300\/q\/75"
-			}, {
-				"id": 3042,
-				"title": "都市狂枭",
-				"price": 22,
-				"stars": 1,
-				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/covers\/153288924614921941.jpg?imageView2\/0\/w\/300\/q\/75"
 			}
 		]
 	}
@@ -437,6 +437,60 @@ const bookMallDetailData = [
 					"gender": "none"
 				},
 				"buy_mode": 0
+			}, {
+				"id": 4435,
+				"title": "我的高冷大小姐",
+				"price": 1,
+				"stars": 2,
+				"roles": ["轩雨妃", "李晴川"],
+				"author": "大大洋洋",
+				"words": 1090550,
+				"status": "ongoing",
+				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/novels\/15328815927976.jpg?imageView2\/0\/w\/300\/q\/75",
+				"summary": "一觉醒来有了老婆女儿，就算不承认都不行。\r\n好吧，我是你老公…………",
+				"first_article_id": 2077039,
+				"article_count": 436,
+				"free_time_start": 0,
+				"free_time_end": 0,
+				"tip_welth_sum": 1227768,
+				"tags": ["都市", "暧昧", "保镖", "兵王"],
+				"banner_url": null,
+				"gender": "male",
+				"is_time_limited_free": false,
+				"score": 10,
+				"category": {
+					"id": 11,
+					"name": "都市",
+					"gender": "male"
+				},
+				"buy_mode": 0
+			}, {
+				"id": 3042,
+				"title": "都市狂枭",
+				"price": 22,
+				"stars": 1,
+				"roles": ["沈清舞", "陈六合"],
+				"author": "大红大紫",
+				"words": 5013606,
+				"status": "ongoing",
+				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/covers\/153288924614921941.jpg?imageView2\/0\/w\/300\/q\/75",
+				"summary": "国之重器，猛虎出笼！亦正亦邪的他注定有着无法平淡的命运！身负枷锁执掌生杀命轮！他身立潮头一生高唱大风！\r\n只装最牛的逼，只踩最狠的人！然而这样一个牛人还偏偏魅力十足，女校长、女总裁、女大佬、还有御姐萝莉纷踏而来！这也是一种极大的负担！\r\n",
+				"first_article_id": 1254700,
+				"article_count": 2310,
+				"free_time_start": 0,
+				"free_time_end": 0,
+				"tip_welth_sum": 233060,
+				"tags": ["都市", "暧昧", "兵王", "保镖"],
+				"banner_url": null,
+				"gender": "male",
+				"is_time_limited_free": false,
+				"score": 9.9,
+				"category": {
+					"id": 11,
+					"name": "都市",
+					"gender": "male"
+				},
+				"buy_mode": 0
 			}
 		]
 	},
@@ -665,60 +719,6 @@ const bookMallDetailData = [
 					"id": 15,
 					"name": "总裁",
 					"gender": "female"
-				},
-				"buy_mode": 0
-			}, {
-				"id": 4435,
-				"title": "我的高冷大小姐",
-				"price": 1,
-				"stars": 2,
-				"roles": ["轩雨妃", "李晴川"],
-				"author": "大大洋洋",
-				"words": 1090550,
-				"status": "ongoing",
-				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/novels\/15328815927976.jpg?imageView2\/0\/w\/300\/q\/75",
-				"summary": "一觉醒来有了老婆女儿，就算不承认都不行。\r\n好吧，我是你老公…………",
-				"first_article_id": 2077039,
-				"article_count": 436,
-				"free_time_start": 0,
-				"free_time_end": 0,
-				"tip_welth_sum": 1227768,
-				"tags": ["都市", "暧昧", "保镖", "兵王"],
-				"banner_url": null,
-				"gender": "male",
-				"is_time_limited_free": false,
-				"score": 10,
-				"category": {
-					"id": 11,
-					"name": "都市",
-					"gender": "male"
-				},
-				"buy_mode": 0
-			}, {
-				"id": 3042,
-				"title": "都市狂枭",
-				"price": 22,
-				"stars": 1,
-				"roles": ["沈清舞", "陈六合"],
-				"author": "大红大紫",
-				"words": 5013606,
-				"status": "ongoing",
-				"avatar": "https:\/\/qcdn.zhangzhongyun.com\/covers\/153288924614921941.jpg?imageView2\/0\/w\/300\/q\/75",
-				"summary": "国之重器，猛虎出笼！亦正亦邪的他注定有着无法平淡的命运！身负枷锁执掌生杀命轮！他身立潮头一生高唱大风！\r\n只装最牛的逼，只踩最狠的人！然而这样一个牛人还偏偏魅力十足，女校长、女总裁、女大佬、还有御姐萝莉纷踏而来！这也是一种极大的负担！\r\n",
-				"first_article_id": 1254700,
-				"article_count": 2310,
-				"free_time_start": 0,
-				"free_time_end": 0,
-				"tip_welth_sum": 233060,
-				"tags": ["都市", "暧昧", "兵王", "保镖"],
-				"banner_url": null,
-				"gender": "male",
-				"is_time_limited_free": false,
-				"score": 9.9,
-				"category": {
-					"id": 11,
-					"name": "都市",
-					"gender": "male"
 				},
 				"buy_mode": 0
 			}

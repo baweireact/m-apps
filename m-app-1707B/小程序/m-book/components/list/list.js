@@ -1,6 +1,8 @@
 // components/list/list.js
+let common = require('../../utils/common.js')
 let { host } = getApp().globalData
 Component({
+  behaviors: [common],
   options: {
     styleIsolation: 'shared'
   },
@@ -26,6 +28,7 @@ Component({
     handleShowDialog(e) {
       let { item } = e.mark
       item.count = 1
+      item.checked = true
       this.setData({
         visible: true,
         item
@@ -45,7 +48,9 @@ Component({
         },  
         method: 'post',
         success: (res) => {
-
+          if (res.data.code === 200) {
+            this.handleSetTabbarBadge(res.data.data.length)
+          }
         }
       })
       this.handleHideDialog()
@@ -65,6 +70,19 @@ Component({
           item
         })
       }
+    },
+    handleInput(e) {
+      let { item } = this.data
+      item.count = e.detail.value.replace(/[^\d]/g, '') - 0
+      this.setData({
+        item
+      })
+    },
+    handleDetail(e) {
+      let { id } = e.mark
+      wx.navigateTo({
+        url: `/pages/detail/detail?id=${id}`,
+      })
     }
   }
 })

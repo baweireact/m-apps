@@ -1,0 +1,11 @@
+<!--pages/detail/detail.wxml-->
+<image src="{{detail.avatar}}" mode="widthFix" class="m-img"></image>
+<view class="m-action">
+  <text class="m-text-btn" bind:tap="handleSub">-</text>
+  <input class="m-input" placeholder="请输入" value="{{detail.count}}" bind:input="handleInput" type="number"></input>
+  <text class="m-text-btn" bind:tap="handleAdd">+</text>
+  <button class="m-btn" size="mini" bind:tap="handleAddToMyBook">添加</button>
+</view>
+<view>
+{{detail.summary}}
+</view>

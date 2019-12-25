@@ -9,4 +9,7 @@
   box-sizing: border-box;
 } 
 
-.m-btn{margin: 5rpx 10rpx;background: #f66f0c;vertical-align: top;}
+.m-btn{margin: 5rpx 10rpx;background: #f66f0c;}
+.m-action{margin: auto;display: flex;align-items: center;}
+.m-text-btn{display: inline-block;margin: 0 10rpx; width: 40rpx;height: 40rpx;line-height: 40rpx;border-radius: 20rpx;text-align: center;background:red;color: #ffffff;}
+.m-input{display: inline-block;width: 120rpx;border: 1px solid #333333;text-align: center;color: #333333;}

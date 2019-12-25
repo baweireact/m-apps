@@ -34,6 +34,10 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    host: 'http://10.1.1.166:86',
+    handleSetTabbarBadge(text) {
+      
+    }
   }
 })
