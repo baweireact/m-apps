@@ -10,6 +10,7 @@
         <span @click="handleSelect(index)" class="m-address-text">
         姓名：{{item.name}},性别：{{item.gender === 'male' ? '先生' : ''}}{{item.gender === 'female' ? '女士' : ''}},电话：{{item.phone}}
         </span>
+        <div>{{item.address.map(item => item.value).join(' ')}}</div>
         <button @click="handleEdit(item)">编辑</button>
         <button @click="handleShowDialog(index)">删除</button>
       </div>

@@ -52,6 +52,21 @@ body{margin: 0;padding: 0;overflow-x: hidden;}
 .m-gender-btn{display: inline-block; margin: 5px 5px; width: 50px;line-height: 30px;border: 1px solid #dddddd;text-align: center;cursor: pointer;}
 .m-gender-btn.active{color: red;border-color: red;}
 
+.m-address-dialog{display: none;position: fixed;top: 0;left: 0;bottom: 0;right: 0;background: rgba(0, 0, 0, 0.2);}
+.m-address-dialog.active{display:block;}
+.m-address-select{display: flex;flex-direction: column; position: absolute;left: 0;right: 0;bottom: 0;height: 500px;background: #ffffff;border-top-left-radius: 10px;border-top-right-radius: 10px;}
+.m-address-nav{height: 40px;line-height: 40px; border-bottom: 1px solid #dddddd;}
+.m-address-nav-item{margin: 0 5px;cursor: pointer;}
+.m-address-nav-item.active{color: red;border-bottom: 2px solid red;}
+.m-address-btn{position: absolute;top: 10px;right: 10px;}
+.m-address-list{flex:1;overflow-y: auto;}
+.m-address-item{cursor: pointer;}
+.m-address-item:hover{color: red;}
+.m-address-item.active{color: red;}
+
+
+
+
 @keyframes loading {
   0% {transform: rotate(0);}
   100%{transform: rotate(360deg);}
