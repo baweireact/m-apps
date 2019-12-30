@@ -1,0 +1,17 @@
+.m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;cursor: pointer;}
+.m-nav-item{margin: 0 5px;cursor: pointer;}
+.m-nav-item.active{color: red;}
+.m-nav-item.router-link-active{color: red;}
+.m-list-item{display: flex;margin: 0 0 5px 5px;}
+.m-list-img-wrap{display: flex; width: 112px;height: 150px;background: #dddddd;}
+.m-list-img{width: 112px;height: 150px;}
+.m-list-img[lazy=loading]{margin: auto; width: 38px;height: 38px; animation: loading 0.5s linear infinite;}
+.m-list-info{flex:1;margin: 0 0 0 10px;border-bottom: 1px solid #dddddd;}
+.m-star-icon{color: #dddddd;}
+.m-star-icon.active{color: red;}
+
+@keyframes loading {
+  0% {transform: rotate(0deg);}
+  100% {transform: rotate(360deg);}
+}
+
