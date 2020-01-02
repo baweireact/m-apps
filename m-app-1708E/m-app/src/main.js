@@ -3,15 +3,20 @@ import lazyload from 'vue-lazyload'
 import App from './App.vue'
 import router from './router'
 import store from './store'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 import './font/iconfont.css'
 import './index.css'
 import img from './images/loading.png'
+
 
 Vue.config.productionTip = false
 
 Vue.use(lazyload, {
   loading: img
 })
+
+Vue.use(VueAwesomeSwiper)
 
 new Vue({
   router,

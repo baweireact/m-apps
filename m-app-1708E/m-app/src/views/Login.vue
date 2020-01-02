@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import Api from '../api'
 import Icon from '../components/Icon'
 
 export default {
@@ -35,15 +35,11 @@ export default {
         alert('密码不能为空')
         return
       }
-      axios({
-        url: '/api/login',
-        data: {username: this.username, password: this.password},
-        method: 'post'
-      }).then(res => {
-        if (res.data.code === 200) {
+      Api.login({username: this.username, password: this.password}).then(res => {
+        if (res.code === 200) {
           this.$router.push('/index/home')
-          localStorage.setItem('username', res.data.data.username)
-        } else if (res.data.code === 400) {
+          localStorage.setItem('username', res.data.username)
+        } else if (res.code === 400) {
           alert(res.data.message)
         }
       })

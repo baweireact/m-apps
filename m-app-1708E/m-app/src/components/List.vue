@@ -8,15 +8,15 @@
         {{item.title}}
         <Stars :count="item.stars"></Stars>
         <button @click="handleDetail(item.id)">详情</button>
-        <button v-if="!item.is_in_my_book" @click="handleAdd(item)">收藏</button>
-        <button v-else>已收藏</button>
+        <button v-if="item.is_in_my_book">已收藏</button>
+        <button v-else @click="handleAdd(item)">收藏</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios'
+import Api from '../api'
 import Stars from './Stars'
 
 export default {
@@ -33,14 +33,10 @@ export default {
       this.$router.push(`/detail/${id}`)
     },
     handleAdd(item) {
-      axios({
-        url: '/api/add',
-        data: {
-          item
-        },
-        method: 'post'
-      }).then(res => {
-        if (res.data.code === 200) {
+      item.count = 1
+      item.checked = true
+      Api.add({ item }).then(res => {
+        if (res.code === 200) {
           this.$store.dispatch({ type: 'getCurrentList' })
         }
       })

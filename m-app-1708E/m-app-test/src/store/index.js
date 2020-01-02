@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
+import Api from '../api'
 
 Vue.use(Vuex)
 
@@ -9,7 +9,8 @@ export default new Vuex.Store({
   state: {
     navList: [],
     currentId: 0,
-    currentList: []
+    currentList: [],
+    myBook: []
   },
   //同步
   mutations: {
@@ -22,27 +23,36 @@ export default new Vuex.Store({
     },
     setCurrentList(state, payload) {
       state.currentList = payload.currentList
+    },
+    //动态的
+    setState(state, payload) {
+      state[payload.key] = payload.value
     }
   },
   //异步
   actions: {
     //获取导航数据 https://vuex.vuejs.org/zh/guide/actions.html
     getNavList({ commit }) {
-      axios({
-        url: '/api/nav'
-      }).then(res => {
-        if (res.data.code === 200) {
-          commit({ type: 'setNavList', navList: res.data.data })
+      Api.getNavList().then(res => {
+        if (res.code === 200) {
+          commit({ type: 'setNavList', navList: res.data })
         }
       })
     },
-    getList({ commit, state }) {
-      let { currentId } = state 
-      axios({
-        url: `/api/list?id=${currentId}`
-      }).then(res => {
-        if (res.data.code === 200) {
-          commit({ type: 'setCurrentList', currentList: res.data.data })
+    //列表
+    getList(context) {
+      let { currentId } = context.state 
+      Api.getList(`?id=${currentId}`).then(res => {
+        if (res.code === 200) {
+          context.commit({ type: 'setCurrentList', currentList: res.data })
+        }
+      })
+    },
+    //书包
+    getMyBook({ commit }) {
+      Api.getMyBook().then(res => {
+        if (res.code === 200) {
+          commit({ type: 'setState', key: 'myBook', value: res.data })
         }
       })
     }

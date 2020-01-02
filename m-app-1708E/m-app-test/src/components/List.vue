@@ -8,12 +8,15 @@
         {{item.title}}
         <Stars :count="item.stars"></Stars>
         <button @click="handleDetail(item.id)">详情</button>
+        <button v-if="item.is_in_my_book">已收藏</button>
+        <button v-else @click="handleAdd(item)">收藏</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import Api from '../api'
 import Stars from './Stars'
 
 export default {
@@ -28,6 +31,14 @@ export default {
   methods: {
     handleDetail(id) {
       this.$router.push(`/detail/${id}`)
+    },
+    handleAdd(item) {
+      Api.add({item}).then(res => {
+        if (res.code === 200) {
+          //不刷新，更新页面的收藏变为已收藏
+          this.$store.dispatch({ type: 'getList' })
+        }
+      })
     }
   }
 }

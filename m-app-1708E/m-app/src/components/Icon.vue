@@ -4,7 +4,15 @@
 
 <script>
 export default {
-  props: ["type", "classname", "onClick"],
+  //props: ["type", "classname"],
+  props: {
+    type: {
+      type: String
+    },
+    classname: {
+      type: String
+    }
+  },
   methods: {
     handleClick() {
       this.$emit('onClick')

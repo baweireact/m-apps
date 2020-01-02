@@ -9,7 +9,8 @@ const urls = {
   news: '/api/news',
   getTaskList: '/api/task_list',
   getAddressList: '/api/address_list',
-  updateAddressList: '/api/update_address_list'
+  updateAddressList: '/api/update_address_list',
+  getBanner: '/api/banner'
 }
 
 export default urls

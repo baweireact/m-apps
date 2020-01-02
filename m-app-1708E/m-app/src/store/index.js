@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import axios from 'axios'
 import Api from '../api'
 
 Vue.use(Vuex)
@@ -22,8 +21,8 @@ export default new Vuex.Store({
     setCurrentList(state, payload) {
       state.currentList = payload.currentList
     },
-    setMyBook(state, payload) {
-      state.myBook = payload.myBook
+    setState(state, payload) {
+      state[payload.key] = payload.value
     }
   },
   actions: {
@@ -43,8 +42,10 @@ export default new Vuex.Store({
       })
     },
     getMyBook({ commit }) {
-      axios({
-        url: '/api/'
+      Api.getMyBook().then(res => {
+        if (res.code === 200) {
+          commit({ type: 'setState', key: 'myBook', value: res.data })
+        }
       })
     }
   },

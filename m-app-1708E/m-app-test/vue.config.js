@@ -12,6 +12,9 @@ let userList = [{
   password: '123'
 }]
 
+//书包
+let myBook = []
+
 module.exports = {
   lintOnSave: false,
   devServer: {
@@ -72,6 +75,9 @@ module.exports = {
       app.get('/api/list', (req, res) => {
         let { id } = req.query
         let list = bookMallData.find(item => item.id == id).list
+        list.forEach(item => {
+          item.is_in_my_book = myBook.findIndex(book => book.id == item.id) >= 0
+        })
         res.send({
           code: 200,
           data: list,
@@ -82,10 +88,11 @@ module.exports = {
       //详情
       app.get('/api/detail/:id', (req, res) => {
         let { id } = req.params
-        console.log(id)
+        //作业：用for循环试试
         bookMallDetailData.forEach(item => {
           item.list.forEach(book => {
             if (book.id == id) {
+              book.is_in_my_book = myBook.findIndex(item => item.id == book.id) >= 0
               res.send({
                 code: 200,
                 data: book,
@@ -94,6 +101,26 @@ module.exports = {
               return
             }
           })
+        })
+      })
+
+      //增
+      app.post('/api/add', (req, res) => {
+        let { item } = req.body
+        myBook.push(item)
+        res.send({
+          code: 200,
+          data: myBook,
+          message: '收藏成功'
+        })
+      })
+
+      //查
+      app.get('/api/my_book', (req, res) => {
+        res.send({
+          code: 200,
+          data: myBook,
+          message: '书包'
         })
       })
     }

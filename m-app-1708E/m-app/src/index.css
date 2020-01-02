@@ -9,6 +9,10 @@
 .m-list-info{flex:1;margin: 0 0 0 10px;border-bottom: 1px solid #dddddd;}
 .m-star-icon{color: #dddddd;}
 .m-star-icon.active{color: red;}
+.m-banner-img{width: 100%;}
+.m-my-book-item{display: flex;}
+.m-my-book-info{flex:1}
+.m-my-book-action{width: 200px;}
 
 @keyframes loading {
   0% {transform: rotate(0deg);}

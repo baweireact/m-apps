@@ -64,19 +64,39 @@ module.exports = {
         })
       })
 
-      app.get('/api/detail', (req, res) => {
-        let { id } = req.query
-        bookMallDetailData.forEach(item => {
-          item.list.forEach(book => {
+      app.get('/api/detail/:id', (req, res) => {
+        let { id } = req.params
+        // bookMallDetailData.forEach(item => {
+        //   item.list.forEach(book => {
+        //     if (book.id == id) {
+        //       book.is_in_my_book = myBook.findIndex(item => item.id === book.id) >= 0
+        //       res.send({
+        //         code: 200,
+        //         data: book,
+        //         message: '详情'
+        //       })
+        //       return
+        //     }
+        //     console.log('2')
+        //   })
+        //   console.log('遍历')
+        // })
+        for (let i = 0; i < bookMallDetailData.length; i++) {
+          for (let j = 0; j < bookMallDetailData[i].list.length; j++) {
+            let book = bookMallDetailData[i].list[j]
             if (book.id == id) {
+              book.is_in_my_book = myBook.findIndex(item => item.id === book.id) >= 0
               res.send({
                 code: 200,
                 data: book,
                 message: '详情'
               })
+              return
             }
-          })
-        })
+            console.log('内层循环:', j)
+          }
+          console.log('外层循环:', i)
+        }
       })
 
       app.post('/api/add', (req, res) => {
@@ -94,6 +114,16 @@ module.exports = {
           code: 200,
           data: myBook,
           message: '书包'
+        })
+      })
+
+      app.post('/api/update', (req, res) => {
+        let { myBookNew } = req.body
+        myBook = myBookNew
+        res.send({
+          code: 200,
+          data: myBook,
+          message: '更新书包'
         })
       })
     }
