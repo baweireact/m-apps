@@ -5,7 +5,7 @@
     </div>
     <div>
       密码：<input :type="visible ? 'text' : 'password'" v-model="password" placeholder="请输入密码" @keyup.enter="handleLogin">
-      <Icon :type="visible ? 'xianshimima' : 'guanbi'" classname="m-login-icon" @onClick="handleShow"></Icon>
+      <Icon :type="visible ? 'xianshimima' : 'buxianshimima'" classname="m-login-icon" @onClick="handleShow"></Icon>
     </div>
     <button @click="handleLogin">登录</button>
   </div>

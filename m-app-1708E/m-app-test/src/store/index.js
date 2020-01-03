@@ -10,7 +10,8 @@ export default new Vuex.Store({
     navList: [],
     currentId: 0,
     currentList: [],
-    myBook: []
+    myBook: [],
+    loading: false
   },
   //同步
   mutations: {
@@ -40,11 +41,13 @@ export default new Vuex.Store({
       })
     },
     //列表
-    getList(context) {
-      let { currentId } = context.state 
+    getList({commit, state}) {
+      let { currentId } = state 
+      commit({ type: 'setState', key: 'loading', value: true })
       Api.getList(`?id=${currentId}`).then(res => {
         if (res.code === 200) {
-          context.commit({ type: 'setCurrentList', currentList: res.data })
+          commit({ type: 'setCurrentList', currentList: res.data })
+          commit({ type: 'setState', key: 'loading', value: false })
         }
       })
     },

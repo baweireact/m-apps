@@ -25,6 +25,12 @@ app.use(cors())
 //解析post请求， https://www.npmjs.com/package/body-parser
 app.use(bodyParser.json())
 
+app.use((req, res, next) => {
+  setTimeout(() => {
+    next()
+  }, 500)
+})
+
 //登录，多用户，区分用户名错误和密码错误
 app.post('/api/login', (req, res) => {
   let { username, password } = req.body

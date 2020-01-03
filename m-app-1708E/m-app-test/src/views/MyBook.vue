@@ -17,23 +17,42 @@
         <label>
           <input type="checkbox" :checked="total.checkedAll" @click="handleCheckAll">全选
         </label>
-        <button @click="handleDeleteChecked">删除</button>
+        <button @click="handleShowDialog">删除</button>
       </div>
       <div>
         总价：￥{{total.totalPrice}}，总数：{{total.totalCount}}
       </div>
-
     </div>
     <div v-else>
       空空如也~~~
     </div>
+    <Dialog :visible="visible" title="删除">
+      <template v-slot:content>
+        <div class="m-delete-info">
+          <Icon type="shanchu" classname="m-delete-icon"></Icon>
+          <div>你确定要删除选中的商品吗？</div>
+        </div>
+      </template>
+      <template v-slot:footer>
+        <button class="m-btn" @click="handleHideDialog">取消</button>
+        <button class="m-btn" @click="handleDeleteChecked">确定</button>
+      </template>
+    </Dialog>
   </div>
 </template>
 
 <script>
 import Api from '../api'
+import Dialog from '../components/Dialog'
+import Icon from '../components/Icon'
+import toast from '../components/Toast'
 
 export default {
+  data() {
+    return {
+      visible: false
+    }
+  },
   computed: {
     myBook() {
       return this.$store.state.myBook;
@@ -52,6 +71,10 @@ export default {
         checkedAll: myBook.every(item => item.checked)
       }
     }
+  },
+  components: {
+    Dialog,
+    Icon
   },
   methods: {
     //减
@@ -94,6 +117,18 @@ export default {
       let myBook = this.myBook;
       myBook = myBook.filter(item => !item.checked)
       this.$store.commit({ type: "setState", key: "myBook", value: myBook });
+      this.handleHideDialog()
+    },
+    handleShowDialog() {
+      if (this.myBook.filter(item => item.checked).length === 0) {
+        //alert('请选择要删除的商品~')
+        toast({message: '请选择要删除的商品~', duration: 500})
+        return
+      }
+      this.visible = true
+    },
+    handleHideDialog() {
+      this.visible = false
     }
   },
   //组件每次重新渲染后，会走这个生命周期，把数据保存到后端

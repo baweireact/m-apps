@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Icon v-for="n in 5" :key="n" type="iconfontxingxing" :class="'m-star-icon ' + (n <= count ? 'active' : '')"></Icon>
+    <Icon v-for="n in 5" :key="n" type="xingxing" :class="'m-star-icon ' + (n <= count ? 'active' : '')"></Icon>
   </div>
 </template>
 

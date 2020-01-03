@@ -36,10 +36,12 @@ export default {
         alert('密码不能为空')
         return
       }
+      this.$store.commit({ type: 'setState', key: 'loading', value: true })
       Api.login({username: this.username, password: this.password }).then(res => {
         if (res.code === 200) {
           localStorage.setItem('username', res.data.username)
           this.$router.push('/index/home')
+          this.$store.commit({ type: 'setState', key: 'loading', value: false })
         }
       })
     },

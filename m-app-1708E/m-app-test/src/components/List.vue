@@ -35,6 +35,7 @@ export default {
     handleAdd(item) {
       item.count = 1
       item.checked = true
+      this.$store.commit({ type: 'setState', key: 'loading', value: true })
       Api.add({item}).then(res => {
         if (res.code === 200) {
           //不刷新，更新页面的收藏变为已收藏

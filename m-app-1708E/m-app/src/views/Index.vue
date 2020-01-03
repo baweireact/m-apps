@@ -5,7 +5,9 @@
       <router-link to="/index/my_book" class="m-nav-item">书包</router-link>
       <router-link to="/index/exam1" class="m-nav-item">周考1</router-link>
     </div>
-    <router-view></router-view>
+    <transition name="slide">
+      <router-view class="m-router"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -15,5 +17,17 @@ export default {
 </script>
 
 <style>
+.m-router{position: absolute;width:100%}
+.slide-enter-active{transition: all 1s linear;}
+.slide-enter{transform: translateX(100%)}
 
+/* .slide-leave-active{transition: all 1s linear;}
+.slide-leave-to{transform: translateX(-100%)} */
+
+.slide-leave-active{animation: slide 1s linear;}
+
+@keyframes slide {
+  0% {transform: translateX(0)}
+  100% { transform: translateX(-100%)}
+}
 </style>
