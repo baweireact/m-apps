@@ -28,7 +28,8 @@ const Api = {
   getList: (url) => common({ url: urls.getList + url }),
   getDetail: (id) => common({ url: urls.getDetail + id }),
   add: (data) => common({ url: urls.add, data, method: 'post' }),
-  getMyBook: () => common({ url: urls.getMyBook })
+  getMyBook: () => common({ url: urls.getMyBook }),
+  update: (data) => common({ url: urls.update, data, method: 'post'})
 }
 
 export default Api

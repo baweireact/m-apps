@@ -19,6 +19,8 @@ export default {
   methods: {
     //收藏， is_in_my_book标识收藏和已收藏， 已收藏：true，收藏：false
     handleAdd(item) {
+      item.count = 1
+      item.checked = true
       Api.add({item}).then(res => {
         if (res.code === 200) {
           this.detail.is_in_my_book = true

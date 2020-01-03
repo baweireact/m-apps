@@ -127,6 +127,17 @@ app.get('/api/my_book', (req, res) => {
   })
 })
 
+//更新
+app.post('/api/update', (req, res) => {
+  let { myBookNew } = req.body
+  myBook = myBookNew
+  res.send({
+    code: 200,
+    data: myBook,
+    message: '更新成功'
+  })
+})
+
 app.listen(89, () => {
   console.log(89)
 })

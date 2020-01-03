@@ -9,6 +9,10 @@
 .m-list-info{flex:1;margin: 0 0 0 5px;border-bottom: 1px solid #dddddd;}
 .m-star{color: #dddddd;}
 .m-star.active{color: red;}
+.m-my-book-item{display: flex;}
+.m-my-book-info{flex: 1}
+.m-my-book-action{width: 150px;}
+.m-count{display: inline-block; width: 50px;text-align: center;color: red;font-weight: bold;}
 
 @keyframes loading {
   0% { transform: rotate(0deg); }

@@ -16,6 +16,13 @@
       </div>
     </div>
     <div v-if="myBook.length > 0">
+      <div>
+        <label>
+          <input type="checkbox" :checked="total.checkedAll" @click="handleCheckAll">
+          全选
+        </label>
+        <button @click="handleDeleteChecked">删除</button>
+      </div>
       <div>总价：￥{{total.totalPrice}},总数：{{total.totalCount}}</div>
     </div>
     <div v-else>书包空空如也~~~</div>
@@ -32,15 +39,16 @@ export default {
     },
     total() {
       let myBook = this.myBook;
-      let totalCount = myBook.reduce((total, item) => {
+      let totalCount = myBook.filter(item => item.checked).reduce((total, item) => {
         return total + item.count;
       }, 0);
-      let totalPrice = myBook.reduce((total, item) => {
+      let totalPrice = myBook.filter(item => item.checked).reduce((total, item) => {
         return total + item.count * item.price;
       }, 0);
       return {
         totalCount,
-        totalPrice
+        totalPrice,
+        checkedAll: myBook.every(item => item.checked)
       };
     }
   },
@@ -62,9 +70,21 @@ export default {
       myBook.splice(index, 1)
       this.$store.commit({ type: "setState", key: "myBook", value: myBook });
     },
-    handleCheck(e) {
+    handleCheck(index, e) {
       let myBook = this.myBook;
-      myBook.splice(index, 1)
+      myBook[index].checked = e.target.checked
+      this.$store.commit({ type: "setState", key: "myBook", value: myBook });
+    },
+    handleCheckAll(e) {
+      let myBook = this.myBook;
+      myBook.forEach(item => {
+        item.checked = e.target.checked
+      })
+      this.$store.commit({ type: "setState", key: "myBook", value: myBook });
+    },
+    handleDeleteChecked() {
+      let myBook = this.myBook;
+      myBook = myBook.filter(item => !item.checked)
       this.$store.commit({ type: "setState", key: "myBook", value: myBook });
     }
   },

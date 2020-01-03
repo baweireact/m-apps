@@ -33,6 +33,8 @@ export default {
       this.$router.push(`/detail/${id}`)
     },
     handleAdd(item) {
+      item.count = 1
+      item.checked = true
       Api.add({item}).then(res => {
         if (res.code === 200) {
           //不刷新，更新页面的收藏变为已收藏
