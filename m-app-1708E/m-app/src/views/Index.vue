@@ -4,6 +4,7 @@
       <router-link to="/index/home" class="m-nav-item">首页</router-link>
       <router-link to="/index/my_book" class="m-nav-item">书包</router-link>
       <router-link to="/index/exam1" class="m-nav-item">周考1</router-link>
+      <router-link to="/index/question_list" class="m-nav-item">问题</router-link>
     </div>
     <transition name="slide">
       <router-view class="m-router"></router-view>

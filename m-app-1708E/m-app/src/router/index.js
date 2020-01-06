@@ -6,6 +6,7 @@ import Home from '../views/Home'
 import MyBook from '../views/MyBook'
 import Detail from '../views/Detail'
 import Exam1 from '../views/Exam1'
+import QuestionList from '../views/QuestionList'
 
 Vue.use(VueRouter)
 
@@ -30,6 +31,9 @@ const routes = [
     }, {
       path: '/index/exam1',
       component: Exam1
+    }, {
+      path: '/index/question_list',
+      component: QuestionList
     }]
   },
   {

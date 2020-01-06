@@ -10,8 +10,7 @@ const urls = {
   getTaskList: '/api/task_list',
   getAddressList: '/api/address_list',
   updateAddressList: '/api/update_address_list',
-  getBanner: '/api/banner',
-  questionList: '/api/question_list'
+  getBanner: '/api/banner'
 }
 
 export default urls

@@ -3,7 +3,7 @@ const bodyParser = require('body-parser')
 const cors = require('cors')
 const fs = require('fs')
 const path = require('path')
-const { bookNavData, bookMallData, bookMallDetailData } = require('./data')
+const { bookNavData, bookMallData, bookMallDetailData, questionList } = require('./data')
 
 let userList = [{
   id: 0,
@@ -144,6 +144,14 @@ app.post('/api/update', (req, res) => {
     code: 200,
     data: myBook,
     message: '更新书包'
+  })
+})
+
+app.get('/api/question_list', (req, res) => {
+  res.send({
+    code: 200,
+    data: questionList,
+    message: '问题列表'
   })
 })
 

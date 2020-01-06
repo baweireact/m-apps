@@ -23,8 +23,7 @@ const Api = {
   getTaskList: () => common({ url: urls.getTaskList }),
   getAddressList: () => common({ url: urls.getAddressList }),
   updateAddressList: (data) => common({ url: urls.updateAddressList, data, method: 'post' }),
-  getBanner: () => common({ url: urls.getBanner }),
-  getQuestionList: () => common({ url: urls.questionList })
+  getBanner: () => common({ url: urls.getBanner })
 }
 
 
