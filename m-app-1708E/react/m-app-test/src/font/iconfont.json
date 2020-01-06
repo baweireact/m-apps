@@ -1,0 +1,37 @@
+{
+  "id": "1585758",
+  "name": "1708E",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "521047",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "845842",
+      "name": "不显示密码",
+      "font_class": "buxianshimima",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "3402400",
+      "name": "星星",
+      "font_class": "xingxing",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "9509964",
+      "name": "显示密码",
+      "font_class": "xianshimima",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    }
+  ]
+}
