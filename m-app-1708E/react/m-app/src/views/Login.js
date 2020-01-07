@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS } from 'immutable'
 import Icon from '../components/Icon'
 import Api from '../api'
 
@@ -38,6 +39,19 @@ export default class Login extends Component {
     }
   }
 
+  componentDidMount() {
+    let obj = fromJS({
+      a: {
+        b: 1
+      }
+    })
+
+    let newObj = obj.setIn(['a', 'b'], 2)
+    console.log('obj:', obj.toJS())
+    console.log('newObj:',newObj.getIn(['a', 'b']))
+
+  }
+
   render() {
     let { username, password, visible } = this.state
     return (
@@ -50,6 +64,7 @@ export default class Login extends Component {
           <Icon type={visible ? 'xianshimima' : 'buxianshimima'} className="m-login-icon" onClick={this.handleVisible.bind(this)}></Icon>
         </div>
         <button onClick={this.handleLogin.bind(this)}>登录</button>
+        <Icon></Icon>
       </div>
     )
   }

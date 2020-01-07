@@ -94,6 +94,15 @@ app.get('/api/list', (req, res) => {
   })
 })
 
+//列表全部数据
+app.get('/api/list_all', (req, res) => {
+  res.send({
+    code: 200,
+    data: bookMallData,
+    message: '列表全部数据'
+  })
+})
+
 //详情
 app.get('/api/detail/:id', (req, res) => {
   let { id } = req.params

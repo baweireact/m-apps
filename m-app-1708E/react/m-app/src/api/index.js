@@ -13,8 +13,7 @@ const common = async (config) => {
 
 const Api = {
   login: (data) => common({ url: urls.login, data, method: 'post' }),
-  getNav: () => common({ url: urls.getNav }),
-  getList: (url) => common({ url: urls.getList + url }),
+  getAllList: () => common({ url: urls.allList }),
   getMyBook: () => common({ url: urls.getMyBook }),
   add: (data) => common({ url: urls.add, data, method: 'post' }),
   getDetail: (url) => common({ url: urls.getDetail + url }),

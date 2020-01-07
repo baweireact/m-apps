@@ -74,6 +74,14 @@ app.get('/api/list', (req, res) => {
   })
 })
 
+app.get('/api/all_list', (req, res) => {
+  res.send({
+    code: 200,
+    data: bookMallData,
+    message: '全部列表数据'
+  })
+})
+
 app.get('/api/detail/:id', (req, res) => {
   let { id } = req.params
   // bookMallDetailData.forEach(item => {

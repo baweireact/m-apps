@@ -14,9 +14,23 @@ code {
 
 .m-login-icon{display: inline-block;margin: 3px 0 0 -20px;vertical-align: top;}
 .m-wrap{display: flex;flex-direction: column; position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
-.m-header{line-height: 50px;background: red;color: #ffffff;text-align: center;}
-.m-main{flex:1}
+.m-header{height: 50px; line-height: 50px;background: red;color: #ffffff;text-align: center;}
+.m-main{flex:1;overflow-y: auto;}
 .m-footer{display: flex; height: 50px;border-top: 1px solid #dddddd;}
+.m-nav-item{flex:1;text-align: center; color: #333333; text-decoration:none;}
+.m-nav-icon{display: inline-block;margin: 8px 0 0; font-size: 20px;}
+.m-nav-text{font-size: 12px;}
+.m-nav-item.active{color: red;}
+.m-home{display: flex;height: 100%;}
+.m-sidebar{width: 80px;border-right: 1px solid #dddddd;}
+.m-sidebar-item{line-height: 40px;background: #aaaaaa;text-align: center;border-bottom: 1px solid #dddddd;}
+.m-sidebar-item.active{background: lightblue;color: red;font-weight: bold;}
+.m-list{flex: 1;overflow-y: auto;}
+.m-category-title{position: sticky;top: 0; background: #dddddd;}
+.m-book-item{display: flex;margin: 0 0 5px 0;}
+.m-book-img-wrap{width: 122px;height: 150px;background: #dddddd;}
+.m-book-img{width: 122px;height: 150px;}
+.m-book-info{flex: 1;margin: 0 0 0 5px;border-bottom: 1px solid #dddddd;}
 
 
 
