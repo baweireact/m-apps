@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { fromJS } from 'immutable'
 import Api from '../api'
 import Icon from '../components/Icon'
 
@@ -37,6 +38,18 @@ export default class Login extends Component {
     if (e.keyCode === 13) {
       this.handleLogin()
     }
+  }
+
+  componentDidMount() {
+    let obj = fromJS({
+      a: {
+        b: 1
+      },
+      c: 2
+    })
+    let newObj = obj.setIn(['a', 'b'], 2)
+    console.log('obj:', obj.toJS())
+    console.log('newObj:', newObj.getIn(['a']).toJS())
   }
 
   render() {

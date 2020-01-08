@@ -60,11 +60,14 @@ export default class Login extends Component {
           <input value={username} onChange={this.handleInput.bind(this, 'username')} placeholder="请输入用户名" autoFocus></input>
         </div>
         <div>
-          <input value={password} onChange={this.handleInput.bind(this, 'password')} onKeyUp={this.handleEnter.bind(this)} placeholder="请输入密码" type={"password"} ></input>
+          <input 
+            value={password} 
+            onChange={this.handleInput.bind(this, 'password')} 
+            onKeyUp={this.handleEnter.bind(this)} 
+            placeholder="请输入密码" type={ visible ? "text" : "password"} ></input>
           <Icon type={visible ? 'xianshimima' : 'buxianshimima'} className="m-login-icon" onClick={this.handleVisible.bind(this)}></Icon>
         </div>
         <button onClick={this.handleLogin.bind(this)}>登录</button>
-        <Icon></Icon>
       </div>
     )
   }

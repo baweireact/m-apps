@@ -13,6 +13,27 @@
       "unicode_decimal": 58908
     },
     {
+      "icon_id": "595396",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "693214",
+      "name": "返回",
+      "font_class": "flow",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "796827",
+      "name": "更多",
+      "font_class": "gengduo",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
       "icon_id": "845842",
       "name": "不显示密码",
       "font_class": "buxianshimima",
@@ -46,6 +67,13 @@
       "font_class": "wodedangxuan",
       "unicode": "e607",
       "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "9241131",
+      "name": "分享",
+      "font_class": "iconzhengli_fenxiang",
+      "unicode": "e644",
+      "unicode_decimal": 58948
     },
     {
       "icon_id": "9509964",

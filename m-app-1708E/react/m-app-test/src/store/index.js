@@ -1,17 +1,20 @@
 import { createStore, applyMiddleware } from 'redux'
+import { fromJS } from 'immutable'
 //import thunk from 'redux-thunk'
+import logger from 'redux-logger'
 
-const defaultState = {
+const defaultState = fromJS({
   title: "小米书城",
-  listAll: []
-}
+  listAll: [],
+  currentId: 0,
+  isRealScroll: true
+})
 
 const reducer = (state = defaultState, action) => {
-  let newState = JSON.parse(JSON.stringify(state))
   switch (action.type) {
     case 'SET_STATE':
-      newState[action.key] = action.value
-      return newState;
+      //newState[action.key] = action.value
+      return state.setIn(action.key, fromJS(action.value));
     default:
       return state;
   }
@@ -28,5 +31,9 @@ const thunk = ({ dispatch, getState }) => (next) => (action) => {
 };
 
 const store = createStore(reducer, applyMiddleware(thunk))
+
+store.subscribe(() => {
+  console.log(store.getState().toJS()) 
+})
 
 export default store

@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware, compose } from 'redux'
-import logger from 'redux-logger'
+//import logger from 'redux-logger'
 //import thunk from 'redux-thunk'
 import { fromJS } from 'immutable'
 
@@ -7,7 +7,8 @@ const defaultState = fromJS({
   title: '小米书城',
   allList: [],
   currentId: 0,
-  isRealScroll: true
+  isRealScroll: true,
+  myBook: []
 })
 
 const reducer = (state = defaultState, action) => {
@@ -26,7 +27,6 @@ const composeEnhancers =
 
 const thunk = ({ dispatch, getState }) => (next) => (action) => {
   if (typeof action === 'function') {
-    //如果action是一个函数
     return action(dispatch, getState);
   }
 
@@ -38,7 +38,7 @@ const enhancer = composeEnhancers(applyMiddleware(thunk));
 const store = createStore(reducer, enhancer);
 
 store.subscribe(() => {
-  console.log(store.getState().toJS())
+  //console.log(store.getState().toJS())
 })
 
 export default store

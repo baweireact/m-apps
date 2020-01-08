@@ -15,7 +15,7 @@ class Header extends Component {
 //从仓库里取值，相当于使用vuex时，组件里使用computed取仓库里的值
 const mapStateToProps = (state) => {
   return {
-    title: state.title
+    title: state.getIn(['title'])
   }
 }
 

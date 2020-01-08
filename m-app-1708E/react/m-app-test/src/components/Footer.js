@@ -6,7 +6,7 @@ import Icon from './Icon'
 
 class Footer extends Component {
   handleTitle(title) {
-    this.props.onSetState('title', title)
+    this.props.onSetState(['title'], title)
   }
   render() {
     return (
