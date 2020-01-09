@@ -2,6 +2,7 @@ import React, { Component, Suspense, lazy } from 'react'
 import { Switch, Route, Redirect } from 'react-router-dom'
 import Index from '../views/Index'
 import Detail from '../views/Detail'
+import Loading from '../components/Loading'
 const Login = lazy(() => import('../views/Login'))
 
 export default class Router extends Component {
@@ -16,6 +17,7 @@ export default class Router extends Component {
             <Route path="/detail/:id" component={Detail}></Route>
           </Switch>
         </Suspense>
+        <Loading></Loading>
       </div>
     )
   }

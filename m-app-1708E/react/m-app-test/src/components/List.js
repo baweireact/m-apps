@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import LazyLoad from 'react-lazy-load'
+import { withRouter } from 'react-router-dom'
+import Stars from './Stars'
 
 let offsetTopArr = []
 class List extends Component {
@@ -17,6 +20,10 @@ class List extends Component {
       }
     }
   }
+  
+  handleDetail(id) {
+    this.props.history.push('/detail/' + id)
+  }
 
   componentDidUpdate() {
     offsetTopArr = Array.from(document.getElementsByClassName('js-category-item')).map(item => item.offsetTop)
@@ -33,10 +40,14 @@ class List extends Component {
         {
           category.list.map(book => (
             <div key={book.id} className="m-list-item">
-              <div className="m-list-img-wrap">
+              <LazyLoad className="m-list-img-wrap">
                 <img src={book.avatar} className="m-list-img" alt={book.title}></img>
+              </LazyLoad>
+              <div className="m-list-info">
+                {book.title}
+                <Stars count={book.stars}></Stars>
+                <button onClick={() => this.handleDetail(book.id)}>详情</button>
               </div>
-              <div className="m-list-info">{book.title}</div>
             </div>
           ))
         }
@@ -73,5 +84,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(List))
 

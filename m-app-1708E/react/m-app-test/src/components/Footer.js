@@ -12,7 +12,7 @@ class Footer extends Component {
     return (
       <div className="m-footer">
         <NavLink to="/index/home" className="m-footer-item" onClick={this.handleTitle.bind(this, '小米书城')}>
-          <Icon type="shouye" className="m-footer-icon"></Icon>
+          <Icon type={'shouye'} className="m-footer-icon"></Icon>
           <div className="m-footer-text">首页</div>
         </NavLink>
         <NavLink to="/index/my_book" className="m-footer-item" onClick={this.handleTitle.bind(this, '书包')}>

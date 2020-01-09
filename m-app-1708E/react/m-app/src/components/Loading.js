@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
-class Header extends Component {
+class Loading extends Component {
   render() {
-    let { title } = this.props
+    let { loading, lazyLoading } = this.props
     return (
-      <div className="m-header">
-        {title}
+      <div className={"m-mask m-loading " + (lazyLoading || loading ? 'active' : '')}>
+        
       </div>
     )
   }
@@ -15,8 +15,7 @@ class Header extends Component {
 //从仓库里取值，相当于使用vuex时，组件里使用computed取仓库里的值
 const mapStateToProps = (state) => {
   return {
-    title: state.getIn(['title']),
-    myBook: state.getIn(['myBook']).toJS()
+    loading: state.getIn(['loading'])
   }
 }
 
@@ -33,4 +32,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Loading)

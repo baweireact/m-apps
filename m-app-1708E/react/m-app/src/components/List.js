@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom'
 import LazyLoad from 'react-lazy-load'
 import Stars from '../components/Stars'
 import Dialog from '../components/Dialog'
+import Api from '../api'
 
 let offsetTopArr = []
 class List extends Component {
@@ -11,7 +12,7 @@ class List extends Component {
     super(props)
     this.state = {
       visible: false,
-      book: {}
+      book: {count: 1}
     }
   }
   handleScroll(e) {
@@ -47,6 +48,19 @@ class List extends Component {
   }
 
   handleAddToMyBook() {
+    let { myBook } = this.props
+    let { book } = this.state
+    let index = myBook.findIndex(item => item.id === book.id)
+    if (index >= 0) {
+      myBook[index].count += book.count
+    } else {
+      myBook.push(book)
+    }
+
+    this.props.onSetState(['myBook'], myBook)
+
+    Api.update({ myBookNew: myBook })
+
     this.handleHideDialog()
   }
 
@@ -117,7 +131,7 @@ class List extends Component {
           <div className="m-action-wrap">
             <div className="m-action">
               <button className="m-btn" onClick={() => this.handleSub()}>-</button>
-              <input className="m-count" value={book.count} placeholder="数量" onChange={(e) => this.handleCount(e)}></input>
+              <input className="m-count" value={book.count} placeholder="数量" onChange={(e) => this.handleCount(e)}/>
               <button className="m-btn" onClick={() => this.handleAdd()}>+</button>
             </div>
           </div>

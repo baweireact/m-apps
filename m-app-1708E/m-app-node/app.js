@@ -26,7 +26,7 @@ app.use(express.static('public'))
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 500)
+  }, 2000)
 })
 
 app.post('/api/login', (req, res) => {

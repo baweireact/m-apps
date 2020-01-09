@@ -13,6 +13,13 @@
       "unicode_decimal": 58908
     },
     {
+      "icon_id": "693214",
+      "name": "返回",
+      "font_class": "flow",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
       "icon_id": "845842",
       "name": "不显示密码",
       "font_class": "buxianshimima",

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Icon extends Component {
   render() {
@@ -7,4 +8,8 @@ export default class Icon extends Component {
       <span className={`icon iconfont icon-${type} ${className ? className : ''}`} onClick={this.props.onClick}></span>
     )
   }
+}
+
+Icon.propTypes = {
+  type: PropTypes.string
 }
