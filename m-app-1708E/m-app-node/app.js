@@ -26,7 +26,7 @@ app.use(express.static('public'))
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 2000)
+  }, 1000)
 })
 
 app.post('/api/login', (req, res) => {
@@ -119,7 +119,14 @@ app.get('/api/detail/:id', (req, res) => {
 
 app.post('/api/add', (req, res) => {
   let { item } = req.body
-  myBook.push(item)
+  let index = myBook.findIndex(book => book.id === item.id)
+  if (index >= 0) {
+    myBook[index].checked = true
+    myBook[index].count += item.count
+  } else {
+    item.checked = true
+    myBook.push(item)
+  }
   res.send({
     code: 200,
     data: myBook,

@@ -28,7 +28,7 @@ app.use(bodyParser.json())
 app.use((req, res, next) => {
   setTimeout(() => {
     next()
-  }, 500)
+  }, 2000)
 })
 
 //登录，多用户，区分用户名错误和密码错误
@@ -125,7 +125,14 @@ app.get('/api/detail/:id', (req, res) => {
 //增
 app.post('/api/add', (req, res) => {
   let { item } = req.body
-  myBook.push(item)
+
+  let index = myBook.findIndex(book => book.id === item.id)
+  if (index >= 0) {
+    myBook[index].count += item.count
+  } else {
+    myBook.push(item)
+  }
+
   res.send({
     code: 200,
     data: myBook,

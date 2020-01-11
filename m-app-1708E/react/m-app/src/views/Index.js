@@ -12,7 +12,7 @@ const MyBook = lazy(async () => {
   return await new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(import('./MyBook'))
-    }, 2000)
+    }, 1000)
   })
 })
 
@@ -25,7 +25,7 @@ class Index extends Component {
     return (
       <div className="m-wrap">
         <Header></Header>
-        <Suspense fallback={<div className="m-main"><Loading lazyLoading={true}></Loading> </div>}>
+        <Suspense fallback={<div className="m-main"><Loading lazyLoading={true}></Loading></div>}>
           <Switch>
             <Route path="/index/home" render={() => this.handleRoute('小米书城', <Home></Home>)}></Route>
             <Route path="/index/my_book" render={() => this.handleRoute('书包', <MyBook></MyBook>)}></Route>

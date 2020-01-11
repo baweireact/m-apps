@@ -29,19 +29,11 @@ const Detail = (props) => {
   }
 
   const handleAddToMyBook = () => {
-    let { myBook } = props
-    let index = myBook.findIndex(item => item.id === detail.id)
-    if (index >= 0) {
-      myBook[index].count += detail.count
-    } else {
-      myBook.push(detail)
-    }
-
-    props.onSetState(['myBook'], myBook)
-
-    Api.update({ myBookNew: myBook }).then(res => {
+    props.onSetState(['loading'], true)
+    Api.add({ item: detail }).then(res => {
       if (res.code === 200) {
         props.history.push('/index/my_book')
+        //props.onSetState(['loading'], false)
       }
     })
   }

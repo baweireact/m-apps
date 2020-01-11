@@ -1,15 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 
-class Loading extends Component {
-  render() {
-    let { loading, lazyLoading } = this.props
-    console.log(loading, lazyLoading)
-    let isHasLoading = document.getElementsByClassName('m-loading active').length >= 1
-    return (
-      <div className={"m-mask m-loading " + (lazyLoading || loading ? 'active' : '')}></div>
-    )
-  }
+const Loading = (props) => {
+  let { loading, lazyLoading } = props
+  return (
+    <div className={"m-mask m-loading " + ((loading || lazyLoading) ? 'active' : '')}></div>
+  )
 }
 
 //从仓库里取值，相当于使用vuex时，组件里使用computed取仓库里的值

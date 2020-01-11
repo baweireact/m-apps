@@ -3,6 +3,7 @@ import { Switch, Redirect, Route } from 'react-router-dom'
 import Login from '../views/Login'
 import Index from '../views/Index'
 import Detail from '../views/Detail'
+import Loading from '../components/Loading'
 
 export default class Router extends Component {
   render() {
@@ -14,6 +15,7 @@ export default class Router extends Component {
           <Route path="/index" component={Index}></Route>
           <Route path="/detail/:id" component={Detail}></Route>
         </Switch>
+        <Loading></Loading>
       </div>
     )
   }

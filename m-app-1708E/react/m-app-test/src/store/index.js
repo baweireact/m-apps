@@ -7,7 +7,9 @@ const defaultState = fromJS({
   title: "小米书城",
   listAll: [],
   currentId: 0,
-  isRealScroll: true
+  isRealScroll: true,
+  myBook: [],
+  loading: false
 })
 
 const reducer = (state = defaultState, action) => {

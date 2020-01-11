@@ -48,18 +48,14 @@ class List extends Component {
   }
 
   handleAddToMyBook() {
-    let { myBook } = this.props
     let { book } = this.state
-    let index = myBook.findIndex(item => item.id === book.id)
-    if (index >= 0) {
-      myBook[index].count += book.count
-    } else {
-      myBook.push(book)
-    }
-
-    this.props.onSetState(['myBook'], myBook)
-
-    Api.update({ myBookNew: myBook })
+    this.props.onSetState(['loading'], true)
+    Api.add({ item: book }).then(res => {
+      if (res.code === 200) {
+        this.props.onSetState(['myBook'], res.data)
+        this.props.onSetState(['loading'], false)
+      }
+    })
 
     this.handleHideDialog()
   }
