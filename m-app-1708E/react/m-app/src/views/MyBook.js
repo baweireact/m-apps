@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Icon from '../components/Icon'
 import Api from '../api'
-import toast from '../components/Toast'
+import toast from '../components/toast'
 import Toast from 'toast-xu'
 
 const MyBook = (props) => {
@@ -45,11 +45,13 @@ const MyBook = (props) => {
   const handleDeleteChecked = () => {
     if (myBook.filter(item => item.checked).length === 0) {
       //alert('请选择要删除的商品~')
-      let myToast = new Toast('请选择要删除的商品~')
-      myToast.show()
-      setTimeout(function () {
-        myToast.hide();
-    }, 2000);
+      toast({ 
+        title: '请选择要删除的商品~', 
+        duration: 3000, 
+        onClose: () => {
+          console.log('close')
+        } 
+      })
     }
   }
 
