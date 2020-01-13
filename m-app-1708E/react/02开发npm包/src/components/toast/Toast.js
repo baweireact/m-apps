@@ -1,8 +1,8 @@
 import React from 'react'
-import './index.css'
+//import './index.css'
 
 const Toast = (props) => {
-  let { title } = props.config
+  let { title = "toast" } = props
   return (
     <div className="m-toast-mask">
       <div className="m-toast">{title}</div>

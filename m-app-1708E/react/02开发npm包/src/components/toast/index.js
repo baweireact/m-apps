@@ -2,19 +2,21 @@ import React from 'react'
 import ReactDOM, { createPortal } from 'react-dom'
 import Toast from './Toast'
 
-const toast = (config) => {
+const toast = (config = {}) => {
   let dom = document.createElement('div')
   document.body.appendChild(dom)
 
   setTimeout(() => {
     dom.remove()
     config.onClose && config.onClose()
-  }, config.duration || 1500)
+  }, config.duration || 150000)
 
   ReactDOM.render(
-    <Toast config={config}></Toast>,
+    <Toast {...config}></Toast>,
     dom
   )
 }
 
-export default toast
+export {
+  toast
+}
