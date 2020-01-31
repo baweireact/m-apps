@@ -9,7 +9,7 @@ const toast = (config = {}) => {
   setTimeout(() => {
     dom.remove()
     config.onClose && config.onClose()
-  }, config.duration || 150000)
+  }, config.duration || 1500)
 
   ReactDOM.render(
     <Toast {...config}></Toast>,

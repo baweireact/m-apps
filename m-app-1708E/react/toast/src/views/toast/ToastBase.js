@@ -1,20 +1,21 @@
 import React from 'react'
-import { toast } from '../components/toast'
+import { toast } from '../../components/toast'
 
-const ExampleToast = () => {
+const ToastBase = () => {
   const handleToast = () => {
-    //toast()
     toast({ title: '用户名不存在' })
   }
 
   return (
     <div className="m-info">
-      <div>
+      <div className="m-text">
         调用toast()函数，显示toast，默认1.5s后消失
       </div>
-      <button onClick={() => handleToast()}>toast</button>
+      <div className="m-toolbar">
+        <button onClick={() => handleToast()}>toast</button>
+      </div>
     </div>
   )
 }
 
-export default ExampleToast
+export default ToastBase

@@ -1,0 +1,15 @@
+.m-dialog-mask{display: none; position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0, 0, 0, 0.3);}
+.m-dialog-mask.active{display: flex;}
+.m-dialog{margin: auto;display: flex;flex-direction: column; min-width: 300px;min-height: 240px;border-radius: 5px;background: #ffffff;box-shadow: 0 4px 12px rgba(0, 0, 0, 0.8);}
+.m-dialog-header{padding: 0 5px;height: 40px; line-height: 40px;border-bottom: 1px solid #dddddd;}
+.m-dialog-content{flex: 1}
+.m-dialog-footer{padding: 0 5;height: 40px;line-height: 40px;border-top: 1px solid #dddddd;text-align: right;}
+.m-btn{margin: 0 5px;}
+
+
+
+
+
+
+
+

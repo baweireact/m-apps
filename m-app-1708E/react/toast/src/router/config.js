@@ -1,22 +1,28 @@
-import ExampleToast from '../views/ExampleToast'
-import NpmToast from '../views/NpmToast'
-import NpmToastOnLine from '../views/NpmToastOnLine'
+import ToastBase from '../views/toast/ToastBase'
+import ToastDist from '../views/toast/ToastDist'
+import ToastNpm from '../views/toast/ToastNpm'
+import DialogBase from '../views/dialog/DialogBase'
 
 const routerList = [
   {
-    path: '/index/toast',
-    name: 'Toast组件',
-    component: ExampleToast
+    path: '/index/toast_base',
+    name: 'Toast Base',
+    component: ToastBase
   },
   {
-    path: '/index/npm_toast',
-    name: 'NPM包本地测试',
-    component: NpmToast
+    path: '/index/toast_dist',
+    name: 'Toast Dist',
+    component: ToastDist
   },
   {
-    path: '/index/toast_react_xu',
-    name: 'toast-react-xu',
-    component: NpmToastOnLine
+    path: '/index/toast_npm',
+    name: 'Toast NPM',
+    component: ToastNpm
+  },
+  {
+    path: '/index/dialog_base',
+    name: 'Dialog Base',
+    component: DialogBase
   }
 ]
 

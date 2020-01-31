@@ -2,8 +2,10 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Icon from '../components/Icon'
 import Api from '../api'
-import toast from '../components/toast'
+//import toast from '../components/toast'
 import Toast from 'toast-xu'
+import { toast } from 'toast-react-xu'
+import 'toast-react-xu/dist_npm/main.css'
 
 const MyBook = (props) => {
   let { myBook } = props
@@ -45,13 +47,22 @@ const MyBook = (props) => {
   const handleDeleteChecked = () => {
     if (myBook.filter(item => item.checked).length === 0) {
       //alert('请选择要删除的商品~')
-      toast({ 
-        title: '请选择要删除的商品~', 
-        duration: 3000, 
-        onClose: () => {
-          console.log('close')
-        } 
-      })
+      // toast({ 
+      //   title: '请选择要删除的商品~', 
+      //   duration: 3000, 
+      //   onClose: () => {
+      //     console.log('close')
+      //   } 
+      // })
+      // let myToast = new Toast();
+      // myToast.show('请选择要删除的商品~');
+      // setTimeout(function () {
+      //   myToast.hide();
+      // }, 2000);
+      toast({ title: '请选择要删除的商品~', duration: 2000 })
+    } else {
+      myBook = myBook.filter(item => !item.checked)
+      props.onSetState(['myBook'], myBook)
     }
   }
 
@@ -88,18 +99,18 @@ const MyBook = (props) => {
       {myBookDom}
       {
         myBook.length > 0 ?
-        <div>
           <div>
-            <label>
-              <input type="checkbox" checked={checkedAll} onChange={(e) => handleCheckAll(e)}></input>全选
+            <div>
+              <label>
+                <input type="checkbox" checked={checkedAll} onChange={(e) => handleCheckAll(e)}></input>全选
             </label>
-            <button className="m-btn" onClick={() => handleDeleteChecked()}>删除</button>
+              <button className="m-btn" onClick={() => handleDeleteChecked()}>删除</button>
+            </div>
+            <div>
+              总价：￥{totalPrice} 总数：{totalCount}
+            </div>
           </div>
-          <div>
-            总价：￥{totalPrice} 总数：{totalCount}
-          </div>
-        </div>
-        : <div>空空如也~~~</div>
+          : <div>空空如也~~~</div>
       }
     </div>
   )
