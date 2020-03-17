@@ -15,14 +15,22 @@ code {
 .m-login-icon{display: inline-block;margin: 3px 0 0 -20px;vertical-align: top;}
 .m-wrap{display: flex;flex-direction: column; position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
 .m-header{height: 40px;line-height: 40px;background: red;color: #ffffff;text-align: center;}
-.m-main{flex: 1;}
+.m-main{flex: 1;overflow: auto;}
 .m-footer{display: flex; height: 40px;border-top: 1px solid #dddddd;}
 .m-footer-item{flex: 1;text-align: center;text-decoration: none;color: #333333;}
 .m-footer-item.active{color: red;}
 .m-footer-item-icon{font-size: 20px;}
 .m-footer-item-text{font-size: 12px;}
-
-
+.m-home{display: flex;}
+.m-sidebar{width: 80px;border-right: 1px solid #dddddd;}
+.m-sidebar-item{line-height: 40px; text-align: center;border-bottom: 1px solid #dddddd;}
+.m-sidebar-item.active{color: red;background: lightblue;}
+.m-list{flex:1;overflow: auto;}
+.m-category-title{height: 30px;line-height: 30px; background: #dddddd;}
+.m-list-item{display: flex;margin: 0 0 5px 0;}
+.m-list-img-wrap{width: 112px;height: 150px;background: #dddddd;}
+.m-list-img{width: 112px;height: 150px;}
+.m-list-info{flex:1}
 
 
 

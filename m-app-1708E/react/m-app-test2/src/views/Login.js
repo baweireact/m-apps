@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import Icon from '../components/Icon'
 import Api from '../api'
+import { fromJS } from 'immutable'
 
 export default class Login extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ export default class Login extends Component {
     this.state = {
       username: 'admin',
       password: '123456',
-      visible: true
+      visible: false
     }
   }
 
@@ -60,6 +61,46 @@ export default class Login extends Component {
     //   }
     // })
   }
+
+  componentDidMount() {
+    console.log('immutable')
+    let obj = {
+      a: {
+        b: 1
+      },
+      c: 2
+    }
+    let obj2 = JSON.parse(JSON.stringify(obj))  //深拷贝，有性能问题
+    obj2.a.b = 2
+    console.log('obj:', obj)
+    console.log('obj2:', obj2)
+
+    let obj3 = {...obj}  //浅拷贝
+    obj3.c = 3
+    console.log('obj:', obj)
+    console.log('obj3:', obj3)
+
+    obj3.a.b = 4
+
+    console.log('obj:', obj)
+    console.log('obj3:', obj3)
+
+
+    let immutableObj = fromJS({
+      c: {
+        d: 1
+      },
+      e: 2
+    })
+
+    console.log(immutableObj.getIn(['c', 'd']))  //1
+    console.log(immutableObj.getIn(['c']).toJS())
+
+    let newObj = immutableObj.setIn(['c', 'd'], 3)
+    console.log(immutableObj.toJS())
+    console.log(newObj.toJS())
+  }
+
 
   render() {
     let { username, password, visible } = this.state
