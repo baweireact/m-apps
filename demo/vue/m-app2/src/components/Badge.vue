@@ -1,7 +1,7 @@
 <template>
   <div class="m-badge-wrap">
     <slot></slot>
-    <span class="m-badge">{{formatCount}}</span>
+    <span class="m-badge" v-if="formatCount > 0" >{{formatCount}}</span>
   </div>
 </template>
 

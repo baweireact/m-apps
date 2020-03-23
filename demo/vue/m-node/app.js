@@ -62,7 +62,6 @@ app.get('/api/list', (req, res) => {
 
 app.post('/api/my_books', (req, res) => {
   let { book } = req.body
-  console.log(book)
   let index = myBooks.findIndex(item => item.id === book.id)
   if (index >= 0) {
     myBooks[index].count += book.count
@@ -74,6 +73,14 @@ app.post('/api/my_books', (req, res) => {
     code: 200,
     data: myBooks,
     message: '添加成功'
+  })
+})
+
+app.get('/api/my_books', (req, res) => {
+  res.send({
+    code: 200,
+    data: myBooks,
+    message: '我的书包'
   })
 })
 

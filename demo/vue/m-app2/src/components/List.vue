@@ -84,7 +84,7 @@ export default {
       }
       
       this.$store.commit({ type: 'setState', key: 'myBooks', value: myBooks })
-      Api.myBooks({ book: this.book })
+      Api.myBooks({ book: this.book }, 'post')
     },
     handleAdd() {
       this.book.count++

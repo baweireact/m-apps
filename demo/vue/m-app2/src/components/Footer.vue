@@ -20,6 +20,7 @@
 <script>
 import Badge from './Badge'
 import Icon from './Icon'
+import Api from '../api'
 
 export default {
   computed: {
@@ -34,6 +35,13 @@ export default {
   components: {
     Badge,
     Icon
+  },
+  mounted() {
+    Api.myBooks(null, 'get').then(res => {
+      if(res.code === 200) {
+        this.$store.commit({ type: 'setState', key: 'myBooks', value: res.data })
+      }
+    })
   }
 }
 </script>
