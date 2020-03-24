@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Login from '../views/Login'
 import Index from '../views/Index'
 import store from '../store'
 
@@ -18,6 +17,9 @@ const routes = [
   {
     path: '/index',
     component: Index,
+    meta: {
+      isNeedLogin: true
+    },
     children: [{
       path: '/index/home',
       component: () => import('../views/Home'),
@@ -25,8 +27,8 @@ const routes = [
         title: '小米书城'
       }
     }, {
-      path: '/index/my_book',
-      component: () => import('../views/MyBook'),
+      path: '/index/my_books',
+      component: () => import('../views/MyBooks'),
       meta: {
         title: '我的书包'
       }
@@ -48,7 +50,15 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   store.commit({ type: 'setState', key: 'title', value: to.meta.title })
-  next()
+  if (to.matched[0].meta.isNeedLogin) {
+    if (localStorage.getItem('token')) {
+      next()
+    } else {
+      next({ path: '/login' })
+    }
+  } else {
+    next()
+  }
 })
 
 export default router

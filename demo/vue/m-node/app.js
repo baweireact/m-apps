@@ -60,6 +60,7 @@ app.get('/api/list', (req, res) => {
   })
 })
 
+//增
 app.post('/api/my_books', (req, res) => {
   let { book } = req.body
   let index = myBooks.findIndex(item => item.id === book.id)
@@ -76,11 +77,46 @@ app.post('/api/my_books', (req, res) => {
   })
 })
 
+//删
+app.delete('/api/my_books', (req, res) => {
+
+})
+
+//查
 app.get('/api/my_books', (req, res) => {
   res.send({
     code: 200,
     data: myBooks,
     message: '我的书包'
+  })
+})
+
+//改
+app.patch('/api/my_books', (req, res) => {
+  let { id, operation, count, checked } = req.body
+  let index = myBooks.findIndex(item => item.id === id)
+  switch (operation) {
+    case 'add':
+      myBooks[index].count++
+      break;
+    case 'sub':
+      if (myBooks[index].count > 1) {
+        myBooks[index].count--
+      }
+      break;
+    case 'replace':
+      myBooks[index].count = count
+      break;
+    case 'checked':
+      myBooks[index].checked = checked
+      break;
+    default:
+      break;
+  }
+  res.send({
+    code: 200,
+    data: myBooks,
+    message: '更新成功'
   })
 })
 

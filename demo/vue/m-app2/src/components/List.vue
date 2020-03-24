@@ -78,8 +78,10 @@ export default {
       let myBooks = this.$store.state.myBooks
       let index = myBooks.findIndex(item => item.id === this.book.id)
       if (index >= 0) {
+        myBooks[index].checked = true
         myBooks[index].count += this.book.count
       } else {
+        this.book.checked = true
         myBooks.push({...this.book})
       }
       

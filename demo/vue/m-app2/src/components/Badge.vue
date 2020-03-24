@@ -1,7 +1,7 @@
 <template>
   <div class="m-badge-wrap">
     <slot></slot>
-    <span class="m-badge" v-if="formatCount > 0" >{{formatCount}}</span>
+    <span class="m-badge" v-if="formatCount > 0 || typeof formatCount === 'string'" >{{formatCount}}</span>
   </div>
 </template>
 
@@ -14,7 +14,11 @@ export default {
   },
   computed: {
     formatCount() {
-      return this.count
+      if (this.count < 100) {
+        return this.count
+      } else {
+        return '99+'
+      }
     }
   }
 }

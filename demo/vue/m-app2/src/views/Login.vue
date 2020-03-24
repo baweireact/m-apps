@@ -32,6 +32,7 @@ export default {
     handleLogin() {
       Api.login({ username: this.username, password: this.password }).then(res => {
         if (res.code === 200) {
+          localStorage.setItem('token', res.data.username)
           this.$router.push('/index/home')
         } else {
           this.$message({ message: res.message, duration: 1000 })

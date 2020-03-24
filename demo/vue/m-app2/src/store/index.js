@@ -24,6 +24,13 @@ export default new Vuex.Store({
           commit({ type: 'setState', key: 'list', value: res.data })
         }
       })
+    },
+    getMyBooks({ commit }) {
+      Api.myBooks(null, 'get').then(res => {
+        if(res.code === 200) {
+          commit({ type: 'setState', key: 'myBooks', value: res.data })
+        }
+      })
     }
   },
   modules: {

@@ -4,7 +4,7 @@
       <Icon name="shouye" class="m-footer-icon"></Icon>
       <div class="m-footer-text">首页</div>
     </router-link>
-    <router-link to="/index/my_book" class="m-footer-item">
+    <router-link to="/index/my_books" class="m-footer-item">
       <Badge :count="count">
         <Icon name="shubao" class="m-footer-icon"></Icon>
       </Badge>
@@ -37,11 +37,7 @@ export default {
     Icon
   },
   mounted() {
-    Api.myBooks(null, 'get').then(res => {
-      if(res.code === 200) {
-        this.$store.commit({ type: 'setState', key: 'myBooks', value: res.data })
-      }
-    })
+    this.$store.dispatch({ type: 'getMyBooks' })
   }
 }
 </script>
