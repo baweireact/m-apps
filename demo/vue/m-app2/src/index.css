@@ -33,16 +33,18 @@
 .m-input{width: 40px;text-align: center;}
 .m-badge-wrap{display: inline-block;position: relative;}
 .m-badge{display: inline-block; position: absolute;top: 0;right: 10px;padding: 0 5px; min-width: 20px;height: 20px;line-height: 20px; font-size: 12px; border-radius: 10px;text-align: center;background: red;color: #fff;transform: translateY(-50%) translateX(100%)}
-.m-my-books{padding: 5px 0 0;overflow-x: hidden;}
+.m-my-books{display: flex;flex-direction: column; padding: 5px 0 0;}
+.m-my-books-content{flex: 1;overflow-y: auto;overflow-x: hidden;}
 .m-my-books-item{display: flex;position: relative; margin: 0 0 5px 0}
-.m-my-books-item.delete{animation: Move 0.5s ease-in-out forwards;}
+.m-my-books-item.show-operation{animation: OperationMoveIn 0.5s ease-in-out forwards;}
+.m-my-books-item.hide-operation{animation: OperationMoveOut 0.5s ease-in-out forwards;}
 .m-my-books-checkbox-wrap{display: flex; padding: 0 5px;}
 .m-my-books-checkbox{margin: auto;}
 .m-my-books-img-wrap{width: 75px;height: 100px;background: #ddd;}
 .m-my-books-img{width: 75px;height: 100px;}
 .m-my-books-info{flex:1; margin: 0 0 0 5px;border-bottom: 1px solid #ddd;}
 .m-my-books-delete{position: absolute; top: 0; right: -60px;; width: 60px; line-height: 100px;text-align: center;background: red;color: #fff;}
-
+.m-my-books-footer{padding: 0 0 0 5px; height: 40px;line-height: 40px; background: #eee;}
 
 @keyframes FadeIn {
   0% { transform: scale(0.8); }
@@ -54,9 +56,14 @@
   100% { transform: scale(0.8); }
 }
 
-@keyframes Move {
+@keyframes OperationMoveIn {
   0% { transform: translateX(0); }
   100% { transform: translateX(-60px) ;}
+}
+
+@keyframes OperationMoveOut {
+  0% { transform: translateX(-60px); }
+  100% { transform: translateX(0) ;}
 }
 
 

@@ -79,7 +79,13 @@ app.post('/api/my_books', (req, res) => {
 
 //删
 app.delete('/api/my_books', (req, res) => {
-
+  let { ids } = req.body
+  myBooks = myBooks.filter(item => !ids.includes(item.id))
+  res.send({
+    code: 200,
+    data: myBooks,
+    message: '删除成功'
+  })
 })
 
 //查
