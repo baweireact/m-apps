@@ -14,7 +14,6 @@
 <script>
 import axios from 'axios'
 import Icon from '../components/Icon'
-import Dialog from '../components/Dialog'
 import Api from '../api'
 
 export default {

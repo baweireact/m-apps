@@ -1,7 +1,5 @@
 <template>
-  <span :class="[ `icon iconfont icon-${name}` ]" @click="handleClick">
-
-  </span>
+  <span :class="[ `icon iconfont icon-${name}` ]" @click="handleClick"></span>
 </template>
 
 <script>
@@ -16,7 +14,3 @@ export default {
  }
 }
 </script>
-
-<style>
-
-</style>
