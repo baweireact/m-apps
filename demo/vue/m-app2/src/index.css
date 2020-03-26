@@ -2,7 +2,7 @@
 .m-wrap{display: flex;flex-direction: column;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
 .m-header{height: 40px;line-height: 40px;background: red;color: #fff;text-align: center;}
 .m-main{flex: 1;overflow-y: auto;}
-.m-footer{display: flex; height: 40px;border-top: 1px solid #ddd;text-align: center;}
+.m-footer{display: flex; height: 40px;box-shadow: 0 -5px 5px rgba(0,0,0,0.1);border-top: 1px solid #ddd; text-align: center;}
 .m-footer-item{flex:1;padding: 2px 0 0;text-decoration: none;color: #333;}
 .m-footer-item.router-link-active{color: red;}
 .m-footer-icon{font-size: 20px;}
@@ -29,12 +29,12 @@
 .m-dialog-footer{height: 40px;line-height: 40px; text-align: right; border-top: 1px solid #ddd;}
 .m-btn{margin: 0 5px;}
 .m-add-wrap{display: flex; height: 100px;}
-.m-add-info{display: flex; margin: auto;}
+.m-add-info{display: flex; margin: auto;align-items: center;}
 .m-input{width: 40px;text-align: center;}
 .m-badge-wrap{display: inline-block;position: relative;}
 .m-badge{display: inline-block; position: absolute;top: 0;right: 10px;padding: 0 5px; min-width: 20px;height: 20px;line-height: 20px; font-size: 12px; border-radius: 10px;text-align: center;background: red;color: #fff;transform: translateY(-50%) translateX(100%)}
-.m-my-books{display: flex;flex-direction: column; padding: 5px 0 0;}
-.m-my-books-content{flex: 1;overflow-y: auto;overflow-x: hidden;}
+.m-my-books{display: flex;flex-direction: column; height: 100%;}
+.m-my-books-content{flex: 1;padding: 5px 0 0;overflow-y: auto;overflow-x: hidden;}
 .m-my-books-item{display: flex;position: relative; margin: 0 0 5px 0}
 .m-my-books-item.show-operation{animation: OperationMoveIn 0.5s ease-in-out forwards;}
 .m-my-books-item.hide-operation{animation: OperationMoveOut 0.5s ease-in-out forwards;}
@@ -44,7 +44,8 @@
 .m-my-books-img{width: 75px;height: 100px;}
 .m-my-books-info{flex:1; margin: 0 0 0 5px;border-bottom: 1px solid #ddd;}
 .m-my-books-delete{position: absolute; top: 0; right: -60px;; width: 60px; line-height: 100px;text-align: center;background: red;color: #fff;}
-.m-my-books-footer{padding: 0 0 0 5px; height: 40px;line-height: 40px; background: #eee;}
+.m-my-books-footer{padding: 0 0 0 5px; height: 40px;line-height: 40px; background: #fff;border-top: 1px solid #ddd;}
+.m-my-books-empty{line-height: 100px; color: #333;text-align: center;}
 
 @keyframes FadeIn {
   0% { transform: scale(0.8); }

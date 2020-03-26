@@ -37,7 +37,7 @@ export default {
     Icon
   },
   mounted() {
-    this.$store.dispatch({ type: 'getMyBooks' })
+    this.$store.dispatch({ type: 'myBooks', data: null, method: 'get' })
   }
 }
 </script>

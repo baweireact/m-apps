@@ -25,10 +25,11 @@ export default new Vuex.Store({
         }
       })
     },
-    getMyBooks({ commit }) {
-      Api.myBooks(null, 'get').then(res => {
+    myBooks({ commit }, payload) {
+      Api.myBooks(payload.data, payload.method).then(res => {
         if(res.code === 200) {
           commit({ type: 'setState', key: 'myBooks', value: res.data })
+          payload.callback && payload.callback()
         }
       })
     }

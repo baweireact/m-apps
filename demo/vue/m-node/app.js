@@ -110,12 +110,15 @@ app.patch('/api/my_books', (req, res) => {
         myBooks[index].count--
       }
       break;
-    case 'replace':
+    case 'inputCount':
       myBooks[index].count = count
       break;
     case 'checked':
       myBooks[index].checked = checked
       break;
+    case 'checkedAll':
+      myBooks.forEach(item => item.checked = checked)
+      break
     default:
       break;
   }
