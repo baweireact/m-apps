@@ -46,6 +46,7 @@
 .m-my-books-delete{position: absolute; top: 0; right: -60px;; width: 60px; line-height: 100px;text-align: center;background: red;color: #fff;}
 .m-my-books-footer{padding: 0 0 0 5px; height: 40px;line-height: 40px; background: #fff;border-top: 1px solid #ddd;}
 .m-my-books-empty{line-height: 100px; color: #333;text-align: center;}
+.m-my-books-delete-dialog-info{height: 100px;line-height: 100px;text-align: center;}
 
 @keyframes FadeIn {
   0% { transform: scale(0.8); }
