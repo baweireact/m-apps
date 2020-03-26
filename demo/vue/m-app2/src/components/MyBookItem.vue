@@ -12,7 +12,7 @@
     <div class="m-my-books-img-wrap">
       <img :src="book.avatar" class="m-my-books-img">
     </div>
-    <div class="m-my-books-info" >
+    <div class="m-my-books-info">
       <div>{{book.title}}</div>
       <div>￥{{book.price}}</div>
       <div class="m-add-info">
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-let touchStart, touchEnd
+let touchStart, touchEnd, timer1, timer2
 
 export default {
   props: {
@@ -67,27 +67,31 @@ export default {
     },   
     handleTouchStart(e, index) {
       touchStart = e.changedTouches[0].pageX
-      this.$emit('onOperation', { })
+      this.$emit('onOperation', { currentIndex: '' })
     },
     handleTouchMove(e) {
-      //console.log('move', e)
       let currentPageX = e.changedTouches[0].pageX
       let moved = currentPageX - touchStart
-      if (moved < 0 && Math.abs(moved) < 60) {
+      if (moved >= -60 && moved < 0 && Math.abs(moved) > 1) {
         this.moved = moved
-      } else if (moved > 0 && this.moved < 0) {
+      } else if (moved > 0 && moved <= 60 && Math.abs(moved) > 1) {
         this.moved = -60 + moved
       }
-      console.log(this.moved)
     },
     handleTouchEnd(e, index) {
-      console.log('end', e)
-      console.log(e.changedTouches[0].pageX)
       touchEnd = e.changedTouches[0].pageX
       if (touchStart - touchEnd > 0) {
         this.$emit('onOperation', { currentIndex: index, isShowOperation: true })
+        clearTimeout(timer1)
+        timer1 = setTimeout(() => {
+          this.moved = -60
+        }, 500)
       } else if (touchStart - touchEnd < 0 ){
         this.$emit('onOperation', { currentIndex: index, isShowOperation: false })
+        clearTimeout(timer2)
+        timer2 = setTimeout(() => {
+          this.moved = 0
+        }, 500)
       }
     },
     handleDelete(id) {

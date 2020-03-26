@@ -58,12 +58,11 @@
 }
 
 @keyframes OperationMoveIn {
-  0% { transform: translateX(0); }
+
   100% { transform: translateX(-60px) ;}
 }
 
 @keyframes OperationMoveOut {
-  0% { transform: translateX(-60px); }
   100% { transform: translateX(0) ;}
 }
 
