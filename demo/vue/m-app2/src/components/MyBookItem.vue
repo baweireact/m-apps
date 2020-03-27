@@ -1,11 +1,11 @@
 <template>
   <div 
     class="m-my-books-item"
-    :class="[ index === operation.currentIndex && (operation.isShowOperation ? 'show-operation' : 'hide-operation') ]" 
+    :class="[ !operation.isRemoveClass && (operation.isShowOperation ? 'show-operation' : 'hide-operation') ]" 
     :style="{ transform: `translateX(${moved}px)` }"
-    @touchstart="handleTouchStart($event, index)"
+    @touchstart="handleTouchStart"
     @touchmove="handleTouchMove"
-    @touchend="handleTouchEnd($event, index)" >
+    @touchend="handleTouchEnd" >
     <div class="m-my-books-checkbox-wrap" >
       <input type="checkbox" :checked="book.checked" @click="handleChecked(book.id, $event)" class="m-my-books-checkbox" >
     </div>
@@ -34,17 +34,12 @@ export default {
   props: {
     book: {
       type: Object
-    },
-    index: {
-      type: Number
-    },
-    operation: {
-      type: Object
     }
   },
   data() {
     return {
-      moved: 0
+      moved: 0,
+      operation: {}
     }
   },
   methods: {
@@ -65,29 +60,29 @@ export default {
     handleChecked(id, e) {
       this.$store.dispatch({ type: 'myBooks', data: { id, operation: 'checked', checked: e.target.checked }, method: 'patch' })
     },   
-    handleTouchStart(e, index) {
-      touchStart = e.changedTouches[0].pageX
-      this.$emit('onOperation', { currentIndex: '' })
+    handleTouchStart(e) {
+      touchStart = e.changedTouches[0]
+      this.operation = { isRemoveClass: true }
     },
     handleTouchMove(e) {
-      let currentPageX = e.changedTouches[0].pageX
-      let moved = currentPageX - touchStart
-      if (moved >= -60 && moved < 0 && Math.abs(moved) > 1) {
+      let current = e.changedTouches[0]
+      let moved = current.pageX - touchStart.pageX
+      if (moved >= -60 && moved < 0 && Math.abs(moved) > 1 && this.moved !== -60) {
         this.moved = moved
-      } else if (moved > 0 && moved <= 60 && Math.abs(moved) > 1) {
+      } else if (moved > 0 && moved <= 60 && Math.abs(moved) > 1 && this.moved !== 0) {
         this.moved = -60 + moved
       }
     },
-    handleTouchEnd(e, index) {
-      touchEnd = e.changedTouches[0].pageX
-      if (touchStart - touchEnd > 0) {
-        this.$emit('onOperation', { currentIndex: index, isShowOperation: true })
+    handleTouchEnd(e) {
+      touchEnd = e.changedTouches[0]
+      if (touchStart.pageX - touchEnd.pageX > 0) {
+        this.operation = { isRemoveClass: false, isShowOperation: true }
         clearTimeout(timer1)
         timer1 = setTimeout(() => {
           this.moved = -60
         }, 500)
-      } else if (touchStart - touchEnd < 0 ){
-        this.$emit('onOperation', { currentIndex: index, isShowOperation: false })
+      } else if (touchStart.pageX - touchEnd.pageX < -0 ) {
+        this.operation = { isRemoveClass: false, isShowOperation: false }
         clearTimeout(timer2)
         timer2 = setTimeout(() => {
           this.moved = 0
@@ -95,9 +90,7 @@ export default {
       }
     },
     handleDelete(id) {
-      this.$store.dispatch({ type: 'myBooks', data: { ids: [id] }, method: 'delete', callback: () => {
-        this.operation = {}
-      }})
+      this.$store.dispatch({ type: 'myBooks', data: { ids: [id] }, method: 'delete' })
     }
   }
 }

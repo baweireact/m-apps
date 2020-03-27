@@ -3,12 +3,9 @@
     <div class="m-my-books" v-if="myBooks.length > 0">
       <div class="m-my-books-content">
         <MyBookItem
-          v-for="(book, index) in myBooks" 
+          v-for="book in myBooks" 
           :key="book.id" 
-          :book="book"
-          :index="index"
-          :operation="operation"
-          @onOperation="handleOperation">
+          :book="book">
         </MyBookItem>
       </div>
       <div class="m-my-books-footer">
@@ -25,7 +22,7 @@
     <div v-else class="m-my-books-empty">
       购物车空空如也~
     </div>
-    <Dialog title="删除" :visible="visible">
+    <Dialog title="删除" :visible="visible" @onCancel="handleCancel" @onOk="handleDeleteChecked">
       <template v-slot:content>
         <div class="m-my-books-delete-dialog-info">
           您确定要删除选中的商品吗？
@@ -43,7 +40,6 @@ import Api from '../api'
 export default {
   data() {
     return {
-      operation: {},
       visible: false
     }
   },
@@ -73,17 +69,19 @@ export default {
     handleShowDialog() {
       let myBooks = this.myBooks
       if (myBooks.filter(item => item.checked).length === 0) {
-        this.$message({ message: '请选择要删除的商品', duration: 2000 })
+        this.$message({ message: '请选择要删除的商品哦~', duration: 2000 })
       } else {
         this.visible = true
       }
     },
     handleDeleteChecked() {
       let ids = this.myBooks.filter(item => item.checked).map(item => item.id)
-      this.$store.dispatch({ type: 'myBooks', data: { ids }, method: 'delete' })
+      this.$store.dispatch({ type: 'myBooks', data: { ids }, method: 'delete', callback: () => {
+        this.handleCancel()
+      }})
     },
-    handleOperation(operation) {
-      this.operation = operation
+    handleCancel() {
+      this.visible = false
     }
   }
 }
