@@ -26,7 +26,8 @@ const common = async (config) => {
 const Api = {
   login: (data) => common({ url: urls.login, data, method: 'post' }),
   list: () => common({ url: urls.list }),
-  myBooks: (data, method) => common({ url: urls.myBooks, data, method })
+  myBooks: (data, method) => common({ url: urls.myBooks, data, method }),
+  detail: (id) => common({ url: urls.detail + id })
 }
 
 export default Api

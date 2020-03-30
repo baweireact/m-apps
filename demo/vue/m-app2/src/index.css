@@ -1,3 +1,4 @@
+body{margin: 0;}
 .m-login-icon{display: inline-block;margin: 3px 0 0 -20px; vertical-align: top;cursor: pointer;}
 .m-wrap{display: flex;flex-direction: column;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
 .m-header{height: 40px;line-height: 40px;background: red;color: #fff;text-align: center;}
@@ -47,14 +48,18 @@
 .m-my-books-footer{padding: 0 0 0 5px; height: 40px;line-height: 40px; background: #fff;border-top: 1px solid #ddd;}
 .m-my-books-empty{line-height: 100px; color: #333;text-align: center;}
 .m-my-books-delete-dialog-info{height: 100px;line-height: 100px;text-align: center;}
+.m-detail-header{display: flex; height: 40px;line-height: 40px;background: red;}
+.m-detail-header-icon{width: 40px;text-align: center;color: #fff;font-size: 18px;}
+.m-detail-header-title{flex: 1;text-align: center;color: #fff;}
+.m-detail-img-wrap{text-align: center;border-bottom: 1px solid #ddd;height: 300px;}
 
 @keyframes FadeIn {
-  0% { transform: scale(0.8); }
+  0% { transform: scale(0.8);}
   100% { transform: scale(1); }
 }
 
 @keyframes FadeOut {
-  0% { transform: scale(1); }
+  0% { transform: scale(1);}
   100% { transform: scale(0.8); }
 }
 

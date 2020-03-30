@@ -4,7 +4,7 @@
       <div class="m-category-title">{{categroy.title}}</div>
       <div v-for="book in categroy.list" :key="book.id" class="m-list-item">
         <div class="m-list-img-wrap">
-          <img :src="book.avatar" class="m-list-img" >
+          <img :src="book.avatar" class="m-list-img" @click="handleDetail(book.id)" >
         </div>
         <div class="m-info">
           {{book.title}}
@@ -101,6 +101,9 @@ export default {
     handleInput(e) {
       this.book.count = e.target.value.replace(/[^\d]/g, '') - 0
       this.book = { ...this.book }
+    },
+    handleDetail(id) {
+      this.$router.push('/detail/' + id)
     }
   },
   updated() {

@@ -129,6 +129,26 @@ app.patch('/api/my_books', (req, res) => {
   })
 })
 
+//详情
+app.get('/api/detail/:id', (req, res) => {
+  let { id } = req.params
+  let detail = {}
+  outer:
+  for (let i = 0; i < bookMallDetailData.length; i++) {
+    for (let j = 0; j < bookMallDetailData[i].list.length; j++) {
+      if (bookMallDetailData[i].list[j].id == id) {
+        detail = bookMallDetailData[i].list[j]
+        break outer
+      }
+    }
+  }
+  res.send({
+    code: 200,
+    data: detail,
+    message: '详情'
+  })
+})
+
 app.listen(81, () => {
   console.log(81)
 })

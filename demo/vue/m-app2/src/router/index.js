@@ -39,6 +39,10 @@ const routes = [
         title: '个人中心'
       }
     }]
+  },
+  {
+    path: '/detail/:id',
+    component: () => import('../views/Detail')
   }
 ]
 
