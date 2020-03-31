@@ -52,6 +52,7 @@ body{margin: 0;}
 .m-detail-header-icon{width: 40px;text-align: center;color: #fff;font-size: 18px;}
 .m-detail-header-title{flex: 1;text-align: center;color: #fff;}
 .m-detail-img-wrap{text-align: center;border-bottom: 1px solid #ddd;height: 300px;}
+.m-detail-add-info{display: flex;align-items: center; padding: 5px;}
 
 @keyframes FadeIn {
   0% { transform: scale(0.8);}

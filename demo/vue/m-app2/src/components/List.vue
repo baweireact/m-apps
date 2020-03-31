@@ -99,7 +99,11 @@ export default {
       }
     },
     handleInput(e) {
-      this.book.count = e.target.value.replace(/[^\d]/g, '') - 0
+      let count = e.target.value.replace(/[^\d]/g, '') - 0
+      if (count === 0) {
+        count = 1
+      }
+      this.book.count = count
       this.book = { ...this.book }
     },
     handleDetail(id) {
