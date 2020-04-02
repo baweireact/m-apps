@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 const Icon = (props) => {
   let { name, className } = props
@@ -6,6 +7,10 @@ const Icon = (props) => {
   return (
     <span className={`icon iconfont icon-${name} ${className}`} onClick={props.onClick} ></span>
   )
+}
+
+Icon.propTypes = {
+  name: PropTypes.number
 }
 
 export default Icon

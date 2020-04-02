@@ -1,13 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom'
+import './font/iconfont.css'
 import './index.css';
-import App from './App';
+import Router from './router/Router'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <BrowserRouter>
+    <Router></Router>
+  </BrowserRouter>,
   document.getElementById('root')
 );
 

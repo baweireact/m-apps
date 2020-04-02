@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;cursor: pointer;}
+
+
+

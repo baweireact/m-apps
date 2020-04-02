@@ -56,7 +56,15 @@ const List = (props) => {
   return (
     <div className="m-list" onScroll={(e) => handleScroll(e)}>
       {listDom}
-      <Dialog visible={visible} title="添加" onCancel={() => handleCancel()} ></Dialog>
+      <Dialog visible={visible} title="添加" onCancel={() => handleCancel()} >
+        <div className="m-add-info-wrap">
+          <div className="m-add-info">
+            <button className="m-btn">-</button>
+            <input value="" placeholder="数量" className="m-input" ></input>
+            <button className="m-btn">+</button>
+          </div>
+        </div>
+      </Dialog>
     </div>
   )
 }
