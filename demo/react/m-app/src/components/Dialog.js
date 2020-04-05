@@ -15,7 +15,7 @@ const Dialog = (props) => {
         </div>
         <div className="m-dialog-footer">
           <button className="m-btn" onClick={props.onCancel}>取消</button>
-          <button className="m-btn">确定</button>
+          <button className="m-btn" onClick={props.onOk}>确定</button>
         </div>
       </div>
     </div>

@@ -13,6 +13,19 @@ code {
 }
 
 .m-login-icon{display: inline-block; margin: 4px 0 0 -20px;vertical-align: top;cursor: pointer;}
+.m-wrap{display: flex;flex-direction: column;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.m-header{height: 40px;line-height: 40px;background: red;color: #fff;text-align: center;}
+.m-main{flex:1;overflow-y: auto;}
+.m-footer{display: flex; height: 40px;border-top: 1px solid #ddd;}
+.m-footer-item{flex:1; text-align: center;}
+.m-home{display: flex;}
+.m-sidebar{width: 80px;border-right: 1px solid #ddd;}
+.m-list{flex: 1;overflow-y: auto;}
+.m-sidebar-item{line-height: 40px;border-bottom: 1px solid #ddd;text-align: center;}
+.m-sidebar-item.active{background:lightblue;}
+.m-list-item{display: flex;}
+.m-img-wrap{width: 112px;height: 150px;background: #ddd;}
+.m-category-title{position: sticky;top: 0; line-height: 40px;background: #ddd;}
 
 
 

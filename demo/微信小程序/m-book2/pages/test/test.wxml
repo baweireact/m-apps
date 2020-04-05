@@ -1,0 +1,6 @@
+<!--pages/test/test.wxml-->
+<view>
+  <text>{{count}}</text>
+</view>
+<button size="mini" bindtap="handleSub">减</button>
+<button size="mini" bindtap="handleAdd">加</button>

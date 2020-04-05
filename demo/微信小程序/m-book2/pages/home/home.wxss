@@ -1,0 +1,7 @@
+/* pages/home/home.wxss */
+.m-img{width: 100%;}
+.m-sidebar{width: 160rpx;height: 100%; border-right: 1px solid #ddd;}
+.m-list-wrap{flex: 1;}
+.m-info{display: flex;height: 100vh;}
+
+

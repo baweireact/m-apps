@@ -1,0 +1,6 @@
+/* components/sidebar/sidebar.wxss */
+
+.m-sidebar-item{line-height: 80rpx;text-align: center;border-bottom: 1rpx solid #ddd;}
+.m-sidebar-item.active{background: lightblue;}
+
+

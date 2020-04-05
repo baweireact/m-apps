@@ -8,6 +8,16 @@ const getList = () => (dispatch) => {
   })
 }
 
+const myBooks = (data, method, callback) => (dispatch) => {
+  Api.myBooks(data, method).then(res => {
+    if (res.code === 200) {
+      dispatch({ type: 'SET_STATE', key: ['myBooks'], value: res.data })
+      callback && callback()
+    }
+  })
+}
+
 export default {
-  getList
+  getList,
+  myBooks
 }

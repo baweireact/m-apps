@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "sidebar": "/components/sidebar/sidebar",
+    "list": "/components/list/list"
+  }
+}

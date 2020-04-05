@@ -1,0 +1,12 @@
+<!--pages/home/home.wxml-->
+<view class="m-wrap">
+  <swiper autoplay="{{true}}" circular="{{true}}" duration="{{500}}" interval="{{3000}}" indicator-dots="{{true}}" style="height:{{swiperHeight}}px">
+    <swiper-item wx:for="{{swiperList}}" wx:key="id">
+      <image src="{{item.imgUrl}}" mode="widthFix" class="m-img" bindload="handleImgLoad" ></image>
+    </swiper-item>
+  </swiper>
+  <view class="m-info js-test">
+    <sidebar list="{{list}}" currentIdForSelected="{{currentIdForSelected}}" bind:onSidebar="handleSidebar" class="m-sidebar"></sidebar>
+    <list list="{{list}}" currentIdForScroll="{{currentIdForScroll}}" bind:onList="handleList" class="m-list-wrap"></list>
+  </view>
+</view>

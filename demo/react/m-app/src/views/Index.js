@@ -20,7 +20,7 @@ const Index = (props) => {
   return (
     <div className="m-wrap">
       <Header></Header>
-      <Suspense fallback={<div>1</div>}>
+      <Suspense fallback={<div className="m-main">loading</div>}>
         <Switch>
           <Route path="/index/home" render={() => renderComponent(<Home></Home>, '小米书城')}></Route>
           <Route path="/index/my_books" render={() => renderComponent(<MyBooks></MyBooks>, '我的书包')}></Route>

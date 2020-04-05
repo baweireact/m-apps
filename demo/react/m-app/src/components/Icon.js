@@ -10,7 +10,7 @@ const Icon = (props) => {
 }
 
 Icon.propTypes = {
-  name: PropTypes.number
+  name: PropTypes.string
 }
 
 export default Icon
