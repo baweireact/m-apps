@@ -1,0 +1,10 @@
+<!--pages/detail/detail.wxml-->
+<view class="m-img-wrap">
+  <image src="{{detail.avatar}}" mode="widthFix" class="m-img"></image>
+</view>
+<view class="m-count-info">
+    <button size="mini" class="m-btn" bindtap="handleSub">减</button>
+    <input type="number" placeholder="数量" class="m-input" value="{{detail.count}}" bindinput="handleInput"></input>
+    <button size="mini" class="m-btn" bindtap="handleAdd">加</button>
+    <button size="mini" class="m-btn" bindtap="handleAddToMyBooks">添加</button>
+</view>

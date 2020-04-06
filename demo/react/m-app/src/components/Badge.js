@@ -1,10 +1,15 @@
 import React from 'react'
 
-const Badge = () => {
+const Badge = (props) => {
+  let { count, children } = props
+  if (count > 99) {
+    count = '99+'
+  }
   return (
-    <div>
-      
-    </div>
+    <span className="m-badge-wrap">
+      { (typeof count === 'string' || count > 0) && <span className="m-badge">{count}</span>}
+      {children}
+    </span>
   )
 }
 

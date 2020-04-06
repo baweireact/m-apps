@@ -3,12 +3,22 @@
   <view wx:for="{{list}}" wx:key="id" wx:for-item="category" id="id_{{category.id}}" class="js-category">
     <view class="m-category-title">{{category.title}}</view>
     <view wx:for="{{category.list}}" wx:key="id" class="m-list-item">
-      <image src="{{item.avatar}}" mode="widthFix" class="m-list-img" lazy-load="{{true}}" bindload="handleImgLoad" ></image>
+      <image src="{{item.avatar}}" mode="widthFix" class="m-list-img" lazy-load="{{true}}" bindload="handleImgLoad" bindtap="handleDetail" mark:id="{{item.id}}"></image>
       <view class="m-list-info">
         <view>{{item.title}}</view>
+        <button size="mini" class="m-btn" bindtap="handleShowDialog" mark:book="{{item}}">添加</button>
       </view>
     </view>
   </view>
 </scroll-view>
-
+<dialog visible="{{visible}}" title="添加" bind:onCancel="handleCancel" bind:onOk="handleOk">
+  <view slot="a" class="m-count-info-wrap">
+    <view class="m-count-info">
+        <button size="mini" class="m-btn" bindtap="handleSub">减</button>
+        <input type="number" placeholder="数量" class="m-input" value="{{book.count}}" bindinput="handleInput"></input>
+        <button size="mini" class="m-btn" bindtap="handleAdd">加</button>
+    </view>
+  </view>
+  <view slot="b">2</view>
+</dialog>
 

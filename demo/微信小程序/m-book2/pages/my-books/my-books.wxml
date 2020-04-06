@@ -1,2 +1,8 @@
 <!--pages/my-books/my-books.wxml-->
-<text>书包</text>
+<view wx:for="{{myBooks}}" wx:key="id">
+  <view>{{item.title}},{{item.count}}个,￥{{item.price}}</view>
+</view>
+<view>
+总价:￥{{totalPrice}}
+</view>
+

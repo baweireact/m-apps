@@ -5,7 +5,7 @@
       <image src="{{item.imgUrl}}" mode="widthFix" class="m-img" bindload="handleImgLoad" ></image>
     </swiper-item>
   </swiper>
-  <view class="m-info js-test">
+  <view class="m-info">
     <sidebar list="{{list}}" currentIdForSelected="{{currentIdForSelected}}" bind:onSidebar="handleSidebar" class="m-sidebar"></sidebar>
     <list list="{{list}}" currentIdForScroll="{{currentIdForScroll}}" bind:onList="handleList" class="m-list-wrap"></list>
   </view>

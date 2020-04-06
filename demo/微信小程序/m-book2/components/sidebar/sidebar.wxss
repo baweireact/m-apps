@@ -2,5 +2,6 @@
 
 .m-sidebar-item{line-height: 80rpx;text-align: center;border-bottom: 1rpx solid #ddd;}
 .m-sidebar-item.active{background: lightblue;}
+.m-sidebar-item:first-child{border-top: 1rpx solid #ddd;}
 
 

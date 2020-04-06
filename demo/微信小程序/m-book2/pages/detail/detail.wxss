@@ -1,0 +1,6 @@
+/* pages/detail/detail.wxss */
+.m-img-wrap{height: 600rpx; text-align: center;border-bottom: 1rpx solid #ddd;}
+.m-img{width: 450rpx;height: 600rpx;}
+.m-count-info{padding: 10rpx 0; display: flex;align-items: center;}
+.m-input{display: inline-block; width: 160rpx;height: 70rpx; border:1rpx solid #ddd;text-align: center;color: red; }
+

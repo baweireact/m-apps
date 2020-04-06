@@ -46,6 +46,12 @@ code {
 .m-add-info-wrap{display: flex; height: 100px;}
 .m-add-info{margin: auto;}
 .m-input{width: 40px;text-align: center;}
+.m-detail-img-wrap{height: 300px; text-align: center;border-bottom: 1px solid #ddd;}
+.m-badge-wrap{position: relative;}
+.m-badge{position: absolute;top:0;right: 10px;transform: translateY(-50%) translateX(100%); display: inline-block;padding: 0 5px;min-width: 15px; height: 20px; line-height: 20px;font-size: 12px; text-align: center;background: red;color: #fff;border-radius: 10px;}
+
+
+
 
 
 @keyframes loading {

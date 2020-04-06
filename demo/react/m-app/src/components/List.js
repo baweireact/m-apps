@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import LazyLoad from 'react-lazy-load'
+import { withRouter } from 'react-router-dom'
 import Stars from './Stars'
 import Dialog from './Dialog'
 import actionCreator from '../store/actionCreator'
@@ -58,6 +59,10 @@ const List = (props) => {
     props.onDispatch(actionCreator.myBooks({book}, 'post', handleCancel))
   }
 
+  const handleDetail = (id) => {
+    props.history.push(`/detail/${id}`)
+  } 
+
   useEffect(() => {
     topArr = Array.from(document.getElementsByClassName('js-category')).map(item => item.offsetTop)
     topArr.push(Infinity)
@@ -71,7 +76,7 @@ const List = (props) => {
         category.list.map(book => (
           <div key={book.id} className="m-list-item">
             <LazyLoad className="m-list-img-wrap">
-              <img src={book.avatar} className="m-list-img"></img>
+              <img src={book.avatar} className="m-list-img" onClick={() => handleDetail(book.id)}></img>
             </LazyLoad>
             <div className="m-list-info">
               {book.title}
@@ -117,4 +122,4 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(List)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(List))

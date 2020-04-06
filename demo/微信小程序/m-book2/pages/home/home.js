@@ -1,10 +1,14 @@
 // pages/home/home.js
+let common = require('../../utils/common')
+let { host } = getApp().globalData
+console.log(host)
 let isImgLoad = false
 
 Component({
   /**
    * 组件的属性列表
    */
+  behaviors: [common],
   properties: {
 
   },
@@ -68,7 +72,7 @@ Component({
   pageLifetimes: {
     show() {
       wx.request({
-        url: "http://localhost:3000/api/list",
+        url: `${host}/api/list`,
         success: (res) => {
           if (res.data.code === 200) {
             this.setData({
@@ -76,6 +80,19 @@ Component({
             })
           }
         }
+      })
+
+      wx.request({
+        url: `${host}/api/my_books`,
+        success: (res) => {
+          if (res.data.code === 200) {
+            this.handleBadge(res.data.data)
+          }
+        }
+      })
+
+      wx.setNavigationBarTitle({
+        title: '小米书城',
       })
     }
   }

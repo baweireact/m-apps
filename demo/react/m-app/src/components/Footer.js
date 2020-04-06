@@ -1,8 +1,21 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
+import { connect } from 'react-redux'
 import Icon from './Icon'
+import Badge from './Badge'
+import actionCreator from '../store/actionCreator'
 
-const Footer = () => {
+const Footer = (props) => {
+  let { myBooks } = props
+  let count = myBooks.reduce((total, item) => {
+    return total + item.count
+  }, 0)
+
+
+  useEffect(() => {
+    props.onDispatch(actionCreator.myBooks(null, 'get'))
+  }, [])
+
   return (
     <div className="m-footer">
       <NavLink to="/index/home" className="m-footer-item">
@@ -10,7 +23,9 @@ const Footer = () => {
         <div className="m-footer-text">首页</div>
       </NavLink>
       <NavLink to="/index/my_books" className="m-footer-item">
-        <Icon name="shubao" className="m-footer-icon"></Icon>
+        <Badge count={count}>
+          <Icon name="shubao" className="m-footer-icon"></Icon>
+        </Badge>
         <div className="m-footer-text">书包</div>
       </NavLink>
       <NavLink to="/index/me" className="m-footer-item">
@@ -21,4 +36,21 @@ const Footer = () => {
   )
 }
 
-export default Footer
+const mapStateToProps = (state) => {
+  return {
+    myBooks: state.getIn(['myBooks']).toJS()
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSetState(key, value) {
+      dispatch({ type: 'SET_STATE', key, value })
+    },
+    onDispatch(action) {
+      dispatch(action)
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)
