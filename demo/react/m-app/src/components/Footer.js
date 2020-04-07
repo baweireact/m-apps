@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Icon from './Icon'
 import Badge from './Badge'
-import actionCreator from '../store/actionCreator'
+import actionCreator from '../store/task/actionCreator'
 
 const Footer = (props) => {
   let { myBooks } = props
@@ -38,7 +38,7 @@ const Footer = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    myBooks: state.getIn(['myBooks']).toJS()
+    myBooks: state.getIn(['task', 'myBooks']).toJS()
   }
 }
 

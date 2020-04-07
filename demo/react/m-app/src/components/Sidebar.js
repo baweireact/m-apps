@@ -31,8 +31,8 @@ const Sidebar = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.getIn(['list']).toJS(),
-    currentId: state.getIn(['currentId'])
+    list: state.getIn(['task', 'list']).toJS(),
+    currentId: state.getIn(['task', 'currentId'])
   }
 }
 

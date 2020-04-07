@@ -4,7 +4,7 @@ import LazyLoad from 'react-lazy-load'
 import { withRouter } from 'react-router-dom'
 import Stars from './Stars'
 import Dialog from './Dialog'
-import actionCreator from '../store/actionCreator'
+import actionCreator from '../store/task/actionCreator'
 
 let topArr = []
 const List = (props) => {
@@ -106,8 +106,8 @@ const List = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    list: state.getIn(['list']).toJS(),
-    isRealScroll: state.getIn(['isRealScroll'])
+    list: state.getIn(['task', 'list']).toJS(),
+    isRealScroll: state.getIn(['task', 'isRealScroll'])
   }
 }
 

@@ -1,4 +1,4 @@
-import Api from '../api'
+import Api from '../../api'
 
 const getList = () => (dispatch) => {
   Api.list().then(res => {

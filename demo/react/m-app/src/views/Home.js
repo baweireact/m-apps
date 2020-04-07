@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import Sidebar from '../components/Sidebar'
 import List from '../components/List'
-import actionCreator from '../store/actionCreator'
+import actionCreator from '../store/task/actionCreator'
 
 const Home = (props) => {
 

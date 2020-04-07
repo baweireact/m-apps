@@ -5,7 +5,8 @@ const DetailHeader = (props) => {
   let { title } = props
   return (
     <div>
-      
+      <Icon name="flow"></Icon>
+      <div>{title}</div>
     </div>
   )
 }

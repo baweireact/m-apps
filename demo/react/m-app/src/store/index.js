@@ -1,25 +1,13 @@
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { fromJS } from 'immutable'
+import { combineReducers } from 'redux-immutable'
+import task from './task/task'
 
-const defaultState = fromJS({
-  title: '小米书城',
-  currentId: 0,
-  isRealScroll: true,
-  list: [],
-  myBooks: []
+const reducers = combineReducers({
+  task
 })
 
-const reducer = (state = defaultState, action) => {
-  switch (action.type) {
-    case 'SET_STATE':
-      return state.setIn(action.key, fromJS(action.value))
-    default:
-      return state
-  }
-}
-
-const store = createStore(reducer, applyMiddleware(thunk))
+const store = createStore(reducers, applyMiddleware(thunk))
 
 store.subscribe(() => {
   let state = store.getState().toJS()

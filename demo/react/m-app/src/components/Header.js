@@ -10,7 +10,7 @@ const Header = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    title: state.getIn(['title'])
+    title: state.getIn(['task', 'title'])
   }
 }
 

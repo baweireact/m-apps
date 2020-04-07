@@ -25,7 +25,14 @@ code {
 .m-sidebar-item.active{background:lightblue;}
 .m-list-item{display: flex;}
 .m-img-wrap{width: 112px;height: 150px;background: #ddd;}
+.m-list-img{width: 112px;height: 150px;}
 .m-category-title{position: sticky;top: 0; line-height: 40px;background: #ddd;}
-
+.m-footer-item{text-decoration: none;color: #333;}
+.m-footer-item.active{color: red;}
+.m-footer-item-icon{font-size: 20px;}
+.m-footer-item-text{font-size: 12px;}
+.m-list-info{flex: 1}
+.m-star{color: #333;}
+.m-star.active{color: red;}
 
 

@@ -21,7 +21,7 @@ let userList = [
 
 let myBooks = []
 
-//app.use(history())
+app.use(history())
 app.use(express.static('public'))
 app.use(cors())
 app.use(bodyParser.json())

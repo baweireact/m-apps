@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import Stars from './Stars'
 
 const List = (props) => {
   let { list } = props
@@ -11,10 +12,12 @@ const List = (props) => {
         category.list.map(book => (
           <div key={book.id} className="m-list-item">
             <div className="m-img-wrap">
-              <img src={book.avatar}></img>
+              <img src={book.avatar} className="m-list-img"></img>
             </div>
-            <div>{book.title}</div>
-            
+            <div className="m-list-info">
+              {book.title}
+              <Stars count={book.stars}></Stars>
+            </div>
           </div>
         ))
       }

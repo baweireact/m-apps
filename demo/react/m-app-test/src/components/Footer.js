@@ -1,19 +1,23 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Icon from './Icon'
 
 const Footer = (props) => {
-
-  const handleNav = (title) => {
-    console.log(title)
-    props.onSetState(['title'], title)
-  }
-
   return (
     <div className="m-footer">
-      <NavLink to="/index/home" className="m-footer-item" onClick={() => handleNav('小米书城')}>首页</NavLink>
-      <NavLink to="/index/my_books" className="m-footer-item" onClick={() => handleNav('我的书包')} >书包</NavLink>
-      <NavLink to="/index/me" className="m-footer-item" onClick={() => handleNav('个人中心')} >我的</NavLink>
+      <NavLink to="/index/home" className="m-footer-item">
+        <Icon name="shouye" className="m-footer-item-icon"></Icon>
+        <div className="m-footer-item-text">首页</div>
+      </NavLink>
+      <NavLink to="/index/my_books" className="m-footer-item" >
+        <Icon name="shubao" className="m-footer-item-icon"></Icon>
+        <div className="m-footer-item-text">书包</div>        
+      </NavLink>
+      <NavLink to="/index/me" className="m-footer-item" >
+        <Icon name="wodedangxuan" className="m-footer-item-icon"></Icon>
+        <div className="m-footer-item-text">我的</div>          
+      </NavLink>
     </div>
   )
 }
