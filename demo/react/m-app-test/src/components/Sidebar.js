@@ -26,8 +26,8 @@ const Sidebar = (props) => {
 //相当于vuex里计算属性，取值
 const mapStateToProps = (state) => {
   return {
-    list: state.getIn(['list']).toJS(),
-    currentId: state.getIn(['currentId'])
+    list: state.getIn(['task', 'list']).toJS(),
+    currentId: state.getIn(['task', 'currentId'])
   }
 }
 

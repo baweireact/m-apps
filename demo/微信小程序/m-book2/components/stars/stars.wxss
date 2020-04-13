@@ -1,0 +1,10 @@
+/* components/stars/stars.wxss */
+.m-star-item{display: inline-block;margin: 0 5rpx; color: #ddd;}
+.m-star-item.active{color: red;}
+
+
+
+
+
+
+

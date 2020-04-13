@@ -32,7 +32,7 @@ const Index = (props) => {
 //相当于vuex里计算属性，取值
 const mapStateToProps = (state) => {
   return {
-    title: state.getIn(['title'])
+    title: state.getIn(['task', 'title'])
   }
 }
 

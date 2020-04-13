@@ -1,0 +1,11 @@
+<!--pages/home/home.wxml-->
+<swiper autoplay="{{true}}" interval="1000" circular="{{true}}" style="height:{{swiperHeight}}px;">
+  <swiper-item wx:for="{{bannerList}}" wx:key="id">
+    <image src="{{item.url}}" class="m-banner" mode="widthFix" bindload="handleLoad"></image>
+  </swiper-item>
+</swiper>
+<view class="m-info">
+  <sidebar list="{{list}}" currentId="{{currentId}}" bind:onNav="handleNav" class="m-sidebar"></sidebar>
+  <list list="{{list}}" idForScroll="{{idForScroll}}" class="m-list"></list>
+</view>
+

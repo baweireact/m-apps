@@ -1,6 +1,7 @@
 {
   "component": true,
   "usingComponents": {
-    "dialog": "/components/dialog/dialog"
+    "dialog": "/components/dialog/dialog",
+    "stars": "/components/stars/stars"
   }
 }

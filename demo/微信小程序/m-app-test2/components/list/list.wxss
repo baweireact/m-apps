@@ -1,0 +1,8 @@
+/* components/list/list.wxss */
+.m-category-title{position: sticky;top: 0;line-height: 80rpx;background: #ddd;z-index: 9;}
+.m-list-item{display: flex;padding: 0 0 10rpx 0;}
+.m-list-img{width: 225rpx;height: 300rpx;}
+.m-list-info{height: 100%;}
+.m-list-item-info{flex:1; margin: 0 0 0 10rpx;border-bottom: 1rpx solid #ddd;}
+
+

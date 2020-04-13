@@ -1,0 +1,5 @@
+/* pages/home/home.wxss */
+.m-banner{width: 100%;}
+.m-info{display: flex; height: 100vh;}
+.m-sidebar{width: 160rpx;border-right: 1rpx solid #ddd;}
+.m-list{ flex:1;}

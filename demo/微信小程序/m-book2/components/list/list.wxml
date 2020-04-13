@@ -6,6 +6,7 @@
       <image src="{{item.avatar}}" mode="widthFix" class="m-list-img" lazy-load="{{true}}" bindload="handleImgLoad" bindtap="handleDetail" mark:id="{{item.id}}"></image>
       <view class="m-list-info">
         <view>{{item.title}}</view>
+        <stars count="{{item.stars}}"></stars>
         <button size="mini" class="m-btn" bindtap="handleShowDialog" mark:book="{{item}}">添加</button>
       </view>
     </view>

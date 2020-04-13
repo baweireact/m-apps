@@ -1,0 +1,5 @@
+<!--components/stars/stars.wxml-->
+<view>
+  <text wx:for="{{5}}" class="m-star-item {{item < count ? 'active' : ''}}">★</text>
+</view>
+

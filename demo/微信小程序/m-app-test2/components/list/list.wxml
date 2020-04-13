@@ -1,0 +1,14 @@
+<!--components/list/list.wxml-->
+<scroll-view scroll-y="{{true}}" class="m-list-info" scroll-into-view="{{'id_' + idForScroll}}" scroll-with-animation="{{true}}">
+  <view wx:for="{{list}}" wx:key="id" wx:for-item="category" id="{{'id_' + category.id}}">
+    <view class="m-category-title">{{category.title}}</view>
+    <view wx:for="{{category.list}}" wx:key="id" class="m-list-item">
+      <image src="{{item.avatar}}" class="m-list-img"></image>
+      <view class="m-list-item-info">
+        {{item.title}}
+        <stars count="{{item.stars}}"></stars>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+

@@ -9,7 +9,7 @@ const redirectServedPath = require('react-dev-utils/redirectServedPathMiddleware
 const paths = require('./paths');
 const getHttpsConfig = require('./getHttpsConfig');
 const bodyParser = require('body-parser')
-const { bookMallData } = require('./data')
+const { bookMallData, bookMallDetailData } = require('./data')
 
 const host = process.env.HOST || '0.0.0.0';
 const sockHost = process.env.WDS_SOCKET_HOST;
@@ -26,6 +26,9 @@ let userList = [{
   username: 'xu',
   password: '123'
 }]
+
+//书包
+let myBooks = []
 
 module.exports = function(proxy, allowedHost) {
   return {
@@ -128,6 +131,7 @@ module.exports = function(proxy, allowedHost) {
         require(paths.proxySetup)(app);
       }
 
+      //解析post请求，https://www.npmjs.com/package/body-parser
       app.use(bodyParser.json())
 
       //多用户，验证用户名是否存在，验证密码是否正确
@@ -158,11 +162,112 @@ module.exports = function(proxy, allowedHost) {
         }
       })
 
+      //列表
       app.get('/api/list', (req, res) => {
         res.send({
           code: 200,
           data: bookMallData,
           message: '列表'
+        })
+      })
+
+      //增
+      app.post('/api/my_books', (req, res) => {
+        let { book } = req.body
+        let index = myBooks.findIndex(item => item.id === book.id)
+        if (index >= 0) {
+          myBooks[index].count += book.count
+        } else {
+          myBooks.push(book)
+        }       
+        res.send({
+          code: 200,
+          data: myBooks,
+          message: '书包'
+        }) 
+      })
+
+      //删
+      app.delete('/api/my_books', (req, res) => {
+        let { ids } = req.body
+        myBooks = myBooks.filter(item => !ids.includes(item.id))
+        res.send({
+          code: 200,
+          data: myBooks,
+          message: '删除成功'
+        })
+      })
+
+      //查
+      app.get('/api/my_books', (req, res) => {
+        res.send({
+          code: 200,
+          data: myBooks,
+          message: '书包'
+        })
+      })
+
+      //改
+      app.patch('/api/my_books', (req, res) => {
+        let { id, operation, count, checked } = req.body
+        let index = myBooks.findIndex(item => item.id === id)
+        switch (operation) {
+          case 'add':
+            myBooks[index].count++
+            break;
+          case 'sub':
+            if (myBooks[index].count > 1) {
+              myBooks[index].count--
+            }
+            break;
+          case 'inputCount':
+            myBooks[index].count = count
+            break;
+          case 'checked':
+            myBooks[index].checked = checked
+            break;
+          case 'checkedAll':
+            myBooks.forEach(item => item.checked = checked)
+            break
+          default:
+            break;
+        }
+        res.send({
+          code: 200,
+          data: myBooks,
+          message: '更新成功'
+        })
+      })
+
+      app.get('/api/detail/:id', (req, res) => {
+        let { id } = req.params
+        let detail
+        outer:
+        for (let i = 0; i < bookMallDetailData.length; i++) {
+          for (let j = 0; j < bookMallDetailData[i].list.length; j++) {
+            if (bookMallDetailData[i].list[j].id == id) {
+              detail = bookMallDetailData[i].list[j]
+              break outer
+            }
+            console.log(2)
+          }
+          console.log(1)
+        }
+        res.send({
+          code: 200,
+          data: detail,
+          message: '详情'
+        })
+      })
+
+      //测试
+      app.get('/api/test', (req, res) => {
+        res.send({
+          code: 200,
+          data: {
+            test: 1
+          },
+          message: '测试'
         })
       })
     },

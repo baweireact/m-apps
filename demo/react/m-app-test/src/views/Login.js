@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import axios from 'axios'
 import Icon from '../components/Icon'
 import { fromJS } from 'immutable'
 import Api from '../api'
@@ -40,8 +39,6 @@ export default class Login extends Component {
     Api.login({ username, password }).then(res => {
       if (res.code === 200) {
         this.props.history.push('/index/home')
-      } else {
-        alert(res.message)
       }
     })
     // axios({

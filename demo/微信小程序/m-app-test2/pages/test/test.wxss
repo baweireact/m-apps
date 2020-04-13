@@ -1,0 +1,5 @@
+/* pages/test/test.wxss */
+.m-btn{margin: 0 10rpx; background-color: lightblue;}
+.m-nav-item{color: #333;}
+.m-nav-item.active{color: red;}
+

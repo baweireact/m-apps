@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import store from './store'
-import './font/iconfont.css'
-import './index.css';
 import Router from './router/Router'
 import * as serviceWorker from './serviceWorker';
+//import 'antd/dist/antd.css'
+import './font/iconfont.css'
+import './index.css';
 
 ReactDOM.render(
   <Provider store={store}>

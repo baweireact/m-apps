@@ -1,0 +1,12 @@
+<!--pages/test/test.wxml-->
+<text>{{count}}</text>
+<view>
+  <button bindtap="handleAdd" mark:step="{{1}}" class="m-btn" size="mini" >加1</button>
+  <button bindtap="handleAdd" mark:step="{{2}}" class="m-btn" size="mini" >加2</button>
+</view>
+<view>
+  <text wx:for="{{nav}}" wx:key="id"  class="m-nav-item {{ currentId === item.id ? 'active': ''}}" bindtap="handleNav" mark:id="{{item.id}}">
+    {{item.title}}
+  </text>
+</view>
+

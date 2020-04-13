@@ -1,13 +1,18 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import actionCreator from '../store/actionCreator'
+import actionCreator from '../store/task/actionCreator'
 import Sidebar from '../components/Sidebar'
 import List from '../components/List'
+import Api from '../api'
 
 const Home = (props) => {
-
   useEffect(() => {
-    props.onDispatch(actionCreator.list())
+    Api.list().then(res => {
+      if (res.code === 200) {
+        props.onSetState(['list'], res.data)
+      }
+    })
+    //props.onDispatch(actionCreator.list())
   }, [])
 
   return (

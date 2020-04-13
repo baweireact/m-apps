@@ -1,0 +1,4 @@
+<!--components/sidebar/sidebar.wxml-->
+<view wx:for="{{list}}" wx:key="id" class="m-sidebar-item {{currentId === item.id ? 'active' : ''}}" bindtap="handleNav" mark:id="{{item.id}}">
+{{item.title}}
+</view>
