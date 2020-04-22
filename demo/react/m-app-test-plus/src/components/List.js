@@ -1,19 +1,42 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import LazyLoad from 'react-lazy-load'
+import BScroll from 'better-scroll'
+
+let scroll;
 
 const List = (props) => {
-  let { list } = props
+  let { list, currentId } = props
+
+  useEffect(() => {
+    const wrapper = document.querySelector('.wrapper')
+    scroll = new BScroll(wrapper)
+    //scroll.scrollToElement(document.getElementById('1'))
+    
+  }, [props])
+
+  const handleScroll = () => {
+    //scroll.scrollTo(0, -100)
+    
+  }
+
+  useEffect(() => {
+    if (currentId === 0) {
+      scroll.scrollTo(0, -1, 200)
+    } else {
+      scroll.scrollToElement(document.getElementById(currentId), 200)
+    }
+  }, [currentId])
 
   let listDom = list.map(category => (
-    <div key={category.id} id={category.id}>
+    <div key={category.id} id={ category.id }>
       <div className="m-category-title">{category.title}</div>
       {
         category.list.map(book => (
           <div key={book.id} className="m-list-item">
-            <LazyLoad className="m-img-wrap">
+            <div className="m-img-wrap">
               <img src={book.avatar} className="m-list-img"></img>
-            </LazyLoad>
+            </div>
             <div>{book.title}</div>
           </div>
         ))
@@ -22,9 +45,12 @@ const List = (props) => {
   ))
 
   return (
-    <div className="m-list">
-      {listDom}
-    </div>
+      <div className="m-list wrapper" id="m-list">
+        <div className="content">
+          {listDom}
+        </div> 
+      </div>
+
   )
 }
 

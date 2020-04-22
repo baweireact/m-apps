@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { Suspense, lazy } from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Switch, Route } from 'react-router-dom'
 import Home from './Home'
-import MyBooks from './MyBooks'
+//import MyBooks from './MyBooks'
 import Me from './Me'
 import { connect } from 'react-redux'
+const MyBooks = lazy(async () => {
+  return await new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(import('./MyBooks'))
+    }, 10000)
+  })
+})
+
 
 const Index = (props) => {
   const handleRender = (component, title) => {
@@ -19,11 +27,13 @@ const Index = (props) => {
   return (
     <div className="m-wrap">
       <Header></Header>
-      <Switch>
-        <Route path="/index/home" render={ () => handleRender(<Home></Home>, '小米书城') } ></Route>
-        <Route path="/index/my_books" render={ () => handleRender(<MyBooks></MyBooks>, '我的书包') }></Route>
-        <Route path="/index/me" render={ () => handleRender(<Me></Me>, '个人中心') }></Route>
-      </Switch>
+      <Suspense fallback={<div>loading</div>}>
+        <Switch>
+          <Route path="/index/home" render={ () => handleRender(<Home></Home>, '小米书城') } ></Route>
+          <Route path="/index/my_books" render={ () => handleRender(<MyBooks></MyBooks>, '我的书包') }></Route>
+          <Route path="/index/me" render={ () => handleRender(<Me></Me>, '个人中心') }></Route>
+        </Switch>
+      </Suspense>
       <Footer></Footer>
     </div>
   )

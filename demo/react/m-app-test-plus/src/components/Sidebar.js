@@ -6,7 +6,7 @@ const Sidebar = (props) => {
 
   const handleNav = (id) => {
     props.onSetState(['currentId'], id)
-    document.getElementById(id).scrollIntoView({ block: 'start', behavior: 'smooth' })
+    //document.getElementById(id).scrollIntoView({ block: 'start', behavior: 'smooth' })
   }
 
   let listDom = list.map(item => (
