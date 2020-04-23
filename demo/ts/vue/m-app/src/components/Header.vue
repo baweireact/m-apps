@@ -10,13 +10,9 @@ import { State } from 'vuex-class'
 
 @Component
 export default class Header extends Vue {
-  @State('title') title
+  @State('title') title: string | undefined
   @State(state => {
     return state.title
-  }) title1
+  }) title1!: string
 }
 </script>
-
-<style>
-
-</style>

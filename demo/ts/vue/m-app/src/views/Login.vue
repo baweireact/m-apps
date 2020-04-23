@@ -14,7 +14,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import Icon from '../components/Icon.vue'
-import Api from '../api/index'
+import Api from '../api'
 
 @Component({
   components: {

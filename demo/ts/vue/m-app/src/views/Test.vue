@@ -1,28 +1,29 @@
 <template>
   <div>
     <div>{{msg}}</div>
-    <button @click="handleAdd">按钮</button>
+    <div>{{count}}</div>
+    <button @click="handleAdd(1)">加</button>
+    <TestComponent name="hello"></TestComponent>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
+import { Log } from '../utils/decorators'
+import TestComponent from '../components/TestComponent.vue'
 
-@Component
-export default class Login extends Vue {
-  msg: string = '我是msg'
-
-  handleAdd() {
-    console.log(1)
+@Component({
+  components: {
+    TestComponent
   }
+})
+export default class Test extends Vue {
+  msg = 'hello'
+  count = 0
 
-  created() {
-    console.log('创建完')
-  }
-
-  mounted() {
-    console.log('挂载完')
+  @Log
+  handleAdd(step) {
+    this.count += step
   }
 }
-
 </script>
