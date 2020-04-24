@@ -1,25 +1,30 @@
 import { createDecorator } from 'vue-class-component'
 
-// export const Log = (name: string) => () => createDecorator((options: any, key) => {
-//   console.log(options, key)
-//   const oldMethod = options.methods[key]
-
-//   options.methods[key] = function wrapperMethod(...args: any) {
-//     console.log(`日志: ${key}(`, ...args, ')', name)
-//     oldMethod.apply(this, args)
-//   }
-// })
-
 export const Log = createDecorator((options:any, key:string) => {
-  // Keep the original method for later.
+  // 备份原始方法
   const originalMethod = options.methods[key]
 
-  // Wrap the method with the logging logic.
+  // 添加日志逻辑
   options.methods[key] = function wrapperMethod(...args:any) {
-    // Print a log.
-    console.log(`Invoked: ${key}(`, ...args, ')')
+    // 打印日志
+    console.log(`日志: ${key}(`, ...args, ')')
 
-    // Invoke the original method.
+    // 执行原始方法
+    originalMethod.apply(this, args)
+  }
+})
+
+
+export const LogPlus = (payload: string) => createDecorator((options:any, key:string) => {
+  // 备份原始方法
+  const originalMethod = options.methods[key]
+
+  // 添加日志逻辑
+  options.methods[key] = function wrapperMethod(...args:any) {
+    // 打印日志
+    console.log(`${payload}日志: ${key}(`, ...args, ')')
+
+    // 执行原始方法
     originalMethod.apply(this, args)
   }
 })
