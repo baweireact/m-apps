@@ -1,3 +1,6 @@
 "use strict";
-window.username = 'admin';
-console.log(this.username);
+let a = 'hello!2';
+function greeter(name) {
+    return `hello world!${name}`;
+}
+document.body.innerHTML = greeter('xu2');
