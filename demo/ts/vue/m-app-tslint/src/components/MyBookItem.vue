@@ -31,10 +31,10 @@ export default class MyBookItem extends Vue {
   @State(state => state.myBooks) myBooks!: any[]
   @Action('myBooksAction') myBooksAction!:Function
 
-  handleAdd(id) {
+  handleAdd(id:number) {
     this.myBooksAction({ data: { id, operation: 'add' }, method: 'patch' })
   }
-  handleSub(id) {  
+  handleSub(id:number) {  
     this.myBooksAction({ data: { id, operation: 'sub' }, method: 'patch' })   
   }
   handleInput(id:number, e:any) {
@@ -48,7 +48,7 @@ export default class MyBookItem extends Vue {
   handleChecked(id:number, e:any) {
     this.myBooksAction({ data: { id, operation: 'checked', checked: e.target.checked }, method: 'patch' })
   }   
-  handleDelete(id) {
+  handleDelete(id:number) {
     this.myBooksAction({ data: { ids: [id] }, method: 'delete' })
   }    
 }

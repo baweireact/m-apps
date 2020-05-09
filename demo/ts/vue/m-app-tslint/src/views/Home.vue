@@ -19,6 +19,7 @@ import List from '../components/List.vue'
 })
 export default class Home extends Vue {
   @Action('list') list:any
+  
   mounted() {
     this.list()
   }

@@ -52,8 +52,8 @@ export default class extends Vue {
 
   get total() {
     return {
-      totalPrice: 1,
-      checkedAll: true
+      totalPrice: this.myBooks.reduce((total, item) => total + item.count * item.price, 0),
+      checkedAll: this.myBooks.every(item => item.checked)
     }
   }
 

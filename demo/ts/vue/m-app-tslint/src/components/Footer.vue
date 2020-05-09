@@ -37,7 +37,6 @@ export default class Footer extends Vue {
     let total = this.myBooks.reduce((total:number, item: any) => {
       return total + item.count
     }, 0)
-    console.log(total)
     return total
   }
 

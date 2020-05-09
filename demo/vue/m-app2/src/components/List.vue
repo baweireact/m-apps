@@ -66,9 +66,22 @@ export default {
       }
     },
     handleVisible(book) {
-      this.visible = true
+      //this.visible = true
       book.count = 1
+      book.checked = true
       this.book = book
+
+      let myBooks = this.$store.state.myBooks
+      let index = myBooks.findIndex(item => item.id === this.book.id)
+      if (index >= 0) {
+        myBooks[index].checked = true
+        myBooks[index].count += this.book.count
+      } else {
+        this.book.checked = true
+        myBooks.push({...this.book})
+      }
+
+      Api.myBooks({ book: this.book }, 'post')
     },
     handleCancel() {
       this.visible = false
