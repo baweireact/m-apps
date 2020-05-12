@@ -64,9 +64,9 @@ body{margin: 0;}
 .m-my-books-footer{padding: 0 0 0 5px; height: 40px;line-height: 40px; background: #fff;border-top: 1px solid #ddd;}
 .m-my-books-empty{line-height: 100px; color: #333;text-align: center;}
 .m-my-books-delete-dialog-info{height: 100px;line-height: 100px;text-align: center;}
-.m-detail-header{display: flex; height: 40px;line-height: 40px;background: red;}
-.m-detail-header-icon{width: 40px;text-align: center;color: #fff;font-size: 18px;}
-.m-detail-header-title{flex: 1;text-align: center;color: #fff;}
+.m-detail-header{display: flex; height: 40px;line-height: 40px;background: red;color: #fff;}
+.m-detail-header-icon{ width: 40px;text-align: center;font-size: 22px;}
+.m-detail-header-info{padding: 0 0 0 40px; flex:1;text-align: center;}
 .m-detail-img-wrap{text-align: center;border-bottom: 1px solid #ddd;height: 300px;}
 .m-detail-add-info{display: flex;align-items: center; padding: 5px;}
 

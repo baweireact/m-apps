@@ -3,7 +3,7 @@ export interface IBookState {
   currentId: number,
   isRealScroll: boolean,
   list: any[],
-  myBooks: any[]
+  myBooks: IBook[]
 }
 
 export interface IStore {

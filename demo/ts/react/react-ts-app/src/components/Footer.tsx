@@ -1,18 +1,31 @@
-import React, { Dispatch } from 'react'
+import React, { Dispatch, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import Icon from './Icon'
 import { connect } from 'react-redux'
+import { IStore, IBook } from '../types'
+import Icon from './Icon'
+import Badge from './Badge'
+import actionCreator from '../store/book/actionCreator'
 
 interface IProps {
+  myBooks: IBook[],
   onSetState: (key: string, value: any) => void
   onDispatch: (action: Function) => void
 }
 
 const Footer = (props: IProps) => {
+  let { myBooks } = props
+
+  let count = myBooks.reduce((total, item) => {
+    return total + item.count
+  }, 0)
 
   const handleNav = (title: string) => {
     //props.onSetState('title', title)
   }
+
+  useEffect(() => {
+    props.onDispatch(actionCreator.myBooks())
+  }, [])
 
   return (
     <div className="m-footer">
@@ -21,7 +34,9 @@ const Footer = (props: IProps) => {
         <div className="m-footer-text">首页</div>
       </NavLink>
       <NavLink to="/index/my_books" className="m-footer-item" onClick={() => handleNav('我的书包')}>
-        <Icon name="shubao" className="m-footer-icon"></Icon>
+        <Badge count={count}>
+          <Icon name="shubao" className="m-footer-icon"></Icon>
+        </Badge>
         <div className="m-footer-text">书包</div>
       </NavLink>
       <NavLink to="/index/me" className="m-footer-item" onClick={() => handleNav('个人中心')}>
@@ -32,8 +47,9 @@ const Footer = (props: IProps) => {
   )
 }
 
-const mapStateToProps = () => {
+const mapStateToProps = (state: IStore) => {
   return {
+    myBooks: state.book.myBooks
   }
 }
 

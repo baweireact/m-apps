@@ -58,7 +58,7 @@ const List = (props: IProps) => {
   }
 
   const handleAddToMyBooks = () => {
-    props.onDispatch(actionCreator.myBooks({book}, 'post', handleCancel))
+    props.onDispatch(actionCreator.myBooks({ book }, 'post', handleCancel))
   }
 
   const handleCancel = () => {

@@ -2,7 +2,7 @@ import axios, { AxiosRequestConfig } from 'axios'
 import urls from './urls'
 
 if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = 'http://localhost:83'
+  axios.defaults.baseURL = 'http://localhost:84'
 }
 
 axios.interceptors.request.use((config) => {

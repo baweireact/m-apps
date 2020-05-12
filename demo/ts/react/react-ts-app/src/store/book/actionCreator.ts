@@ -10,10 +10,10 @@ const list = () => (dispatch: Dispatch<any>) => {
   })
 }
 
-const myBooks = (data: any, method: Method , callback: Function) => (dispatch: Dispatch<any>) => {
+const myBooks = (data: any = null, method: Method = 'get', callback?: Function) => (dispatch: Dispatch<any>) => {
   Api.myBooks(data, method).then(res => {
     if (res.code === 200) {
-      dispatch({ type: 'SET_STATE', key: ['myBooks'], value: res.data })
+      dispatch({ type: 'SET_STATE', key: 'myBooks', value: res.data })
       callback && callback()
     }
   })
