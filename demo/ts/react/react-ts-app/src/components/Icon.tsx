@@ -7,7 +7,7 @@ interface IProps {
 }
 
 const Icon = (props: IProps) => {
-  let { name, className = '', onClick = () => {} } = props
+  let { name = "zhanwei", className = '', onClick = () => {} } = props
   return (
     <span className={`icon iconfont icon-${name} ${className}`} onClick={(e) => onClick(e, 1)}></span>
   )

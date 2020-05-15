@@ -29,7 +29,7 @@ const store = createStore(reducers, applyMiddleware(thunk))
 
 store.subscribe(() => {
   let state = store.getState()
-  console.log(state)
+  //console.log(state)
 })
 
 export default store

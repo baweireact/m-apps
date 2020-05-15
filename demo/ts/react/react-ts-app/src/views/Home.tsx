@@ -10,10 +10,11 @@ interface IProps {
 }
 
 const Home = (props: IProps) => {
+  let { onDispatch } = props
 
   useEffect(() => {
-    props.onDispatch(actionCreator.list())
-  }, [props])
+    onDispatch(actionCreator.list())
+  }, [onDispatch])
 
   return (
     <div className="m-main m-home">

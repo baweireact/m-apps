@@ -30,7 +30,7 @@ import Badge from './Badge.vue'
   }
 })
 export default class Footer extends Vue {
-  @State(state => state.myBooks) myBooks!:[] 
+  @State(state => state.myBooks) myBooks!:any[] 
   @Action('myBooksAction') myBooksAction!:Function
 
   get count() {

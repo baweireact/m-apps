@@ -64,6 +64,7 @@ export default class extends Vue {
     let myBooks = this.myBooks
     if (myBooks.filter(item => item.checked).length === 0) {
       //this.$message({ message: '请选择要删除的商品哦~', duration: 2000 })
+      alert('请选择要删除的商品哦~')
     } else {
       this.visible = true
     }

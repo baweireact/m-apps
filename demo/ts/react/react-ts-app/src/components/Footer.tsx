@@ -13,7 +13,7 @@ interface IProps {
 }
 
 const Footer = (props: IProps) => {
-  let { myBooks } = props
+  let { myBooks, onDispatch } = props
 
   let count = myBooks.reduce((total, item) => {
     return total + item.count
@@ -24,8 +24,8 @@ const Footer = (props: IProps) => {
   }
 
   useEffect(() => {
-    props.onDispatch(actionCreator.myBooks())
-  }, [])
+    onDispatch(actionCreator.myBooks())
+  }, [onDispatch])
 
   return (
     <div className="m-footer">

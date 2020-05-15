@@ -4,7 +4,8 @@ import store from '../store'
 
 Vue.use(VueRouter)
 
-  const routes: Array<RouteConfig> = [
+//RouteConfig[]
+const routes: Array<RouteConfig> = [
   {
     path: '/',
     redirect: '/login'

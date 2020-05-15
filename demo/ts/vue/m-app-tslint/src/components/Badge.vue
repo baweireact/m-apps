@@ -10,7 +10,8 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
 export default class Badge extends Vue {
-  @Prop() count!:number
+  @Prop() 
+  count!:number
 
   get formatCount() {
     if (this.count < 100) {

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import { IStore } from '../types'
 import Api from '../api'
 
 Vue.use(Vuex)
@@ -9,17 +10,20 @@ interface Payload {
   value: any
 }
 
+let state: IStore = {
+  title: '小米书包',
+  list: [],
+  currentId: 0,
+  isRealScroll: true,
+  myBooks: [],
+  count: 0
+}
+
 export default new Vuex.Store({
-  state: {
-    title: '小米书包',
-    list: [],
-    currentId: 0,
-    isRealScroll: true,
-    myBooks: [],
-    count: 0
-  },
+  state,
   mutations: {
-    setState(state:any, payload:Payload) {
+    setState(state:IStore, payload:Payload) {
+      //@ts-ignore
       state[payload.key] = payload.value
     }
   },

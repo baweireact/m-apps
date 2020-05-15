@@ -16,9 +16,9 @@ body{margin: 0;}
 .m-category-title{position: sticky;top: 0; padding: 0 0 0 5px; height: 30px;line-height: 30px; background: #ddd;z-index: 99;}
 .m-list-item{display: flex;padding: 0 0 5px 0;}
 .m-img-wrap{display: flex;position: relative;  width: 122px;height: 150px;background: #dddddd;}
-.m-img-wrap::before{content: '';margin: auto;width: 38px;height: 38px;background-image: url(./images/loading.png);animation: loading 1s linear infinite;}
+.m-img-wrap1::before{content: '';margin: auto;width: 38px;height: 38px;background-image: url(./images/loading.png);animation: loading 1s linear infinite;}
 .m-img{position: absolute; width: 122px;height: 150px;}
-.m-img[lazy=loading]{margin: auto; width: 38px;height: 38px;}
+.m-img[lazy=loading]{margin: auto;position: relative; width: 38px;height: 38px;}
 .m-list-info{flex: 1;margin: 0 0 0 5px;border-bottom: 1px solid #ddd;}
 .m-star{color: #333;}
 .m-star.active{color: red;}

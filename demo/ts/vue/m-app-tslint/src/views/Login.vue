@@ -34,7 +34,9 @@ export default class Login extends Vue {
     Api.login({ username: this.username, password: this.password }).then(res => {
       if (res.code === 200) {
         localStorage.setItem('token', res.data.username);
-        (this as any).$router.push('/index/home')
+
+        //@ts-ignore
+        this.$router.push('/index/home')
         console.log((this as any).$store.state.count)
       }
     })

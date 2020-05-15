@@ -35,7 +35,7 @@ const common = async (config:AxiosRequestConfig) => {
 const Api = {
   login: (data: object) => common({ url: urls.login, data, method: 'post' }),
   list: () => common({ url: urls.list }),
-  myBooks: (data: object, method: AxiosRequestConfig['method']) => common({ url: urls.myBooks, data, method }),
+  myBooks: (data: object = {}, method: AxiosRequestConfig['method'] = 'get') => common({ url: urls.myBooks, data, method }),
   getDetail: (id: string) => common({url: urls.detail + id})
 }
 

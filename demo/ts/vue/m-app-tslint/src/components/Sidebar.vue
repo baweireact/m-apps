@@ -16,11 +16,12 @@ let timer: any
 export default class Sidebar extends Vue {
   @State(state => state.list) list!:any[]
   @State(state => state.currentId) currentId!:number
-  @Mutation('setState') setState!:any
+  @Mutation('setState') setState!:Function
 
   handleNav(id:number) {
     this.setState({ key: 'currentId', value: id });
-    (document as any).getElementById(id + '').scrollIntoView({ block: 'start', behavior: 'smooth' })
+    //@ts-ignore
+    document.getElementById(id + '').scrollIntoView({ block: 'start', behavior: 'smooth' })
     clearTimeout(timer)
     this.setState({ key: 'isRealScroll', value: false })
     timer = setTimeout(() => {

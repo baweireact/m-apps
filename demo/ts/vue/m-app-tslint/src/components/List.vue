@@ -30,6 +30,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { State, Mutation, Action } from 'vuex-class'
+import { IBook } from '../types'
 import Stars from './Stars.vue'
 import Dialog from './Dialog.vue'
 import Api from '../api'
@@ -49,7 +50,9 @@ export default class List extends Vue {
   @Action('myBooksAction') myBooksAction!:Function
 
   visible = false
-  book:any = { count: 1 }
+
+  //@ts-ignore
+  book:IBook = { count: 1 }
 
   handleScoll(e:any) {
     let scrollTop = e.target.scrollTop
@@ -63,7 +66,7 @@ export default class List extends Vue {
     }    
   }
 
-  handleShowDialog(book:any) {
+  handleShowDialog(book:IBook) {
     this.visible = true
     book.count = 1
     this.book = book
