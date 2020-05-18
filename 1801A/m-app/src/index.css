@@ -12,4 +12,15 @@ code {
     monospace;
 }
 
-.m-title{color: red;}
+.m-nav-item{height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;text-align: center;}
+.m-nav-item.active{background: lightblue;}
+
+.m-dialog-wrap{display: flex; position: fixed;top: 0;left: 0;right: 0;bottom: 0;background: rgba(0, 0, 0, 0.5);}
+.m-dialog{margin: auto;min-width: 300px;min-height: 240px;background: #fff;border-radius: 10px;}
+.m-dialog-header{display: flex;height: 40px;line-height: 40px;border-bottom: 1px solid #ddd;}
+.m-dialog-title{flex: 1;padding: 0 0 0 10px;}
+.m-dialog-close{width: 40px;text-align: center;cursor: pointer;}
+
+.m-eye-icon{font-size: 60px;}
+.m-home-icon{font-size: 60px;color: red;}
+
