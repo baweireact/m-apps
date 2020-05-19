@@ -2,9 +2,9 @@ import axios from 'axios'
 import message from '../components/message'
 import urls from './urls'
 
-if (process.env.NODE_ENV === 'development') {
-  axios.defaults.baseURL = 'http://localhost:81'
-}
+// if (process.env.NODE_ENV === 'development') {
+//   axios.defaults.baseURL = 'http://localhost:81'
+// }
 
 axios.interceptors.request.use((config) => {
   config.headers.token = localStorage.getItem('token')

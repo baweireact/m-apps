@@ -16,6 +16,7 @@ code {
 
 .m-nav-item{line-height: 40px;border-bottom: 1px solid #ddd;text-align: center;}
 .m-nav-item.active{background: lightblue;color: red;}
+.active{color: red;}
 .m-btn{width: 100px;}
 .m-btn.active{background: red;}
 

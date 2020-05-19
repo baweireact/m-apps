@@ -23,7 +23,7 @@ let myBooks = []
 
 // app.use(history())
 app.use(express.static('public'))
-app.use(cors())
+//app.use(cors())
 app.use(bodyParser.json())
 
 app.post('/api/login', (req, res) => {
