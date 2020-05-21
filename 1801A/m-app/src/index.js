@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Home from './Home'
+import "./mock"
 import './font/iconfont.css'
 import './index.css';
 import './style.scss'

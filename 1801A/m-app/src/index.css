@@ -24,3 +24,13 @@ code {
 .m-eye-icon{font-size: 60px;}
 .m-home-icon{font-size: 60px;color: red;}
 
+.m-wrap{display: flex;position: absolute;top: 0;left: 0;right: 0;bottom: 0;}
+.m-sidebar{width: 80px;border-right: 1px solid #ddd;}
+.m-sidebar-item{line-height: 40px;text-align: center;border-bottom: 1px solid #ddd;}
+.m-sidebar-item.active{background: lightblue;}
+.m-list{flex: 1;overflow-y: auto;}
+.m-list-item{display: flex;padding: 0 0 5px 0;}
+.m-img{width: 112px;height: 150px;}
+.m-info{flex: 1;margin: 0 0 0 5px;border-bottom: 1px solid #ddd;}
+
+

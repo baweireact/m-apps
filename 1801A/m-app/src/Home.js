@@ -1,41 +1,58 @@
 import React, { Component } from 'react'
-import Icon from './components/Icon'
+import axios from 'axios'
+import Sidebar from './components/Sidebar'
+import List from './components/List'
 
 export default class Home extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      count: 0,
-      visible: true
+      list: [],
+      currentId: 0,
+      currentList: []
     }
   }
 
-  handleAdd() {
-    let { count } = this.state
+  handleNav(currentId) {
+    let { list } = this.state
+    let currentList = list.find(item => item.id === currentId).list
     this.setState({
-      count: count + 1
+      currentId,
+      currentList
     })
   }
 
-  handleVisible() {
-    this.setState({
-      visible: !this.state.visible
+  componentDidMount() {
+    // axios({
+    //   url: '/api/list'
+    // }).then(res => {
+    //   if (res.data.code === 200) {
+    //     this.setState({
+    //       list: res.data.data,
+    //       currentList: res.data.data[0].list
+    //     })
+    //   }
+    // })
+
+    axios({
+      url: '/api/mock'
+    }).then(res => {
+      console.log(res.data)
+      if (res.data.code === 200) {
+        this.setState({
+          list: res.data.data,
+          currentList: res.data.data[0].list
+        })
+      }
     })
   }
 
   render() {
-    console.log('渲染父组件')
-    let { count, visible } = this.state
+    let { list, currentId, currentList } = this.state
     return (
-      <div>
-        <div>
-          {count}
-        </div>
-        <div>
-          <button onClick={ () => this.handleAdd() }>加</button>
-          <button onClick={ () => this.handleVisible() }>{ visible ? '隐藏' : '显示'}</button>
-        </div>
-        <Icon visible={visible}></Icon>
+      <div className="m-wrap">
+        <Sidebar list={list} currentId={currentId} onClick={(id) => this.handleNav(id)}></Sidebar>
+        <List currentList={currentList}></List>
       </div>
     )
   }
