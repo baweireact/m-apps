@@ -15,12 +15,16 @@ code {
 
 .m-wrap{display: flex;flex-direction: column; position: absolute;top: 0; left: 0;right: 0;bottom:0}
 .m-header{height: 40px;border-bottom: 1px solid #ddd;}
-.m-dice{flex: 1;border-bottom: 1px solid #ddd;}
-.m-money{display: flex; height: 100px;border-bottom: 1px solid #ddd;}
-.m-footer{height: 100px;}
-.m-left{flex:1;border-right: 1px solid #ddd;}
-.m-right{flex:1}
-.m-dice-item{margin: 20;line-height: 100px;text-align: center; font-size: 60px;font-weight: bold;color: red;}
+.m-main{flex:1;}
+.m-footer{display: flex; height: 40px;border-top: 1px solid #ddd;}
+.m-footer-item{flex:1;text-align: center;color: #333; text-decoration: none;}
+.m-footer-item.active{color: red;}
+.m-footer-icon{font-size: 20px;}
+.m-footer-text{font-size: 12px;}
+.m-login-icon{display: inline-block;margin: 4px 0 0 -20px;vertical-align: top;}
+.m-category-title{background: #ddd;}
+
+
 
 
 

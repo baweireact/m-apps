@@ -1,0 +1,93 @@
+{
+  "id": "1594887",
+  "name": "1708E_my",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "7562540",
+      "name": "图片占位",
+      "font_class": "zhanwei",
+      "unicode": "e7cb",
+      "unicode_decimal": 59339
+    },
+    {
+      "icon_id": "595396",
+      "name": "关闭",
+      "font_class": "guanbi",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "693214",
+      "name": "返回",
+      "font_class": "back",
+      "unicode": "e612",
+      "unicode_decimal": 58898
+    },
+    {
+      "icon_id": "796827",
+      "name": "更多",
+      "font_class": "more",
+      "unicode": "e618",
+      "unicode_decimal": 58904
+    },
+    {
+      "icon_id": "9241131",
+      "name": "分享",
+      "font_class": "fenxiang",
+      "unicode": "e644",
+      "unicode_decimal": 58948
+    },
+    {
+      "icon_id": "5104968",
+      "name": "书包",
+      "font_class": "shubao",
+      "unicode": "e615",
+      "unicode_decimal": 58901
+    },
+    {
+      "icon_id": "6027497",
+      "name": "首页",
+      "font_class": "home",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
+      "icon_id": "6997483",
+      "name": "我 的",
+      "font_class": "me",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
+      "icon_id": "845842",
+      "name": "不显示密码",
+      "font_class": "hide",
+      "unicode": "e676",
+      "unicode_decimal": 58998
+    },
+    {
+      "icon_id": "3402400",
+      "name": "星星",
+      "font_class": "star",
+      "unicode": "e6b9",
+      "unicode_decimal": 59065
+    },
+    {
+      "icon_id": "9509964",
+      "name": "显示密码",
+      "font_class": "show",
+      "unicode": "e60f",
+      "unicode_decimal": 58895
+    },
+    {
+      "icon_id": "521047",
+      "name": "删除",
+      "font_class": "shanchu",
+      "unicode": "e61c",
+      "unicode_decimal": 58908
+    }
+  ]
+}

@@ -1,21 +1,20 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 
 export default class Icon extends Component {
-
-  componentWillUpdate() {
-    console.log('4.子组件更新前')
-  }
-
-  componentDidUpdate() {
-    console.log('5.子组件更新完')
-  }
-
   render() {
-    console.log('2.渲染子组件')
+    //对象的解构
+    let { name = 'zhanwei', onClick = () => {}, className = "" } = this.props
     return (
-      <div>
-        子组件
-      </div>
+      <span 
+        className={`icon iconfont icon-${name} ${className}`}
+        onClick={() => onClick()}></span>
     )
   }
+}
+
+Icon.propTypes = {
+  name: PropTypes.string,  //限制name属性为字符串类型
+  onClick: PropTypes.func,  //onClick必须是函数
+  className: PropTypes.string, //显示className属性必须为字符
 }

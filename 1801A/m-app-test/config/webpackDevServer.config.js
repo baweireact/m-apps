@@ -9,6 +9,8 @@ const redirectServedPath = require('react-dev-utils/redirectServedPathMiddleware
 const paths = require('./paths');
 const getHttpsConfig = require('./getHttpsConfig');
 const { bookMallData } = require('./data')
+//解析post请求的npm包
+const bodyParser = require('body-parser')
 
 const host = process.env.HOST || '0.0.0.0';
 const sockHost = process.env.WDS_SOCKET_HOST;
@@ -111,6 +113,9 @@ module.exports = function(proxy, allowedHost) {
       // This lets us open files from the runtime error overlay.
       app.use(errorOverlayMiddleware());
 
+      //使用中间件，解析post请求
+      app.use(bodyParser.json())
+
       if (fs.existsSync(paths.proxySetup)) {
         // This registers user provided middleware for proxy reasons
         require(paths.proxySetup)(app);
@@ -123,6 +128,32 @@ module.exports = function(proxy, allowedHost) {
           data: bookMallData,
           message: '列表'
         })
+      })
+
+      //登录接口，post请求，第一个参数是路由， 第二个参数是回调函数
+      //req：request 请求， res：response 响应
+      app.post('/api/login', (req, res) => {
+        //post请求数据在body里
+        let { username, password } = req.body
+        console.log(username, password)
+
+        if (username === 'admin' && password === '123456') {
+          //send 发送
+          res.send({
+            code: 200,  //200是状态码，代表成功
+            data: {
+              username
+            },
+            message: '登录成功'  //消息
+          })
+        } else {
+          //send 发送
+          res.send({
+            code: 400,  //200是状态码，代表成功
+            message: '登录失败'  //消息
+          })
+        }
+
       })
     },
     after(app) {
