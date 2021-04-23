@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const { bookNavData, bookMallData, bookMallDetailData, taskList, news } = require('./data')
+const { voice } = require('./data2')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const fs = require('fs')
@@ -22,7 +23,28 @@ let addressList = []
 let myBook = []
 
 app.use(cors())
-app.use(bodyParser.json())
+
+// parse various different custom JSON types as JSON
+//app.use(bodyParser.json())
+
+//app.use(bodyParser.urlencoded({extended:true}));
+app.use(bodyParser.json());
+
+//app.use(bodyParser.urlencoded({ extended: false }))
+//app.use(bodyParser.json())
+
+// app.use(bodyParser.urlencoded({
+//   extended:false
+// }));
+
+// // parse various different custom JSON types as JSON
+// app.use(bodyParser.json({ type: 'application/*+json' }))
+ 
+// // parse some custom thing into a Buffer
+// app.use(bodyParser.raw({ type: 'application/vnd.custom-type' }))
+ 
+// // parse an HTML body into a string
+// app.use(bodyParser.text({ type: 'text/html' }))
 
 app.use(express.static('public'))
 
@@ -198,6 +220,32 @@ app.post('/api/update_address_list', (req, res) => {
     code: 200,
     data: addressList,
     message: '地址列表更新成功'
+  })
+})
+
+app.post('/api/voice', (req, res) => {
+  let { pageNum, pageSize} = req.body
+  console.log(req.body)
+  // let body = {}
+  // for (let key in req.body) {
+  //   console.log(key)
+  //   let temp = JSON.parse(key)
+  //   console.log(temp)
+  //   body = {...body, ...temp}
+  // }
+  // let { pageNum, pageSize} = body
+
+  console.log(pageNum, pageSize)
+  // let newsSearchResult = news.filter(item => item.name.includes(search))
+  // let start = (page - 1) * size
+  // let end = start + size * 1
+  //newsSearchResult.slice(start, end),
+
+
+  res.send({
+    state: 1,
+    data: voice,
+    message: '查询成功'
   })
 })
 
