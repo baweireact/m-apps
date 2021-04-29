@@ -1,8 +1,7 @@
+import lightUrls from "./lightUrls"
+
 const urls = {
-  login: '/api/login',
-  list: '/api/list',
-  myBooks: '/api/my_books',
-  detail: '/api/detail/'
+  ...lightUrls,
 }
 
 export default urls

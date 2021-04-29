@@ -149,6 +149,19 @@ app.get('/api/detail/:id', (req, res) => {
   })
 })
 
+//测试
+app.post('/api/test', (req, res) => {
+  let { title } = req.body
+  res.send({
+    state: 1,
+    data: {
+      title,
+      name: 'vue 3.0'
+    },
+    message: '获取数据成功'
+  })
+})
+
 app.listen(81, () => {
   console.log(81)
 })

@@ -3,11 +3,15 @@ import { createRouter, createWebHistory } from 'vue-router'
 const routes = [
   {
     path: '/',
-    redirect: '/todo_list'
+    redirect: '/login'
   },
   {
-    path: '/todo_list',
-    component: () => import('../views/TodoList.vue')
+    path: '/login',
+    component: () => import('../views/Login.vue')
+  },
+  {
+    path: '/index',
+    component: () => import('../views/Index.vue')
   }
 ]
 

@@ -17,16 +17,20 @@ export default {
         toolbarConfig: {
           refresh: true,
           zoom: true,
-          custom: true
+          custom: true,
         },
         columns: [
           { type: "seq", width: 50 },
-          { type: "checkbox", title:"全选", width: 80 },
-          { field: "name", title: "姓名" , showOverflow:true},  //ellipsis:不显示提示信息 默认显示
+          { type: "checkbox", title: "全选", width: 80 },
+          { field: "name", title: "姓名", showOverflow: true }, //ellipsis:不显示提示信息 默认显示
           {
             field: "sex",
             title: "性别",
-            showHeaderOverflow: true,
+            type: "select",
+            options: [
+              { label: "开", value: 'Man' },
+              { label: "关", value: 'Women' },
+            ],
           },
           { field: "address", title: "地址", showOverflow: true },
         ],
@@ -105,10 +109,9 @@ export default {
           },
         ],
       },
-    };
-  }
-};
+    }
+  },
+}
 </script>
 
-<style>
-</style>
+<style></style>
