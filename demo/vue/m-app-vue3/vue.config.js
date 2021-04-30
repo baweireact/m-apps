@@ -1,3 +1,12 @@
 module.exports = {
-  lintOnSave: false
+  lintOnSave: false,
+  devServer: {
+    open: true,
+  },
+  configureWebpack: (config) => {
+    config.devtool = "source-map"
+  },
+  css: {
+    sourceMap: true,
+  },
 }

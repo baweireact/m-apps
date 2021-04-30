@@ -1,23 +1,17 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from "vue-router"
+import Store from "../store"
+import light from "./light"
 
-const routes = [
-  {
-    path: '/',
-    redirect: '/login'
-  },
-  {
-    path: '/login',
-    component: () => import('../views/Login.vue')
-  },
-  {
-    path: '/index',
-    component: () => import('../views/Index.vue')
-  }
-]
+const routes = [...light]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
+  routes,
+})
+
+router.beforeEach((to, from, next) => {
+  Store.commit({ type: "setLightState", key: "header", value: to.meta.header })
+  next()
 })
 
 export default router

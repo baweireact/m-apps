@@ -1,5 +1,5 @@
 <template>
-  1
+  <div class="m-main">book</div>
 </template>
 
 <script>
