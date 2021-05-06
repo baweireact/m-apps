@@ -10,7 +10,9 @@ const router = createRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  Store.commit({ type: "setLightState", key: "header", value: to.meta.header })
+  if (to.meta.header) {
+    Store.commit({ type: "setLightState", key: "header", value: to.meta.header })
+  }
   next()
 })
 

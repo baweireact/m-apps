@@ -9,8 +9,8 @@
         <slot name="content"></slot>
       </div>
       <div class="m-dialog-footer">
-        <button class="m-btn" @click="handleOk">确定</button>
         <button class="m-btn" @click="handleClose">取消</button>
+        <button class="m-btn" @click="handleOk">确定</button>
       </div>
     </div>
   </div>
@@ -28,14 +28,14 @@ export default {
     }
   },
   emits: ['onClose', 'onOk'],
-  setup(props, context) {
+  setup(props, { emit }) {
  
     const handleClose = () => {
-      context.emit('onClose')
+      emit('onClose')
     }
  
     const handleOk = () => {
-      context.emit('onOk')
+      emit('onOk')
     }
  
     return {

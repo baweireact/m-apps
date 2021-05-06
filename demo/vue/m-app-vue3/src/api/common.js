@@ -11,10 +11,10 @@ axios.interceptors.request.use(
 
     if (config.isNeedExtraData !== false) {
       let extraData = { userId: 1 }
-      if (config.method === "post") {
-        config.data = { ...extraData, ...config.data }
-      } else {
+      if (config.method === "get") {
         config.params = { ...extraData, ...config.data }
+      } else {
+        config.data = { ...extraData, ...config.data }
       }
     }
     return config
@@ -75,7 +75,6 @@ axios.interceptors.response.use(
     } else {
       err.message = "连接服务器失败!"
     }
-    console.error(err.message)
     return Promise.reject(err)
   }
 )

@@ -10,9 +10,7 @@ export default {
   setup() {
     const store = useStore()
 
-    const header = computed(() => {
-      return store.state.light.header
-    })
+    const header = computed(() => store.state.light.header)
 
     return {
       header,

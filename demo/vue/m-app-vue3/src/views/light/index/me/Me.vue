@@ -1,5 +1,7 @@
 <template>
-  <div class="m-main">me</div>
+  <div class="m-main">me
+    <el-button>默认按钮</el-button>
+  </div>
 </template>
 
 <script>

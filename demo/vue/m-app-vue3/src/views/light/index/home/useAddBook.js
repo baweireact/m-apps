@@ -1,4 +1,5 @@
 import { useStore } from "vuex"
+import Api from '@/api'
 
 export default () => {
   const store = useStore()
@@ -10,8 +11,13 @@ export default () => {
     })
   }
 
-  const handleOk = () => {
-    handleClose()
+  const handleOk = async () => {
+    const book = store.state.light.addBook
+    if (book.count !== '') {
+      let res = await Api.myBooks({ book }, 'post')
+      store.commit({ type: 'setLightState', key: 'myBooks', value: res.data })
+      handleClose()
+    }
   }
 
   const handleAddCount = () => {
@@ -30,11 +36,10 @@ export default () => {
 
   const handleInputCount = (e) => {
     const addBook = store.state.light.addBook
-    let count = e.target.value.replace(/[^\d]/g, "") - 0
-    if (count === 0) {
-      count = 1
+    addBook.count = e.target.value.replace(/[^\d]/g, "")
+    if (addBook.count !== '') {
+      addBook.count = parseInt(addBook.count)
     }
-    addBook.count = count
     store.commit({
       type: "setLightState",
       key: "addBook",

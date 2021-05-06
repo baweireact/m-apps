@@ -1,30 +1,50 @@
 <template>
   <div class="m-footer">
-    <router-link to="/index/home" class="m-footer-item">
+    <router-link to="/light/index/home" class="m-footer-item">
       <Icon name="home" class="m-footer-icon" />
       <div class="m-footer-text">首页</div>
     </router-link>
-    <router-link to="/index/my_books" class="m-footer-item">
-      <Icon name="shubao" class="m-footer-icon" />
+    <router-link to="/light/index/my_books" class="m-footer-item">
+      <Badge :count="count">
+        <Icon name="shubao" class="m-footer-icon" />
+      </Badge>
       <div class="m-footer-text">书包</div>
     </router-link>
-    <router-link to="/index/me" class="m-footer-item">
+    <router-link to="/light/index/me" class="m-footer-item">
       <Icon name="me" class="m-footer-icon" />
       <div class="m-footer-text">我的</div>
-    </router-link>        
+    </router-link>
   </div>
 </template>
 
 <script>
-import Icon from './Icon'
+import Icon from "./Icon"
+import Badge from "./Badge"
+import { computed, onMounted } from "vue"
+import { useStore } from "vuex"
 
 export default {
   components: {
-    Icon
-  }
+    Icon,
+    Badge,
+  },
+  setup() {
+    const store = useStore()
+    const count = computed(() =>
+      store.state.light.myBooks.reduce(
+        (accumulator, currentValue) => accumulator + currentValue.count,
+        0
+      )
+    )
+
+    onMounted(async () => {
+      store.dispatch({ type: "getMyBooks" })
+    })
+    return {
+      count,
+    }
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>

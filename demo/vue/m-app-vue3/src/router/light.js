@@ -1,37 +1,41 @@
 export default [
   {
     path: "/",
-    redirect: "/login",
+    redirect: "/light/login",
   },
   {
-    path: "/login",
-    component: () => import("@/views/light/Login"),
+    path: "/light/login",
+    component: () => import("../views/light/login/Login"),
   },
   {
-    path: "/index",
-    component: () => import("@/views/light/Index"),
+    path: "/light/index",
+    component: () => import("../views/light/index/Index"),
     children: [
       {
-        path: "/index/home",
-        component: () => import("@/views/light/children/home/Home"),
+        path: "/light/index/home",
+        component: () => import("../views/light/index/home/Home"),
         meta: {
           header: "小米书城",
         },
       },
       {
-        path: "/index/my_books",
-        component: () => import("@/views/light/children/MyBooks"),
+        path: "/light/index/my_books",
+        component: () => import("../views/light/index/myBooks/MyBooks"),
         meta: {
           header: "书包",
         },
       },
       {
-        path: "/index/me",
-        component: () => import("@/views/light/children/Me"),
+        path: "/light/index/me",
+        component: () => import("../views/light/index/me/Me"),
         meta: {
           header: "个人中心",
         },
       },
     ],
   },
+  {
+    path: '/light/detail/:id',
+    component: () => import("../views/light/detail/Detail")
+  }
 ]

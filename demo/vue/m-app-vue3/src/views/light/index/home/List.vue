@@ -37,7 +37,7 @@ import { computed } from "vue"
 import { useStore } from "vuex"
 import Category from "./Category"
 import useListScroll from "./useListScroll"
-import useListAdd from "./useListAdd"
+import useAddBook from "./useAddBook"
 import Dialog from "@/components/light/Dialog"
 
 export default {
@@ -60,7 +60,7 @@ export default {
       handleAddCount,
       handleSubCount,
       handleInputCount,
-    } = useListAdd()
+    } = useAddBook()
 
     return {
       list,
@@ -80,3 +80,4 @@ export default {
 </script>
 
 <style></style>
+

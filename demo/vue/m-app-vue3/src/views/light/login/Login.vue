@@ -16,8 +16,8 @@
 <script>
 import { reactive, toRefs } from "vue"
 import { useRouter } from 'vue-router'
-import Icon from "@/components/light/Icon"
-import Api from "@/api"
+import Icon from "../../../components/light/Icon"
+import Api from "../../../api"
 
 export default {
   components: {
@@ -41,7 +41,7 @@ export default {
       const { username, password } = state
       Api.login({ username, password }).then((res) => {
         if (res.code === 200) {
-          router.push('/index/home')
+          router.push('/light/index/home')
         }
       })
     }

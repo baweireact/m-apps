@@ -18,9 +18,9 @@ export default {
     },
   },
   emits: ["onClick"],
-  setup(props, context) {
+  setup(props, { emit }) {
     const handleClick = () => {
-      context.emit("onClick")
+      emit("onClick")
     }
 
     return {

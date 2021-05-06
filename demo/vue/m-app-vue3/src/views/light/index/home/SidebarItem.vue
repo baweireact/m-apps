@@ -11,7 +11,6 @@
 import { computed } from "vue"
 import { useStore } from "vuex"
 
-let timer
 export default {
   props: {
     sidebarItem: {
@@ -27,10 +26,6 @@ export default {
       el.scrollIntoView({ block: 'start', behavior: 'smooth' })
       store.commit({ type: "setLightState", key: "currentId", value: id })
       store.commit({ type: 'setLightState', key: 'isRealScroll', value: false })
-      clearTimeout(timer)
-      timer = setTimeout(() => {
-        store.commit({ type: 'setLightState', key: 'isRealScroll', value: true })
-      }, 1000)
     }
 
     return {

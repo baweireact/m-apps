@@ -25,11 +25,11 @@ export default {
     CategoryItem,
   },
   emits: ['onTopArr'],
-  setup(props, context) {
+  setup(props, { emit }) {
     onMounted(() => {
       const topArr = [...document.getElementsByClassName('js-category')].map(item => item.offsetTop)
       topArr.push(Infinity)
-      context.emit('onTopArr', topArr)
+      emit('onTopArr', topArr)
     })
   }
 }

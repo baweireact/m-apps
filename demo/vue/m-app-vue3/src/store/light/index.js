@@ -7,12 +7,14 @@ export default {
     currentId: 0,
     isRealScroll: true,
     isListDialogVisible: false,
-    addBook: {}
+    addBook: {},
+    myBooks: [],
+    detailBook: {}
   },
   mutations: {
     setLightState(state, payload) {
       state[payload.key] = payload.value
-      console.log(state)
+      console.log({...state})
     }
   },
   actions
