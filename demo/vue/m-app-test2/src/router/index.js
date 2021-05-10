@@ -43,7 +43,11 @@ const routes = [
   {
     path:  '/table_test',
     component: () => import('../views/TableTest.vue')
-  }
+  },
+  {
+    path:  '/form',
+    component: () => import('../views/Form.vue')
+  }  
 ]
 
 const router = new VueRouter({

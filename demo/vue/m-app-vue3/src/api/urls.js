@@ -1,7 +1,7 @@
 import lightUrls from "./lightUrls"
 
 const urls = {
-  ...lightUrls,
+  light: lightUrls,
 }
 
 export default urls

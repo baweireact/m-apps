@@ -1,7 +1,7 @@
 import lightApi from './lightApi'
 
 const Api = {
-  ...lightApi
+  light: lightApi
 }
 
 export default Api

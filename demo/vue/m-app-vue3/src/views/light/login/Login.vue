@@ -39,7 +39,7 @@ export default {
 
     const handleLogin = () => {
       const { username, password } = state
-      Api.login({ username, password }).then((res) => {
+      Api.light.login({ username, password }).then((res) => {
         if (res.code === 200) {
           router.push('/light/index/home')
         }

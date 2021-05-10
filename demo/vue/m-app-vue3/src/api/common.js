@@ -2,7 +2,9 @@ import axios from "axios"
 import router from "../router"
 
 if (process.env.NODE_ENV === "development") {
-  axios.defaults.baseURL = "http://localhost:81"
+  axios.defaults.baseURL = 'http://localhost:81' //"http://localhost:81"
+} else {
+  axios.defaults.baseURL = 'http://39.97.238.175:81'
 }
 
 axios.interceptors.request.use(

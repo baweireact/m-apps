@@ -14,7 +14,7 @@ export default () => {
   const handleOk = async () => {
     const book = store.state.light.addBook
     if (book.count !== '') {
-      let res = await Api.myBooks({ book }, 'post')
+      let res = await Api.light.myBooks({ book }, 'post')
       store.commit({ type: 'setLightState', key: 'myBooks', value: res.data })
       handleClose()
     }
