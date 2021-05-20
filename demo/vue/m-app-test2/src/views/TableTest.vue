@@ -1,6 +1,244 @@
 <template>
   <div>
-    <vxe-grid ref="xTable1" v-bind="gridOptions"> </vxe-grid>
+    <vxe-grid
+      border
+      resizable
+      show-footer
+      height="600"
+      ref="xGrid"
+      class="my-grid66"
+      :footer-method="footerMethod"
+      :columns="tableColumn"
+      :data="tableData"
+      :toolbar-config="tableToolbar"
+      :edit-config="{
+        trigger: 'click',
+        mode: 'cell',
+        icon: 'fa fa-pencil-square-o',
+      }"
+      @checkbox-change="checkboxChangeEvent"
+      @checkbox-all="checkboxChangeEvent"
+    >
+      <!--使用 form 插槽-->
+      <template #form>
+        <vxe-form :data="formData" @submit="searchEvent">
+          <vxe-form-item title="名称" field="name">
+            <template #default>
+              <vxe-input
+                v-model="formData.name"
+                placeholder="请输入名称"
+                clearable
+              ></vxe-input>
+            </template>
+          </vxe-form-item>
+          <vxe-form-item title="昵称" field="nickname">
+            <template #default>
+              <vxe-input
+                v-model="formData.nickname"
+                placeholder="请输入昵称"
+                clearable
+              ></vxe-input>
+            </template>
+          </vxe-form-item>
+          <vxe-form-item title="性别" field="sex">
+            <template #default>
+              <vxe-select
+                v-model="formData.sex"
+                placeholder="请选择性别"
+                clearable
+              >
+                <vxe-option value="1" label="女"></vxe-option>
+                <vxe-option value="2" label="男"></vxe-option>
+              </vxe-select>
+            </template>
+          </vxe-form-item>
+          <vxe-form-item>
+            <template #default>
+              <vxe-button status="primary">查询</vxe-button>
+            </template>
+          </vxe-form-item>
+        </vxe-form>
+      </template>
+
+      <!--自定义插槽 toolbar buttons 插槽-->
+      <template #toolbar_buttons>
+        <vxe-form>
+          <vxe-form-item>
+            <template #default>
+              <vxe-input placeholder="搜索"></vxe-input>
+            </template>
+          </vxe-form-item>
+          <vxe-form-item>
+            <template #default>
+              <vxe-button status="primary">查询</vxe-button>
+            </template>
+          </vxe-form-item>
+        </vxe-form>
+      </template>
+
+      <!--自定义插槽 toolbar tools 插槽-->
+      <template #toolbar_tools>
+        <vxe-input placeholder="搜索"></vxe-input>
+      </template>
+
+      <!--使用 top 插槽-->
+      <template #top>
+        <div class="alert-message">
+          <i class="fa fa-exclamation-circle alert-message-icon"></i>
+          <span class="alert-message-content">
+            <div>自定义模板</div>
+          </span>
+        </div>
+      </template>
+
+      <!--自定义插槽-->
+      <template #name_header>
+        <div class="first-col">
+          <div class="first-col-top">名称</div>
+          <div class="first-col-bottom">类型</div>
+        </div>
+      </template>
+
+      <template #num_default="{ row, rowIndex }">
+        <template v-if="rowIndex === 2">
+          <vxe-switch v-model="row.flag"></vxe-switch>
+        </template>
+        <template v-else-if="rowIndex === 3">
+          <vxe-switch
+            v-model="row.flag"
+            open-label="开"
+            close-label="关"
+          ></vxe-switch>
+        </template>
+        <template v-else>
+          <span>{{ row.num1 }}</span>
+        </template>
+      </template>
+      <template #num_footer="{ items, _columnIndex }">
+        <span style="color: red">合计：{{ items[_columnIndex] }}</span>
+      </template>
+
+      <template #num1_default="{ row }">
+        <span>￥{{ row.num1 }}元</span>
+      </template>
+
+      <template #num1_header="{ column }">
+        <span>
+          <i>@</i>
+          <span style="color: red;" @click="headerClickEvent">{{
+            column.title
+          }}</span>
+        </span>
+      </template>
+
+      <template #num1_footer="{ items, _columnIndex }">
+        <span>
+          <vxe-button status="primary" size="mini">自定义</vxe-button>
+          <span>累计：{{ items[_columnIndex] }}</span>
+        </span>
+      </template>
+
+      <template #num1_filter="{ column, $panel }">
+        <div>
+          <div v-for="(option, index) in column.filters" :key="index">
+            <input
+              type="type"
+              v-model="option.data"
+              @input="changeFilterEvent(evnt, option, $panel)"
+            />
+          </div>
+        </div>
+      </template>
+
+      <template #num1_edit="{ row }">
+        <input type="number" class="my-input" v-model="row.num1" />
+      </template>
+
+      <template #img1_default="{ row }">
+        <img v-if="row.img1" :src="row.img1" style="width: 100px;" />
+        <span v-else>无</span>
+      </template>
+
+      <!--使用 bottom 插槽-->
+      <template #bottom>
+        <div class="alert-message">
+          <i class="fa fa-exclamation-circle alert-message-icon"></i>
+          <span class="alert-message-content">
+            <div>自定义模板</div>
+          </span>
+        </div>
+      </template>
+
+      <!--自定义插槽 pager 插槽-->
+      <template #pager>
+        <vxe-pager
+          perfect
+          :current-page.sync="tablePage.currentPage"
+          :page-size.sync="tablePage.pageSize"
+          :total="tablePage.totalResult"
+        >
+          <template #left>
+            <span class="page-left">
+              <vxe-checkbox
+                v-model="isAllChecked"
+                :indeterminate="isIndeterminate"
+                @change="changeAllEvent"
+              ></vxe-checkbox>
+              <span class="select-count"
+                >已选中 {{ selectRecords.length }} 条</span
+              >
+              <vxe-button>修改</vxe-button>
+              <vxe-button>管理</vxe-button>
+              <vxe-button>删除</vxe-button>
+              <vxe-button size="small">
+                <template #default>更多操作</template>
+                <template #dropdowns>
+                  <vxe-button type="text">批量修改</vxe-button>
+                  <vxe-button type="text">批量管理</vxe-button>
+                  <vxe-button type="text">批量删除</vxe-button>
+                </template>
+              </vxe-button>
+            </span>
+          </template>
+          <template #right>
+            <span>
+              <img
+                src="/vxe-table/static/other/img1.gif"
+                style="height: 30px;"
+              />
+              <img
+                src="/vxe-table/static/other/img1.gif"
+                style="height: 30px;"
+              />
+              <img
+                src="/vxe-table/static/other/img2.gif"
+                style="height: 30px;"
+              />
+              <img
+                src="/vxe-table/static/other/img1.gif"
+                style="height: 30px;"
+              />
+              <img
+                src="/vxe-table/static/other/img1.gif"
+                style="height: 30px;"
+              />
+            </span>
+          </template>
+        </vxe-pager>
+      </template>
+    </vxe-grid>
+
+    <vxe-modal
+      v-model="showDetails"
+      title="查看详情"
+      width="800"
+      height="400"
+      resize
+    >
+      <template #default>
+        <div v-if="selectRow" v-html="selectRow.html3"></div>
+      </template>
+    </vxe-modal>
   </div>
 </template>
 
@@ -8,108 +246,218 @@
 export default {
   data() {
     return {
-      gridOptions: {
-        border: true,
-        resizable: true,
-        showOverflow: true,
-        height: 300,
-        align: "left",
-        toolbarConfig: {
-          refresh: true,
-          zoom: true,
-          custom: true,
-        },
-        columns: [
-          { type: "seq", width: 50 },
-          { type: "checkbox", title: "全选", width: 80 },
-          { field: "name", title: "姓名", showOverflow: true }, //ellipsis:不显示提示信息 默认显示
-          {
-            field: "sex",
-            title: "性别",
-            type: "select",
-            options: [
-              { label: "开", value: 'Man' },
-              { label: "关", value: 'Women' },
-            ],
-          },
-          { field: "address", title: "地址", showOverflow: true },
-        ],
-        data: [
-          {
-            id: 10001,
-            name: "Test1",
-            nickname: "T1",
-            role: "Develop",
-            sex: "Man",
-            age: 0,
-            address: "Shenzhen",
-          },
-          {
-            id: 10002,
-            name: "Test2",
-            nickname: "T2",
-            role: "Test",
-            sex: "Women",
-            age: 22,
-            address: "Guangzhou",
-          },
-          {
-            id: 10003,
-            name: "Test3",
-            nickname: "T3",
-            role: "PM",
-            sex: "Man",
-            age: 100,
-            address: "Shanghai",
-          },
-          {
-            id: 10004,
-            name: "Test4",
-            nickname: "T4",
-            role: "Designer",
-            sex: "Women ",
-            age: 70,
-            address: "Shenzhen",
-          },
-          {
-            id: 10005,
-            name: "Test5",
-            nickname: "T5",
-            role: "Develop",
-            sex: "Women ",
-            age: 10,
-            address: "Shanghai",
-          },
-          {
-            id: 10006,
-            name: "Test6",
-            nickname: "T6",
-            role: "Designer",
-            sex: "Women ",
-            age: 90,
-            address: "Shenzhen",
-          },
-          {
-            id: 10007,
-            name: "Test7",
-            nickname: "T7",
-            role: "Test",
-            sex: "Man ",
-            age: 5,
-            address: "Shenzhen",
-          },
-          {
-            id: 10008,
-            name: "Test8",
-            nickname: "T8",
-            role: "Develop",
-            sex: "Man ",
-            age: 80,
-            address: "Shenzhen",
-          },
-        ],
+      searchVal1: "",
+      searchVal2: "",
+      showDetails: false,
+      selectRow: null,
+      isAllChecked: false,
+      isIndeterminate: false,
+      selectRecords: [],
+      formData: {
+        name: "",
+        nickname: "",
+        sex: "",
       },
+      tablePage: {
+        totalResult: 8,
+        currentPage: 1,
+        pageSize: 10,
+      },
+      tableData: [
+        {
+          id: 10001,
+          name: "Test1",
+          nickname: "T1",
+          role: "Develop",
+          num1: "222",
+          sex: "Man",
+          age: 28,
+          address: "Shenzhen",
+          img1: "/vxe-table/static/other/img1.gif",
+        },
+        {
+          id: 10002,
+          name: "Test2",
+          nickname: "T2",
+          role: "Test",
+          num1: "536",
+          sex: "Women",
+          age: 22,
+          address: "Guangzhou",
+          img1: "/vxe-table/static/other/img2.gif",
+        },
+        {
+          id: 10003,
+          name: "Test3",
+          nickname: "T3",
+          role: "PM",
+          num1: "1000",
+          sex: "Man",
+          age: 32,
+          address: "Shanghai",
+          img1: "/vxe-table/static/other/img1.gif",
+        },
+        {
+          id: 10004,
+          name: "Test4",
+          nickname: "T4",
+          role: "Designer",
+          num1: "424323",
+          sex: "Women",
+          age: 23,
+          address: "Shenzhen",
+          img1: "",
+        },
+        {
+          id: 10005,
+          name: "Test5",
+          nickname: "T5",
+          role: "Develop",
+          num1: "253",
+          sex: "Women",
+          age: 30,
+          address: "Shanghai",
+          img1: "/vxe-table/static/other/img1.gif",
+        },
+        {
+          id: 10006,
+          name: "Test6",
+          nickname: "T6",
+          role: "Designer",
+          num1: "555",
+          sex: "Women",
+          age: 21,
+          address: "Shenzhen",
+          img1: "/vxe-table/static/other/img2.gif",
+        },
+        {
+          id: 10007,
+          name: "Test7",
+          nickname: "T7",
+          role: "Test",
+          num1: "11",
+          sex: "Man",
+          age: 29,
+          address: "Shenzhen",
+          img1: "",
+        },
+        {
+          id: 10008,
+          name: "Test8",
+          nickname: "T8",
+          role: "Develop",
+          num1: "998",
+          sex: "Man",
+          age: 35,
+          address: "Shenzhen",
+          img1: "/vxe-table/static/other/img1.gif",
+        },
+      ],
+      tableToolbar: {
+        custom: true,
+        slots: {
+          buttons: "toolbar_buttons",
+          tools: "toolbar_tools",
+        },
+      },
+      tableColumn: [
+        { type: "checkbox", width: 60 },
+        {
+          field: "name",
+          title: "Name",
+          width: 200,
+          resizable: false,
+          slots: { header: "name_header" },
+        },
+        { field: "age", title: "Age", width: 100 },
+        {
+          field: "num1",
+          title: "Num1",
+          showHeaderOverflow: true,
+          filters: [{ data: "" }],
+          editRender: { autofocus: ".my-input" },
+          slots: {
+            // 使用插槽模板渲染
+            default: "num1_default",
+            header: "num1_header",
+            footer: "num1_footer",
+            filter: "num1_filter",
+            edit: "num1_edit",
+          },
+        },
+        {
+          field: "address",
+          title: "Address",
+          showOverflow: true,
+          slots: {
+            // 使用 JSX 渲染
+            default: ({ row }) => {
+              return [
+                <span
+                  style="color: blue"
+                  onClick={() => this.addressClickEvent(row)}
+                >
+                  自定义模板内容
+                </span>,
+              ]
+            },
+          },
+        },
+        {
+          field: "img1",
+          title: "图片路径",
+          slots: { default: "img1_default" },
+        },
+      ],
     }
+  },
+  methods: {
+    searchEvent() {
+      this.$XModal.alert("查询")
+    },
+    showDetailEvent(row) {
+      this.selectRow = row
+      this.showDetails = true
+    },
+    headerClickEvent(evnt) {
+      this.$XModal.alert("头部点击事件")
+    },
+    addressClickEvent(row) {
+      this.$XModal.alert(`address点击事件：${row.address}`)
+    },
+    changeFilterEvent(evnt, option, $panel) {
+      $panel.changeOption(evnt, !!option.data, option)
+    },
+    checkboxChangeEvent({ records }) {
+      const $grid = this.$refs.xGrid
+      this.isAllChecked = $grid.isAllCheckboxChecked()
+      this.isIndeterminate = $grid.isCheckboxIndeterminate()
+      this.selectRecords = records
+    },
+    changeAllEvent() {
+      const $grid = this.$refs.xGrid
+      $grid.setAllCheckboxRow(this.isAllChecked)
+      this.selectRecords = $grid.getCheckboxRecords()
+    },
+    sumNum(list, field) {
+      let count = 0
+      list.forEach((item) => {
+        count += Number(item[field])
+      })
+      return count
+    },
+    footerMethod({ columns, data }) {
+      return [
+        columns.map((column, index) => {
+          if (index === 0) {
+            return "平均"
+          } else if (["num1", "age"].includes(column.property)) {
+            return this.sumNum(data, column.property)
+          }
+          return null
+        }),
+      ]
+    },
   },
 }
 </script>

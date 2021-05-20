@@ -44,9 +44,9 @@ export default () => {
   const handleAddBook = async () => {
     const book = store.state.light.detailBook
     if (book.count !== '') {
-      let res = await Api.light.myBooks({ book }, 'post')
-      store.commit({ type: 'setLightState', key: 'myBooks', value: res.data })
-      router.push('/light/index/my_books')
+      store.dispatch({ type: 'addMyBooks' , book }).then(() => {
+        router.push('/light/index/my_books')
+      })
     }
   }
 

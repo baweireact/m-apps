@@ -32,7 +32,7 @@ export default {
     const store = useStore()
     const count = computed(() =>
       store.state.light.myBooks.reduce(
-        (accumulator, currentValue) => accumulator + currentValue.count,
+        (sum, currentValue) => sum + currentValue.count,
         0
       )
     )

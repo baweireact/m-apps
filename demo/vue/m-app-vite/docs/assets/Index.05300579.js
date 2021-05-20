@@ -1,0 +1,2 @@
+import{o as e,f as r,k as s,e as o}from"./vendor.91c4f8a8.js";const t={},n={class:"m-header"};t.render=function(s,o,t,a,c,d){return e(),r("div",n,"小米书城")};const a={},c={class:"m-footer"};a.render=function(s,o,t,n,a,d){return e(),r("div",c)};const d={class:"m-wrap"},u={expose:[],setup:n=>(n,c)=>{const u=o("router-view");return e(),r("div",d,[s(t),s(u),s(a)])}};export default u;
+//# sourceMappingURL=Index.05300579.js.map

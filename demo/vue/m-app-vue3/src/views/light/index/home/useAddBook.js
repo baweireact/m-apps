@@ -1,8 +1,8 @@
-import { useStore } from "vuex"
-import Api from '@/api'
+import { useStore, computed } from "vuex"
 
 export default () => {
   const store = useStore()
+
   const handleClose = () => {
     store.commit({
       type: "setLightState",
@@ -12,11 +12,11 @@ export default () => {
   }
 
   const handleOk = async () => {
-    const book = store.state.light.addBook
-    if (book.count !== '') {
-      let res = await Api.light.myBooks({ book }, 'post')
-      store.commit({ type: 'setLightState', key: 'myBooks', value: res.data })
-      handleClose()
+    const addBook = store.state.light.addBook
+    if (addBook.count !== '') {
+      store.dispatch({ type: 'addMyBooks' , book: addBook }).then(() => {
+        handleClose()
+      })
     }
   }
 

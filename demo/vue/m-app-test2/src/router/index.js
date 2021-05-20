@@ -47,7 +47,11 @@ const routes = [
   {
     path:  '/form',
     component: () => import('../views/Form.vue')
-  }  
+  },
+  {
+    path: '/antd_table',
+    component: () => import('../views/AntdTable.vue')
+  }
 ]
 
 const router = new VueRouter({
