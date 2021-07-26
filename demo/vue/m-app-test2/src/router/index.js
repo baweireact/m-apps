@@ -51,6 +51,10 @@ const routes = [
   {
     path: '/antd_table',
     component: () => import('../views/AntdTable.vue')
+  },
+  {
+    path: '/father',
+    component: () => import('../views/Father.vue')
   }
 ]
 

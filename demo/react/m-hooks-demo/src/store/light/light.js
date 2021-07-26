@@ -1,16 +1,17 @@
-import { fromJS } from 'immutable'
+import { fromJS } from "immutable";
 
 const defaultState = fromJS({
-  count: 1
-})
+  count: 1,
+  router: [],
+});
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
-    case 'SET_LIGHT_STATE':
-      return state.setIn(action.key, fromJS(action.value))
+    case "SET_LIGHT_STATE":
+      return state.setIn(action.key, fromJS(action.value));
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default reducer
+export default reducer;

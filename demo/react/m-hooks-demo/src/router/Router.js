@@ -1,6 +1,6 @@
-import React, { Suspense, lazy } from 'react'
-import { Switch, Route, Redirect } from 'react-router-dom'
-const Index = lazy(() => import('../views/light/index/Index'))
+import React, { Suspense, lazy } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+const Index = lazy(() => import("../views/light/index/Index"));
 
 export default function Router() {
   return (
@@ -9,8 +9,12 @@ export default function Router() {
         <Switch>
           <Redirect from="/" to="/light/index" exact></Redirect>
           <Route path="/light/index" component={Index}></Route>
+          <Route
+            path="/light/test"
+            component={lazy(() => import("../views/light/index/Test"))}
+          ></Route>
         </Switch>
       </Suspense>
     </>
-  )
+  );
 }
