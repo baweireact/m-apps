@@ -1,0 +1,13 @@
+{
+  "name": "m-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "vuepress": "^1.8.2"
+  },
+  "scripts": {
+    "start": "vuepress dev src",
+    "build": "vuepress build src"
+  }
+}
