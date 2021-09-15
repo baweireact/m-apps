@@ -1,7 +1,7 @@
 ---
 home: true
-heroText: 徐同保的博客
-tagline: web前端行业的小学生
+heroText: vuepress-theme-reco
+tagline: A simple and beautiful vuepress blog theme.
 # heroImage: /hero.png
 # heroImageStyle: {
 #   maxWidth: '600px',
