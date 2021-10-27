@@ -1,2 +1,9 @@
 "use strict";
-var a = 'hello world!21';
+function foo() {
+    // okay to capture 'a'
+    return a;
+}
+var a = 'a';
+// 不能在'a'被声明前调用'foo'
+// 运行时应该抛出错误
+foo();
