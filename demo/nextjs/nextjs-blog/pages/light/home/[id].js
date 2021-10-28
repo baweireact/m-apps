@@ -5,7 +5,6 @@ export default function blog({ params }) {
 }
 
 export async function getStaticProps({ params }) {
-  console.log(params)
   return {
     props: {
       params

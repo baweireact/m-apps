@@ -6,7 +6,7 @@ export default function Home({ serverSideList }) {
     <div className="m-wrap">
       <Head>
         <title>home</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href={`${process.env.basePath}/favicon.ico`}  />
       </Head>
       hello
       <div>
@@ -16,6 +16,9 @@ export default function Home({ serverSideList }) {
         {serverSideList.map((item) => (
           <div key={item.id}>{item.title}</div>
         ))}
+      </div>
+      <div>
+        {process.env.customKey}11123456
       </div>
     </div>
   )
@@ -40,7 +43,6 @@ export default function Home({ serverSideList }) {
 // }
 
 export async function getServerSideProps(context) {
-  console.log(context.query)
   const serverSideList = [
     {
       id: 0,
