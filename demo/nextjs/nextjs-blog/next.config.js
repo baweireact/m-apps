@@ -1,4 +1,4 @@
-const basePath = '/ssr-nextjs'
+const basePath = '/ssr'
 const nextConfig = {
   env: {
     customKey: 'my-value',

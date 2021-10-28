@@ -9,10 +9,12 @@
     "serve_start": "next start -p $PORT",
     "serve1": "next build && PORT=84 npm serve_start",
     "dev1": "set PORT=3003 && node node_modules/next/dist/bin/next dev",
-    "dev2": "cross-env name=source_scripts_ssr_dev2 pm2 start ecosystem.config.js --env development && pm2 logs"
+    "dev2": "cross-env name=source_scripts_ssr_dev2 pm2 start ecosystem.config.js --env development && pm2 logs",
+    "start1": "pm2 start yarn dev"
   },
   "dependencies": {
     "next": "^11.0.0",
+    "pm2": "^5.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   }
