@@ -5,7 +5,11 @@
   "scripts": {
     "dev": "set PORT=3003 && next dev",
     "build": "next build",
-    "start": "set PORT=84 && next start"
+    "start": "set PORT=84 && next start",
+    "serve_start": "next start -p $PORT",
+    "serve1": "next build && PORT=84 npm serve_start",
+    "dev1": "set PORT=3003 && node node_modules/next/dist/bin/next dev",
+    "dev2": "cross-env name=source_scripts_ssr_dev2 pm2 start ecosystem.config.js --env development && pm2 logs"
   },
   "dependencies": {
     "next": "^11.0.0",
