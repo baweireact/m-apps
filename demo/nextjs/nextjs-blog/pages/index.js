@@ -5,8 +5,7 @@ export default function Home() {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href={`${process.env.basePath}/favicon.ico`} />
+        <title>首页</title>
       </Head>
       <div>1</div>
       <div>
