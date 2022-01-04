@@ -24,6 +24,10 @@ export default {
     handleLogin() {
       Api.light.login({username: this.username, password: this.password}).then(res => {
         console.log(res)
+        if (res.code === 200) {
+          this.$router.history.push('/index/home')
+        }
+        
       })
       console.log(this.username, this.password)
     }
