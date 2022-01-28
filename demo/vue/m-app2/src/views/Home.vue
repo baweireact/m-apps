@@ -12,14 +12,12 @@ import List from '../components/List'
 export default {
   components: {
     Sidebar,
-    List
+    List,
   },
   mounted() {
     this.$store.dispatch({ type: 'getList' })
-  }
+  },
 }
 </script>
 
-<style>
-
-</style>
+<style></style>
