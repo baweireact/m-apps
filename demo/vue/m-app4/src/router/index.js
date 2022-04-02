@@ -12,7 +12,11 @@ const routes = [
   {
     path: '/index/home',
     component: () => import('../views/light/index/home/Home.vue')
-  }
+  },
+  {
+    path: '/index/draggable',
+    component: () => import('../views/light/index/draggable/Draggable.vue')
+  }  
 ]
 
 const router = new VueRouter({
