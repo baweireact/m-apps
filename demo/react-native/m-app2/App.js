@@ -1,13 +1,15 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, TextInput, Text, Button } from 'react-native'
+import { View, TextInput, Text } from 'react-native'
 import style from './src/static/style/index.js'
 import Api from './src/api'
 import { Icon } from './src/component/light'
+import { Divider, LinearProgress, Button } from '@rneui/themed'
 
 export default function App() {
   const [username, setUsername] = useState('admin')
   const [password, setPasswork] = useState('123456')
   const [visible, setVisible] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const usernameEl = useRef(null)
 
   const handleInput = (e) => {
@@ -20,8 +22,10 @@ export default function App() {
     Api.light.getUserInfo().then((res) => {
       console.log(res)
     })
+    setIsLoading(true)
     Api.light.login({ username, password }).then((res) => {
       console.log(res)
+      setIsLoading(false)
     })
   }
 
@@ -36,6 +40,7 @@ export default function App() {
 
   return (
     <View style={style.mLoginWrap}>
+      <LinearProgress style={[style.mLoading, isLoading ? style.mLoadingActive : {}]} color="primary" />
       <View style={style.mLoginRow}>
         <TextInput
           style={style.mLoginInput}
@@ -61,8 +66,10 @@ export default function App() {
         ></Icon>
       </View>
       <View style={style.mLoginRow}>
-        <Button onPress={handleLogin} title="登录"></Button>
+        <Button onPress={handleLogin} type="solid" title="登录"></Button>
       </View>
+      <Divider></Divider>
+      
     </View>
   )
 }
