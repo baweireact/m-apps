@@ -6,6 +6,20 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1356161",
+      "name": "眼睛-闭",
+      "font_class": "close",
+      "unicode": "e620",
+      "unicode_decimal": 58912
+    },
+    {
+      "icon_id": "5387736",
+      "name": "眼睛_显示",
+      "font_class": "show",
+      "unicode": "eb46",
+      "unicode_decimal": 60230
+    },
+    {
       "icon_id": "15685020",
       "name": "任务中心",
       "font_class": "task-center",
