@@ -1,9 +1,10 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, TextInput, Text } from 'react-native'
+import { View, TextInput } from 'react-native'
 import style from './src/static/style/index.js'
 import Api from './src/api'
 import { Icon } from './src/component/light'
 import { Divider, LinearProgress, Button } from '@rneui/themed'
+import Constants from 'expo-constants'
 
 export default function App() {
   const [username, setUsername] = useState('admin')
@@ -18,7 +19,7 @@ export default function App() {
   }
 
   const handleLogin = () => {
-    console.log(777, username, password)
+    console.log(666, process.env, Constants.manifest.extra)
     Api.light.getUserInfo().then((res) => {
       console.log(res)
     })
@@ -46,6 +47,7 @@ export default function App() {
           style={style.mLoginInput}
           value={username}
           onChangeText={handleInput}
+          placeholder="用户名"
           // autoFocus
           ref={usernameEl}
         ></TextInput>
@@ -55,6 +57,7 @@ export default function App() {
           style={style.mLoginInput}
           value={password}
           onChangeText={setPasswork}
+          placeholder="密码"
           secureTextEntry={!visible}
         ></TextInput>
         <Icon
