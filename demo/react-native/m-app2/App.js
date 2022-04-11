@@ -13,19 +13,20 @@ export default function App() {
   const [isLoading, setIsLoading] = useState(false)
   const usernameEl = useRef(null)
 
+  GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest
+
   const handleInput = (e) => {
     console.log(e)
     setUsername(e)
   }
 
   const handleLogin = () => {
-    console.log(666, process.env, Constants.manifest.extra)
     Api.light.getUserInfo().then((res) => {
-      console.log(res)
+      //console.log(res)
     })
     setIsLoading(true)
     Api.light.login({ username, password }).then((res) => {
-      console.log(res)
+      //console.log(res)
       setIsLoading(false)
     })
   }

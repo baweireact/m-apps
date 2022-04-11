@@ -1,7 +1,11 @@
 export default {
-  name: 'CoolApp',
-  version: '1.0.0',
+  name: 'm-app2',
+  version: '1.0.1',
   extra: {
-    REACT_APP_MODE: process.env.REACT_APP_MODE,
+    REACT_APP_MODE: 'prod',
   },
+  "android": {
+    "package": "com.yourcompany.yourappname",
+    "versionCode": 1
+  }
 };
