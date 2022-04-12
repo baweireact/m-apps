@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, TextInput } from 'react-native'
+import { View, TextInput, Text } from 'react-native'
 import style from './src/static/style/index.js'
 import Api from './src/api'
 import { Icon } from './src/component/light'
@@ -73,7 +73,7 @@ export default function App() {
         <Button onPress={handleLogin} type="solid" title="登录"></Button>
       </View>
       <Divider></Divider>
-      
+      <Text>2</Text>
     </View>
   )
 }
