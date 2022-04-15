@@ -16,13 +16,14 @@
         @onClick="handleVisible"
       ></Icon>
     </div>
-    <button @click="handleLogin">登录</button>
+    <el-button type="primary" @click="handleLogin">登录</el-button>
   </div>
 </template>
 
 <script>
 import { Icon } from '../../../components/light'
 import Api from '../../../api'
+import { Button } from 'element-ui'
 
 export default {
   data() {
@@ -34,6 +35,7 @@ export default {
   },
   components: {
     Icon,
+    [Button.name]: Button
   },
   methods: {
     handleLogin() {
