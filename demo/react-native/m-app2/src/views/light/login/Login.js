@@ -67,8 +67,6 @@ export default function Login(props) {
         ></TextInput>
         <Icon
           name={visible ? 'show' : 'close'}
-          size={40}
-          color="#333"
           onPress={handleVisilbe}
           style={style.mLoginPasswordIcon}
         ></Icon>
@@ -76,7 +74,7 @@ export default function Login(props) {
       <View style={style.mLoginRow}>
         <Button onPress={handleLogin} type="solid" title="登录"></Button>
       </View>
-      <Divider></Divider>
+      <Divider width={1} ></Divider>
       <Text>2</Text>
     </View>
   )
