@@ -11,7 +11,7 @@ export default function Router() {
       <Stack.Screen
         name="Login"
         component={Login}
-        options={{ headerShown: false }}
+        options={{ title: '登录' }}
       />
       <Stack.Screen name="Index" component={Index} options={{ title: '首页' }}></Stack.Screen>
     </Stack.Navigator>

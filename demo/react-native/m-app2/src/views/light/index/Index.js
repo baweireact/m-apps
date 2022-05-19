@@ -1,10 +1,19 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 
-export default function Index() {
+export default function Index(props) {
+  const { navigation } = props
+
+  const handleGoBackLogin = () => {
+    navigation.navigate('Login')
+  }
+
   return (
     <View>
       <Text>Index</Text>
+      <TouchableOpacity onPress={handleGoBackLogin}>
+        <Text>返回登录页</Text>
+      </TouchableOpacity>
     </View>
   )
 }
