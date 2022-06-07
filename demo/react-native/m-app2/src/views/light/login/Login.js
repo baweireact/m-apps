@@ -14,8 +14,6 @@ export default function Login(props) {
 
   const { navigation } = props
 
-  GLOBAL.XMLHttpRequest = GLOBAL.originalXMLHttpRequest || GLOBAL.XMLHttpRequest
-
   const handleInput = (e) => {
     console.log(e)
     setUsername(e)
@@ -30,7 +28,9 @@ export default function Login(props) {
       //console.log(res)
       setIsLoading(false)
       if (res.state === 1) {
-        navigation.navigate('Index')
+        navigation.navigate('Index', {
+          type: 'home'
+        })
       }
     })
   }
