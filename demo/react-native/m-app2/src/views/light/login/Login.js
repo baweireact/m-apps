@@ -50,7 +50,10 @@ export default function Login(props) {
 
   return (
     <View style={style.mLoginWrap}>
-      <LinearProgress style={[style.mLoading, isLoading ? style.mLoadingActive : {}]} color="primary" />
+      <LinearProgress
+        style={[style.mLoading, isLoading ? style.mLoadingActive : {}]}
+        color="primary"
+      />
       <View style={style.mLoginRow}>
         <TextInput
           style={style.mLoginInput}
@@ -78,9 +81,13 @@ export default function Login(props) {
       <View style={style.mLoginRow}>
         <Button onPress={handleLogin} type="solid" title="登录"></Button>
       </View>
-      <Divider width={1} ></Divider>
+      <Divider width={1}></Divider>
       <View style={style.mLoginBtnTestWrap}>
-        <Button  containerStyle={style.mLoginBtnTest} onPress={() => handleNav('IndexForTab')} title="Index For Tab1"></Button>
+        <Button
+          containerStyle={style.mLoginBtnTest}
+          onPress={() => handleNav('IndexForTab')}
+          title="Index For Tab1"
+        ></Button>
       </View>
     </View>
   )

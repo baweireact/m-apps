@@ -25,6 +25,7 @@ export default function Router() {
           title: '首页',
           headerTitleAlign: 'center',
           headerStyle: { backgroundColor: '#409eff' },
+          headerShown: false,
         }}
       ></Stack.Screen>
       <Stack.Screen
