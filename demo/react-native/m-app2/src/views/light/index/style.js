@@ -5,7 +5,7 @@ const style = StyleSheet.create({
   mIndexHeader: {height: 120, paddingTop: 70, backgroundColor: '#409eff'},
   mIndexMain: {flex: 1},
   mIndexFooter: {height: 60, borderTopWidth: 1, borderTopColor: '#ddd', flexDirection: 'row'},
-  mIndexHeaderText: {height: 50, color: '#fff', textAlign: 'center', fontWeight: 'bold', fontSize: 30},
+  mIndexHeaderText: {height: 50, color: '#fff', textAlign: 'center', fontSize: 24},
   mIndexFooterItem: {flex: 1},
   mIndexFooterItemIconWrap: {marginTop: 5},
   mIndexFooterItemIcon: {fontSize: 30, color: '#333', textAlign: 'center'},
