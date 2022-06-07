@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { View, TextInput, Text } from 'react-native'
-import style from '../../../static/style/index.js'
+import style from './style.js'
 import Api from '../../../api'
 import { Icon } from '../../../component/light'
 import { Divider, LinearProgress, Button } from '@rneui/themed'
@@ -33,6 +33,10 @@ export default function Login(props) {
         navigation.navigate('Index')
       }
     })
+  }
+
+  const handleNav = (path) => {
+    navigation.navigate(path)
   }
 
   const handleVisilbe = () => {
@@ -75,7 +79,9 @@ export default function Login(props) {
         <Button onPress={handleLogin} type="solid" title="登录"></Button>
       </View>
       <Divider width={1} ></Divider>
-      <Text>2</Text>
+      <View style={style.mLoginBtnTestWrap}>
+        <Button  containerStyle={style.mLoginBtnTest} onPress={() => handleNav('IndexForTab')} title="Index For Tab1"></Button>
+      </View>
     </View>
   )
 }

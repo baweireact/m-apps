@@ -2,7 +2,7 @@ import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Login from '../views/light/login/Login'
 import Index from '../views/light/index/Index'
-import { themme } from '../utils/tools'
+import IndexForTab from '../views/light/test/tab1/IndexForTab'
 
 const Stack = createNativeStackNavigator()
 
@@ -15,7 +15,7 @@ export default function Router() {
         options={{
           title: '登录',
           headerTitleAlign: 'center',
-          headerStyle: themme,
+          headerStyle: { backgroundColor: '#409eff' },
         }}
       />
       <Stack.Screen
@@ -24,9 +24,18 @@ export default function Router() {
         options={{
           title: '首页',
           headerTitleAlign: 'center',
-          headerStyle: themme,
+          headerStyle: { backgroundColor: '#409eff' },
         }}
       ></Stack.Screen>
+      <Stack.Screen
+        name="IndexForTab"
+        component={IndexForTab}
+        options={{
+          title: '首页-tab',
+          headerTitleAlign: 'center',
+          headerStyle: { backgroundColor: '#409eff' },
+        }}
+      ></Stack.Screen>      
     </Stack.Navigator>
   )
 }

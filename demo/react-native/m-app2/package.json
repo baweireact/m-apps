@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "scripts": {
     "start": "expo start --dev-client",
-    "start1": "cross-env REACT_APP_MODE=dev expo start",
-    "start2": "cross-env REACT_APP_MODE=dev expo start",
+    "dev": "cross-env REACT_APP_MODE=dev expo start",
+    "prod": "cross-env REACT_APP_MODE=prod expo start",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web",
