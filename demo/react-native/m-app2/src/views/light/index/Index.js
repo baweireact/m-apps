@@ -1,8 +1,5 @@
 import React from 'react'
-import { View, TouchableOpacity } from 'react-native'
-import { Tab, Text, TabView } from '@rneui/themed'
-import { Icon } from '../../../component/light'
-import style from '../../../static/style/index.js'
+import { View, Text, TouchableOpacity } from 'react-native'
 
 export default function Index(props) {
   const [index, setIndex] = React.useState(0)
