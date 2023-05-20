@@ -17,7 +17,7 @@ service.interceptors.request.use(
 
 service.interceptors.response.use(
   (res) => {
-    if (res.data.state === 1) {
+    if (res.data.state === 1 || res.data.code === 200) {
       return res.data
     } else if (res.data.state === 0) {
       // Alert.alert(res.data.message, "",

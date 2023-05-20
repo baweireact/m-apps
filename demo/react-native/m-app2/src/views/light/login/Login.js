@@ -1,15 +1,25 @@
 import React, { useState, useRef, useEffect } from 'react'
-import { View, TextInput, Text } from 'react-native'
+import {
+  SafeAreaView,
+  ScrollView,
+  View,
+  TouchableWithoutFeedback,
+  Text,
+} from 'react-native'
+import { WebView } from 'react-native-webview'
 import style from './style.js'
 import Api from '../../../api'
 import { Icon } from '../../../component/light'
-import { Divider, LinearProgress, Button } from '@rneui/themed'
+import { Divider, LinearProgress, Button, Input } from '@rneui/themed'
 
 export default function Login(props) {
-  const [username, setUsername] = useState('admin')
-  const [password, setPasswork] = useState('123456')
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [code, setCode] = useState('')
   const [visible, setVisible] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [captchaId, setCaptchaId] = useState('')
+  const [captcha, setCaptcha] = useState('')
   const usernameEl = useRef(null)
 
   const { navigation } = props
@@ -20,19 +30,18 @@ export default function Login(props) {
   }
 
   const handleLogin = () => {
-    Api.light.getUserInfo().then((res) => {
-      //console.log(res)
-    })
     setIsLoading(true)
-    Api.light.login({ username, password }).then((res) => {
-      //console.log(res)
-      setIsLoading(false)
-      if (res.state === 1) {
-        navigation.navigate('Index', {
-          type: 'home'
-        })
-      }
-    })
+    Api.h5
+      .userAiLogin({ username, password, code, captchaId })
+      .then((res) => {
+        //console.log(res)
+        setIsLoading(false)
+        if (res.code === 200) {
+          navigation.navigate('Index', {
+            type: 'home',
+          })
+        }
+      })
   }
 
   const handleNav = (path) => {
@@ -42,6 +51,31 @@ export default function Login(props) {
   const handleVisilbe = () => {
     setVisible(!visible)
   }
+
+  const getCaptcha = () => {
+    console.log('captcha')
+    Api.h5.userCaptcha({}).then((res) => {
+      if (res.code === 200) {
+        const { captchaId, captcha } = res.data
+        let svg = captcha
+        let height = svg.indexOf('height')
+        let width = svg.indexOf('width')
+        let step1 = svg.slice(0, height + 8)
+        let step2 = svg.slice(height + 8 + 2)
+        svg = `${step1}150${step2}`
+        let step3 = svg.slice(0, width + 5)
+        let step4 = svg.slice(width + 8 + 3)
+        svg = `${step3}450${step4}`
+        let html = `<div style="text-align:center;width:100%;overflow:hidden;">${svg}</div>`
+        setCaptcha(html)
+        setCaptchaId(captchaId)
+      }
+    })
+  }
+
+  useEffect(() => {
+    getCaptcha()
+  }, [])
 
   useEffect(() => {
     //usernameEl.current.focus()
@@ -55,23 +89,27 @@ export default function Login(props) {
         color="primary"
       />
       <View style={style.mLoginRow}>
-        <TextInput
+        <Input
+          label="邮箱/账号"
           style={style.mLoginInput}
+          labelStyle={style.mLoginLabelStyle}
           value={username}
           onChangeText={handleInput}
           placeholder="用户名"
           // autoFocus
           ref={usernameEl}
-        ></TextInput>
+        ></Input>
       </View>
       <View style={style.mLoginRow}>
-        <TextInput
+        <Input
+          label="密码"
           style={style.mLoginInput}
+          labelStyle={style.mLoginLabelStyle}
           value={password}
-          onChangeText={setPasswork}
+          onChangeText={setPassword}
           placeholder="密码"
           secureTextEntry={!visible}
-        ></TextInput>
+        ></Input>
         <Icon
           name={visible ? 'show' : 'close'}
           onPress={handleVisilbe}
@@ -79,6 +117,22 @@ export default function Login(props) {
         ></Icon>
       </View>
       <View style={style.mLoginRow}>
+        <Input
+          label="验证码"
+          style={style.mLoginInput}
+          labelStyle={style.mLoginLabelStyle}
+          value={code}
+          onChangeText={setCode}
+          placeholder="验证码"
+        ></Input>
+      </View>
+      <View style={style.mLoginCodeWrap}>
+        <TouchableWithoutFeedback onPress={getCaptcha}>
+          <WebView originWhitelist={['*']} source={{ html: captcha }}></WebView>
+        </TouchableWithoutFeedback>
+      </View>
+
+      <View style={[style.mLoginBtnWrap]}>
         <Button onPress={handleLogin} type="solid" title="登录"></Button>
       </View>
       <Divider width={1}></Divider>
